@@ -33,7 +33,7 @@ message SignInResponse {
 
 message UpdateUserRequest {
     string username = 1;
-    string password = 1;
+    string password = 2;
 }
 
 message UpdateUserResponse {
