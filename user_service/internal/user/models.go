@@ -27,6 +27,14 @@ func NewCreateUserDTO(pb *proto.SignUpRequest) *CreateUserDTO {
 	}
 }
 
+func NewUser(dto *CreateUserDTO) *User {
+	return &User{
+		Email:    dto.Email,
+		Username: dto.Username,
+		Password: dto.Password,
+	}
+}
+
 func generatePasswordHash(user *User) error {
 	pwd, err := crypt.GeneratePasswordHash(user.Password)
 	if err != nil {
