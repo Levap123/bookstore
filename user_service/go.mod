@@ -11,6 +11,7 @@ require (
 
 require (
 	github.com/BurntSushi/toml v1.2.1 // indirect
+	github.com/Levap123/utils v0.0.0-20230217041646-d6480d8ec9db // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/ilyakaznacheev/cleanenv v1.4.2 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
