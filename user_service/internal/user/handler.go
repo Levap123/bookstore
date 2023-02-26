@@ -24,6 +24,7 @@ func NewUserHandler(service IUserService, logger *logrus.Logger) *UserHandler {
 type IUserService interface {
 	Create(ctx context.Context, user *CreateUserDTO) (uint64, error)
 	GenerateTokens(ctx context.Context, dto *GetUserDTO) (string, string, error)
+	Validate(ctx context.Context, accessToken string) (int, error)
 }
 
 func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*proto.SignUpResponse, error) {
@@ -58,9 +59,21 @@ func (uh *UserHandler) SignIn(ctx context.Context, req *proto.SignInRequest) (*p
 	}, nil
 }
 
+func (uh *UserHandler) ValidateUser(ctx context.Context, req *proto.ValidateRequest) (*proto.ValidateResponse, error) {
+	uh.logger.Debugln("valivate user access token")
+
+	userID, err := uh.service.Validate(ctx, req.Access)
+	if err != nil {
+		uh.logger.Errorf("error in parse user token: %v", err)
+		return nil, err
+	}
+	return &proto.ValidateResponse{
+		UserID: uint64(userID),
+	}, nil
+}
+
 /* TODO implement:
 type UserServer interface {
 	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
-	ValidateUser(context.Context, *ValidateRequest) (*ValidateResponse, error)
 }
 */

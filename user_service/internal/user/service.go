@@ -60,3 +60,14 @@ func (us *UserService) GenerateTokens(ctx context.Context, dto *GetUserDTO) (str
 
 	return accessToken, refreshToken, nil
 }
+
+func (us *UserService) Validate(ctx context.Context, accessToken string) (int, error) {
+	claims, err := jwt.ParseToken(accessToken)
+	if err != nil {
+		return 0, err
+	}
+	if claims.TokenType != accessToken {
+		return 0, domain.ErrIncorrectTokenType
+	}
+	return claims.UserID, nil
+}

@@ -40,7 +40,7 @@ func main() {
 
 	listener, err := net.Listen("tcp", cfg.Server.Addr)
 	if err != nil {
-		log.Fatalln("error in starting listener: %v", err)
+		log.Fatalf("error in starting listener: %v", err)
 	}
 
 	repo := postgres.NewUserRepo(DB, lg)
