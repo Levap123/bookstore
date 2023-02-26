@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"fmt"
 )
 
 type UserService struct {
@@ -13,14 +14,16 @@ func NewUserService(repo IUserRepo) *UserService {
 }
 
 type IUserRepo interface {
-	Create(ctx context.Context, user *User) (int, error)
+	Create(ctx context.Context, user *User) (uint64, error)
 }
 
-func (us *UserService) Create(ctx context.Context, dto *CreateUserDTO) (int, error) {
+func (us *UserService) Create(ctx context.Context, dto *CreateUserDTO) (uint64, error) {
 	user := NewUserFromCreateDTO(dto)
 	if err := user.generatePasswordHash(); err != nil {
 	}
 	userID, err := us.repo.Create(ctx, user)
 	if err != nil {
+		return 0, fmt.Errorf("user service - repo create - %w", err)
 	}
+	return userID, nil
 }

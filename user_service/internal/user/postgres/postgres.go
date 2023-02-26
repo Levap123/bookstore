@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"user_service/internal/configs"
 
-	_ "github.com/jackc/pgx/v5"
-	"github.com/jmoiron/sqlx"
+    _ "github.com/jackc/pgx/stdlib"
+		"github.com/jmoiron/sqlx"
 )
 
 func InitDB(cfg *configs.Configs) (*sqlx.DB, error) {

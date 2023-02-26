@@ -4,3 +4,6 @@ postgres:
   password: root
   username: root
   db_name: users
+
+server:
+  addr: :8000

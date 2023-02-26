@@ -10,6 +10,9 @@ type Configs struct {
 		Username string `yaml:"username"`
 		DBName   string `yaml:"db_name"`
 	} `yaml:"postgres"`
+	Server struct {
+		Addr string `yaml:"addr"`
+	} `yaml:"server"`
 }
 
 func GetConfigs() (*Configs, error) {

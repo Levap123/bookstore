@@ -1,0 +1,26 @@
+[2023-02-26 14:56:35] FATAL error in geting configs %!w(*errors.errorString=&{config file parsing error: yaml: unmarshal errors:
+  line 9: cannot unmarshal !!str `addr:":...` into struct { Addr string "yaml:\"addr\"" }})
+
+[2023-02-26 14:57:11] FATAL error in geting configs config file parsing error: yaml: unmarshal errors:
+  line 9: cannot unmarshal !!str `addr:":...` into struct { Addr string "yaml:\"addr\"" }
+
+[2023-02-26 14:57:14] FATAL error in geting configs config file parsing error: yaml: unmarshal errors:
+  line 9: cannot unmarshal !!str `addr:":...` into struct { Addr string "yaml:\"addr\"" }
+
+[2023-02-26 14:57:19] FATAL error in geting configs config file parsing error: yaml: unmarshal errors:
+  line 9: cannot unmarshal !!str `addr:":...` into struct { Addr string "yaml:\"addr\"" }
+
+[2023-02-26 14:57:58] FATAL error in geting configs config file parsing error: yaml: unmarshal errors:
+  line 9: cannot unmarshal !!str `addr:":...` into struct { Addr string "yaml:\"addr\"" }
+
+[2023-02-26 14:58:07] FATAL error in geting configs config file parsing error: yaml: unmarshal errors:
+  line 9: cannot unmarshal !!str `addr:":...` into struct { Addr string "yaml:\"addr\"" }
+
+[2023-02-26 14:58:39] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+
+[2023-02-26 14:58:39] FATAL error in initializing db: sql: unknown driver "pgx" (forgotten import?)
+[2023-02-26 14:59:33] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+
+[2023-02-26 14:59:33] DEBUG server is started
+[2023-02-26 14:59:50] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 14:59:50] DEBUG server is started
