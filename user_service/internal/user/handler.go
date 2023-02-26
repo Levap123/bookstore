@@ -28,14 +28,18 @@ type IUserService interface {
 
 func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*proto.SignUpResponse, error) {
 	uh.logger.Debugln("signup user")
+
 	ctx, cancel := context.WithTimeout(ctx, time.Second*2)
 	defer cancel()
+
 	user := NewCreateUserDTO(req)
+
 	userID, err := uh.service.Create(ctx, user)
 	if err != nil {
 		uh.logger.Errorf("error in creating user: %v", err)
 		return nil, fmt.Errorf("user handler - signup - %w", err)
 	}
+
 	return &proto.SignUpResponse{
 		UserID: uint64(userID),
 	}, nil
@@ -46,6 +50,19 @@ type UserServer interface {
 	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
 	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
 	ValidateUser(context.Context, *ValidateRequest) (*ValidateResponse, error)
-	mustEmbedUnimplementedUserServer()
 }
 */
+
+type ASD interface {
+	todo(asd int) error
+}
+
+type fuck struct {
+
+}
+
+func (f *fuck) todo(asd int) error {
+	panic("not implemented") // TODO: Implement
+}
+
+

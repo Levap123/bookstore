@@ -48,3 +48,41 @@
 [2023-02-26 15:11:03] DEBUG server is started
 [2023-02-26 15:11:05] DEBUG signup user
 [2023-02-26 15:11:05] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-26 15:18:10] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 15:18:10] DEBUG server is started
+[2023-02-26 15:18:11] DEBUG signup user
+[2023-02-26 15:18:11] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-26 15:18:18] DEBUG signup user
+[2023-02-26 15:18:18] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-26 15:18:22] DEBUG signup user
+[2023-02-26 15:18:22] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-26 15:19:39] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 15:19:39] DEBUG server is started
+[2023-02-26 15:19:40] DEBUG signup user
+[2023-02-26 15:19:40] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-26 15:19:40] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-26 15:19:47] DEBUG signup user
+[2023-02-26 15:19:47] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-26 15:19:47] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-26 15:19:59] DEBUG signup user
+[2023-02-26 15:20:01] DEBUG signup user
+[2023-02-26 15:20:01] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-26 15:20:01] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-26 15:20:12] DEBUG signup user
+[2023-02-26 16:22:43] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 16:22:43] DEBUG server is started
+[2023-02-26 16:22:51] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 16:22:51] DEBUG server is started
+[2023-02-26 16:23:00] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 16:23:00] DEBUG server is started
+[2023-02-26 16:23:33] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 16:23:33] DEBUG server is started
+[2023-02-26 16:23:46] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 16:23:46] DEBUG server is started
+[2023-02-26 16:24:18] DEBUG server is started
+[2023-02-26 16:24:34] DEBUG server is started
+[2023-02-26 16:25:54] DEBUG server is started
+[2023-02-26 16:26:06] DEBUG server is started
+[2023-02-26 16:26:15] DEBUG server is started
+[2023-02-26 16:26:24] DEBUG server is started
+[2023-02-26 16:26:35] DEBUG server is started

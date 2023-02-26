@@ -12,6 +12,7 @@ import (
 
 	"github.com/Levap123/utils/lg"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -24,7 +25,6 @@ func main() {
 	if err != nil {
 		lg.Fatalf("error in geting configs %v", err)
 	}
-	lg.Debugf("checking if configs ok: %v", cfg)
 
 	DB, err := postgres.InitDB(cfg)
 	if err != nil {
@@ -43,7 +43,7 @@ func main() {
 		log.Fatalln("error in starting listener: %v", err)
 	}
 
-	repo := postgres.NewUserRepo(DB)
+	repo := postgres.NewUserRepo(DB, lg)
 
 	service := user.NewUserService(repo)
 
@@ -51,6 +51,7 @@ func main() {
 
 	srv := grpc.NewServer()
 	proto.RegisterUserServer(srv, handler)
+	reflection.Register(srv)
 	lg.Debugf("server is started")
 	if err := srv.Serve(listener); err != nil {
 		log.Fatalln(err, 123)
