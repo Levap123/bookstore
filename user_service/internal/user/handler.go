@@ -33,7 +33,7 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 	user := NewCreateUserDTO(req)
 	userID, err := uh.service.Create(ctx, user)
 	if err != nil {
-		uh.logger.Errorf("error in creating user: %w\n", err)
+		uh.logger.Errorf("error in creating user: %v", err)
 		return nil, fmt.Errorf("user handler - signup - %w", err)
 	}
 	return &proto.SignUpResponse{

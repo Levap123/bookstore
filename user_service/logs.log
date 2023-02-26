@@ -24,3 +24,27 @@
 [2023-02-26 14:59:33] DEBUG server is started
 [2023-02-26 14:59:50] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
 [2023-02-26 14:59:50] DEBUG server is started
+[2023-02-26 15:05:16] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 15:05:16] DEBUG server is started
+[2023-02-26 15:05:19] DEBUG signup user
+[2023-02-26 15:08:13] DEBUG signup user
+[2023-02-26 15:08:13] ERROR error in creating user: %!w(*fmt.wrapError=&{user service - repo create - user repo - create - insert - ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505) 0xc000081060})
+
+[2023-02-26 15:08:58] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 15:08:58] DEBUG server is started
+[2023-02-26 15:08:59] DEBUG signup user
+[2023-02-26 15:08:59] ERROR error in creating user: user service - repo create - user repo - create - insert - ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+
+[2023-02-26 15:09:53] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 15:09:53] DEBUG server is started
+[2023-02-26 15:09:54] DEBUG signup user
+[2023-02-26 15:09:54] ERROR error in creating user: user service - repo create - user repo - create - insert - ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+
+[2023-02-26 15:10:37] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 15:10:37] DEBUG server is started
+[2023-02-26 15:10:39] DEBUG signup user
+[2023-02-26 15:10:39] ERROR error in creating user: user service - repo create - user repo - create - insert - user with this username or email already exist
+[2023-02-26 15:11:03] DEBUG checking if configs ok: &{{5432 localhost root root users} {:8000}}
+[2023-02-26 15:11:03] DEBUG server is started
+[2023-02-26 15:11:05] DEBUG signup user
+[2023-02-26 15:11:05] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
