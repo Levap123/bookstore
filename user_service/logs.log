@@ -86,3 +86,11 @@
 [2023-02-26 16:26:15] DEBUG server is started
 [2023-02-26 16:26:24] DEBUG server is started
 [2023-02-26 16:26:35] DEBUG server is started
+[2023-02-26 18:30:36] DEBUG server is started
+[2023-02-26 18:30:41] DEBUG signup user
+[2023-02-26 18:30:41] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-26 18:30:41] ERROR error in creating user: user service - repo create - user repo create - insert - ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-26 18:30:49] DEBUG signin user
+[2023-02-26 18:30:49] ERROR error in signin: user service - user repo get - select - expected slice but got struct
+[2023-02-26 18:31:02] DEBUG server is started
+[2023-02-26 18:31:03] DEBUG signin user

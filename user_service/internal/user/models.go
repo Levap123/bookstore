@@ -19,6 +19,18 @@ type CreateUserDTO struct {
 	Password string
 }
 
+type GetUserDTO struct {
+	Email    string
+	Password string
+}
+
+func NewGetUserDTO(pb *proto.SignInRequest) *GetUserDTO {
+	return &GetUserDTO{
+		Email:    pb.Email,
+		Password: pb.Password,
+	}
+}
+
 func NewCreateUserDTO(pb *proto.SignUpRequest) *CreateUserDTO {
 	return &CreateUserDTO{
 		Email:    pb.Email,
@@ -42,4 +54,8 @@ func (user *User) generatePasswordHash() error {
 	}
 	user.Password = pwd
 	return nil
+}
+
+func (user *User) PasswordCorrect(password string) bool {
+	return crypt.ComparePassword(password, user.Password) == nil
 }

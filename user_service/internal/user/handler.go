@@ -3,7 +3,6 @@ package user
 import (
 	"context"
 	"fmt"
-	"time"
 	"user_service/proto"
 
 	"github.com/sirupsen/logrus"
@@ -24,17 +23,15 @@ func NewUserHandler(service IUserService, logger *logrus.Logger) *UserHandler {
 
 type IUserService interface {
 	Create(ctx context.Context, user *CreateUserDTO) (uint64, error)
+	GenerateTokens(ctx context.Context, dto *GetUserDTO) (string, string, error)
 }
 
 func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*proto.SignUpResponse, error) {
 	uh.logger.Debugln("signup user")
 
-	ctx, cancel := context.WithTimeout(ctx, time.Second*2)
-	defer cancel()
+	dto := NewCreateUserDTO(req)
 
-	user := NewCreateUserDTO(req)
-
-	userID, err := uh.service.Create(ctx, user)
+	userID, err := uh.service.Create(ctx, dto)
 	if err != nil {
 		uh.logger.Errorf("error in creating user: %v", err)
 		return nil, fmt.Errorf("user handler - signup - %w", err)
@@ -45,24 +42,25 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 	}, nil
 }
 
+func (uh *UserHandler) SignIn(ctx context.Context, req *proto.SignInRequest) (*proto.SignInResponse, error) {
+	uh.logger.Debugln("signin user")
+
+	dto := NewGetUserDTO(req)
+
+	accessToken, refreshToken, err := uh.service.GenerateTokens(ctx, dto)
+	if err != nil {
+		uh.logger.Errorf("error in signin: %v", err)
+		return nil, fmt.Errorf("user handler - signin - %w", err)
+	}
+	return &proto.SignInResponse{
+		Access:  accessToken,
+		Refresh: refreshToken,
+	}, nil
+}
+
 /* TODO implement:
 type UserServer interface {
-	SignIn(context.Context, *SignInRequest) (*SignInResponse, error)
 	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
 	ValidateUser(context.Context, *ValidateRequest) (*ValidateResponse, error)
 }
 */
-
-type ASD interface {
-	todo(asd int) error
-}
-
-type fuck struct {
-
-}
-
-func (f *fuck) todo(asd int) error {
-	panic("not implemented") // TODO: Implement
-}
-
-
