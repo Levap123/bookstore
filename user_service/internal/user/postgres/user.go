@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"context"
+	"database/sql"
 	"errors"
 	"fmt"
 	"user_service/internal/domain"
@@ -68,7 +69,7 @@ func (ur *UserRepo) GetByEmail(ctx context.Context, email string) (*user.User, e
 	var user user.User
 
 	if err := tx.Get(&user, query, email); err != nil {
-		if errors.Is(err, pgx.ErrNoRows) {
+		if errors.Is(err, sql.ErrNoRows) {
 			return nil, fmt.Errorf("user repo get - select - %w", domain.ErrUserNotFound)
 		}
 		return nil, fmt.Errorf("user repo get - select - %w", err)
