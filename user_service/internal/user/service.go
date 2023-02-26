@@ -20,6 +20,7 @@ type IUserRepo interface {
 func (us *UserService) Create(ctx context.Context, dto *CreateUserDTO) (uint64, error) {
 	user := NewUserFromCreateDTO(dto)
 	if err := user.generatePasswordHash(); err != nil {
+		return 0, fmt.Errorf("user service - generate hash - %w", err)
 	}
 	userID, err := us.repo.Create(ctx, user)
 	if err != nil {
