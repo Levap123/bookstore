@@ -13,9 +13,6 @@ Components
 
 ## Architecture
 
-The microservices are built using a combination of programming languages and technologies such as Java, Node.js, and Docker. They communicate with each other using RESTful APIs and event-driven messaging with RabbitMQ. The application uses an API gateway (such as NGINX or AWS API Gateway) to route requests to the appropriate microservice. The microservices are deployed on a Kubernetes cluster using a container orchestration platform like AWS Elastic Kubernetes Service (EKS) or Google Kubernetes Engine (GKE).
-Features
-
 The application provides the following features:
 
 - Search for books by title, author, publisher, and category.
