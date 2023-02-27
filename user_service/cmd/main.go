@@ -8,6 +8,7 @@ import (
 	"user_service/internal/configs"
 	"user_service/internal/user"
 	"user_service/internal/user/postgres"
+	"user_service/internal/validator"
 	"user_service/proto"
 
 	"github.com/Levap123/utils/jwt"
@@ -49,7 +50,8 @@ func main() {
 	jwt := jwt.NewJWT(cfg.JWTSign)
 	service := user.NewUserService(repo, jwt)
 
-	handler := user.NewUserHandler(service, lg)
+	validator := validator.NewValidator(cfg)
+	handler := user.NewUserHandler(service, lg, validator)
 
 	srv := grpc.NewServer()
 	proto.RegisterUserServer(srv, handler)

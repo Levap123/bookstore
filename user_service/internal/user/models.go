@@ -1,7 +1,6 @@
 package user
 
 import (
-	"fmt"
 	"user_service/proto"
 
 	"github.com/Levap123/utils/crypt"
@@ -82,6 +81,5 @@ func (user *User) generatePasswordHash() error {
 }
 
 func (user *User) PasswordCorrect(password string) bool {
-	fmt.Println(crypt.ComparePassword(password, user.Password))
 	return crypt.ComparePassword(password, user.Password) == nil
 }

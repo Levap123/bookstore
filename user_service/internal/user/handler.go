@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 	"fmt"
+	"user_service/internal/validator"
 	"user_service/proto"
 
 	"github.com/sirupsen/logrus"
@@ -10,14 +11,16 @@ import (
 
 type UserHandler struct {
 	proto.UnimplementedUserServer
-	logger  *logrus.Logger
-	service IUserService
+	logger    *logrus.Logger
+	service   IUserService
+	validator *validator.Validator
 }
 
-func NewUserHandler(service IUserService, logger *logrus.Logger) *UserHandler {
+func NewUserHandler(service IUserService, logger *logrus.Logger, validator *validator.Validator) *UserHandler {
 	return &UserHandler{
-		service: service,
-		logger:  logger,
+		service:   service,
+		logger:    logger,
+		validator: validator,
 	}
 }
 

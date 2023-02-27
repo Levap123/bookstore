@@ -9,3 +9,9 @@ server:
   addr: :8000
 
 jwt_sign: ejqwiohd192837(*&^*&@3sfgafiafsh)
+
+validator: 
+  password_min: 8
+  password_max: 20
+  username_min: 8
+  username_max: 20

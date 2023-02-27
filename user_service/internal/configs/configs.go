@@ -16,6 +16,14 @@ type Configs struct {
 	} `yaml:"server"`
 
 	JWTSign string `yaml:"jwt_sign"`
+
+	Validator struct {
+		PasswordMin int `yaml:"password_min"`
+		PasswordMax int `yaml:"password_max"`
+
+		UsernameMin int `yaml:"username_min"`
+		UsernameMax int `yaml:"username_max"`
+	} `yaml:"validator"`
 }
 
 func GetConfigs() (*Configs, error) {
