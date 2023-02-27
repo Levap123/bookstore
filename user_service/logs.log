@@ -176,3 +176,27 @@
 [2023-02-27 13:07:46] DEBUG valivate user access token
 [2023-02-27 13:07:49] DEBUG valivate user access token
 [2023-02-27 13:07:49] ERROR error in parse user token: token contains an invalid number of segments
+[2023-02-27 13:50:37]  INFO server is started
+[2023-02-27 13:50:43] DEBUG signin user
+[2023-02-27 13:52:11] DEBUG get user info by access token
+[2023-02-27 13:52:11] ERROR error in parse user token: token contains an invalid number of segments
+[2023-02-27 13:52:22] DEBUG get user info by access token
+[2023-02-27 13:53:09]  INFO server is started
+[2023-02-27 13:53:10] DEBUG get user info by access token
+[2023-02-27 13:54:56] DEBUG signup user
+[2023-02-27 13:55:02] DEBUG signin user
+[2023-02-27 13:55:17] DEBUG get user info by access token
+[2023-02-27 13:55:17] ERROR error in parse user token: token contains an invalid number of segments
+[2023-02-27 13:55:19] DEBUG get user info by access token
+[2023-02-27 13:55:22] DEBUG get user info by access token
+[2023-02-27 13:55:23] DEBUG get user info by access token
+[2023-02-27 13:55:24] DEBUG get user info by access token
+[2023-02-27 13:55:24] DEBUG get user info by access token
+[2023-02-27 13:55:24] DEBUG get user info by access token
+[2023-02-27 13:55:25] DEBUG get user info by access token
+[2023-02-27 13:55:25] DEBUG get user info by access token
+[2023-02-27 13:55:25] DEBUG get user info by access token
+[2023-02-27 13:55:25] DEBUG get user info by access token
+[2023-02-27 13:55:26] DEBUG get user info by access token
+[2023-02-27 13:55:26] DEBUG get user info by access token
+[2023-02-27 13:55:26] DEBUG get user info by access token

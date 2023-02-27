@@ -23,6 +23,7 @@ func NewUserService(repo IUserRepo, j *jwt.JWT) *UserService {
 type IUserRepo interface {
 	Create(ctx context.Context, user *User) (uint64, error)
 	GetByEmail(ctx context.Context, email string) (*User, error)
+	GetByID(ctx context.Context, ID uint64) (*User, error)
 }
 
 func (us *UserService) Create(ctx context.Context, dto *CreateUserDTO) (uint64, error) {
@@ -74,4 +75,8 @@ func (us *UserService) Validate(ctx context.Context, accessToken string) (int, e
 		return 0, domain.ErrIncorrectTokenType
 	}
 	return claims.UserID, nil
+}
+
+func (us *UserService) GetByID(ctx context.Context, userID uint64) (*User, error) {
+	return us.repo.GetByID(ctx, userID)
 }

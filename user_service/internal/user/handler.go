@@ -25,6 +25,7 @@ type IUserService interface {
 	Create(ctx context.Context, user *CreateUserDTO) (uint64, error)
 	GenerateTokens(ctx context.Context, dto *GetUserDTO) (string, string, error)
 	Validate(ctx context.Context, accessToken string) (int, error)
+	GetByID(ctx context.Context, userID uint64) (*User, error)
 }
 
 func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*proto.SignUpResponse, error) {
@@ -72,6 +73,36 @@ func (uh *UserHandler) ValidateUser(ctx context.Context, req *proto.ValidateRequ
 	}, nil
 }
 
+func (uh *UserHandler) GetMe(ctx context.Context, req *proto.ValidateRequest) (*proto.GetResponse, error) {
+	uh.logger.Debugln("get user info by access token")
+
+	userID, err := uh.service.Validate(ctx, req.Access)
+	if err != nil {
+		uh.logger.Errorf("error in parse user token: %v", err)
+		return nil, err
+	}
+
+	user, err := uh.service.GetByID(ctx, uint64(userID))
+	if err != nil {
+		uh.logger.Errorf("error in get user by id: %v", err)
+		return nil, err
+	}
+	return &proto.GetResponse{
+		UserID:   user.ID,
+		Email:    user.Email,
+		Username: user.Username,
+	}, nil
+}
+
+/* TODO implement:
+type UserServer interface {
+	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
+	GetById(context.Context, *GetByIDRequest) (*GetResponse, error)
+	GetMe(context.Context, *ValidateRequest) (*GetResponse, error)
+	mustEmbedUnimplementedUserServer()
+}
+*/
+
 // func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequest) (*proto.UpdateUserResponse, error) {
 // 	uh.logger.Debugln("update user credentials")
 
@@ -84,11 +115,4 @@ func (uh *UserHandler) ValidateUser(ctx context.Context, req *proto.ValidateRequ
 // 	dto := NewUpdateUserDTO(req)
 // 	dto.ID = userID
 
-
 // }
-
-/* TODO implement:
-type UserServer interface {
-	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
-}
-*/

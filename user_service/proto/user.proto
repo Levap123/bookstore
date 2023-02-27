@@ -9,6 +9,8 @@ service User {
     rpc SignUp(SignUpRequest) returns (SignUpResponse);
     rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
     rpc ValidateUser(ValidateRequest) returns (ValidateResponse);
+    rpc GetById(GetByIDRequest) returns (GetResponse);
+    rpc GetMe(ValidateRequest) returns (GetResponse);
 }
 
 message SignUpRequest {
@@ -33,7 +35,7 @@ message SignInResponse {
 
 message UpdateUserRequest {
     string username = 1;
-    string password = 2;
+    string new_password = 2;
     string access = 3;
 }
 
@@ -47,4 +49,14 @@ message ValidateRequest {
 
 message ValidateResponse {
     uint64 userID = 1;
+}
+
+message GetByIDRequest {
+    uint64 userID = 1;
+}
+
+message GetResponse {
+    uint64 userID = 1;
+    string username = 2;
+    string email = 3;
 }

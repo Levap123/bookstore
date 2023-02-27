@@ -4,5 +4,5 @@ import "errors"
 
 var (
 	ErrUnique       = errors.New("user with this username or email already exist")
-	ErrUserNotFound = errors.New("user with this email not found")
+	ErrUserNotFound = errors.New("user not found")
 )

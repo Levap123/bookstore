@@ -78,6 +78,29 @@ func (ur *UserRepo) GetByEmail(ctx context.Context, email string) (*user.User, e
 	return &user, nil
 }
 
+func (ur *UserRepo) GetByID(ctx context.Context, ID uint64) (*user.User, error) {
+	tx, err := ur.DB.BeginTxx(ctx, nil)
+	if err != nil {
+		ur.lg.Error(err)
+		return nil, fmt.Errorf("user repo get by ID - start tx - %w", err)
+	}
+
+	defer func() {
+		err = tx.Rollback()
+	}()
+
+	query := fmt.Sprintf("SELECT * FROM %s WHERE id = $1", userTable)
+	var user user.User
+
+	if err := tx.Get(&user, query, ID); err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, fmt.Errorf("user repo get by ID - select - %w", domain.ErrUserNotFound)
+		}
+		return nil, fmt.Errorf("user repo get by ID - select - %w", err)
+	}
+	return &user, nil
+}
+
 // func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error) {
 // 	tx, err := ur.DB.BeginTxx(ctx, nil)
 // 	if err != nil {
@@ -94,7 +117,7 @@ func (ur *UserRepo) GetByEmail(ctx context.Context, email string) (*user.User, e
 
 // 	if err := tx.Get(&userID, query, user.Username, user.Password, user.ID); err != nil {
 // 		if errors.Is(err, sql.ErrNoRows){
-// 			return 
+// 			return
 // 		}
 // 	}
 // }
