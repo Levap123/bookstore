@@ -103,7 +103,7 @@ func (ur *UserRepo) GetByID(ctx context.Context, ID uint64) (*user.User, error) 
 		return nil, fmt.Errorf("user repo get by id - commit tx - %w", err)
 	}
 
-	return &user, tx.Commit()
+	return &user, nil
 }
 
 func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error) {
@@ -129,5 +129,5 @@ func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error
 		return 0, fmt.Errorf("user update info - commit tx - %w", err)
 	}
 
-	return 0, tx.Commit()
+	return userID, nil
 }

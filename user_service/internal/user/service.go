@@ -50,7 +50,6 @@ func (us *UserService) GenerateTokens(ctx context.Context, dto *GetUserDTO) (str
 	if err != nil {
 		return "", "", fmt.Errorf("user service - %w", err)
 	}
-
 	if !user.PasswordCorrect(dto.Password) {
 		return "", "", domain.ErrIncorrectPassword
 	}
@@ -89,7 +88,7 @@ func (us *UserService) UpdateUser(ctx context.Context, dto *UpdateUserDTO) (int,
 	if err != nil {
 		return 0, fmt.Errorf("user service - update user - get by id - %w", err)
 	}
-	fmt.Println(dto.OldPassword )
+	fmt.Println(dto.OldPassword)
 	if !user.PasswordCorrect(dto.OldPassword) {
 		return 0, fmt.Errorf("user service - update user - check password - %w", domain.ErrIncorrectPassword)
 	}

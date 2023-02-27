@@ -47,7 +47,6 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 
 func (uh *UserHandler) SignIn(ctx context.Context, req *proto.SignInRequest) (*proto.SignInResponse, error) {
 	uh.logger.Debugln("signin user")
-
 	dto := NewGetUserDTO(req)
 
 	accessToken, refreshToken, err := uh.service.GenerateTokens(ctx, dto)
