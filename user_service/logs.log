@@ -626,3 +626,33 @@
 [2023-02-27 16:37:22] DEBUG valivate user access token
 [2023-02-27 16:37:22] ERROR error in parse user token: token contains an invalid number of segments
 [2023-02-27 16:37:23] DEBUG valivate user access token
+[2023-02-27 17:46:11]  INFO server is started
+[2023-02-27 17:46:15] DEBUG signup user
+[2023-02-27 17:46:26]  INFO server is started
+[2023-02-27 17:46:27] DEBUG signup user
+[2023-02-27 17:46:28] DEBUG signup user
+[2023-02-27 17:46:29] DEBUG signup user
+[2023-02-27 17:46:30] DEBUG signup user
+[2023-02-27 17:46:35] DEBUG signup user
+[2023-02-27 17:46:36] DEBUG signup user
+[2023-02-27 17:46:38] DEBUG signup user
+[2023-02-27 17:46:40] DEBUG signup user
+[2023-02-27 17:46:41] DEBUG signup user
+[2023-02-27 17:46:41] DEBUG signup user
+[2023-02-27 17:47:51]  INFO server is started
+[2023-02-27 17:47:52] DEBUG signup user
+[2023-02-27 17:47:54] DEBUG signup user
+[2023-02-27 17:47:54] DEBUG signup user
+[2023-02-27 17:48:02] DEBUG signup user
+[2023-02-27 17:48:02] DEBUG signup user
+[2023-02-27 17:48:07] DEBUG signup user
+[2023-02-27 17:48:07] DEBUG signup user
+[2023-02-27 17:48:09] DEBUG signup user
+[2023-02-27 17:48:09] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 17:48:09] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-27 17:48:10] DEBUG signup user
+[2023-02-27 17:48:10] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 17:48:10] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-27 17:48:10] DEBUG signup user
+[2023-02-27 17:48:10] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 17:48:10] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist

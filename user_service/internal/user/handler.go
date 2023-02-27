@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 	"fmt"
+	"user_service/internal/domain"
 	"user_service/internal/validator"
 	"user_service/proto"
 
@@ -36,6 +37,20 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 	uh.logger.Debugln("signup user")
 
 	dto := NewCreateUserDTO(req)
+
+	if !uh.validator.IsPasswordLenghtCorrect(dto.Password) {
+		return nil, fmt.Errorf("%w: password length should be from %d to %d",
+			domain.ErrIncorrectPassword, uh.validator.PasswordMin, uh.validator.PasswordMax)
+	}
+
+	if !uh.validator.IsUsernameLengthCorrect(dto.Username) {
+		return nil, fmt.Errorf("%w: username length should be from %d to %d",
+			domain.ErrUsernameLengthIncorrect, uh.validator.UsernameMin, uh.validator.UsernameMax)
+	}
+
+	if !uh.validator.IsEmailCorrect(dto.Email) {
+		return nil, domain.ErrIncorrectEmail
+	}
 
 	userID, err := uh.service.Create(ctx, dto)
 	if err != nil {
@@ -111,13 +126,6 @@ func (uh *UserHandler) GetById(ctx context.Context, req *proto.GetByIDRequest) (
 		Username: user.Username,
 	}, nil
 }
-
-/* TODO implement:
-type UserServer interface {
-	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
-	mustEmbedUnimplementedUserServer()
-}
-*/
 
 func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequest) (*proto.UpdateUserResponse, error) {
 	uh.logger.Debugln("update user credentials")
