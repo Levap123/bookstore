@@ -94,11 +94,22 @@ func (uh *UserHandler) GetMe(ctx context.Context, req *proto.ValidateRequest) (*
 	}, nil
 }
 
+func (uh *UserHandler) GetById(ctx context.Context, req *proto.GetByIDRequest) (*proto.GetResponse, error) {
+	user, err := uh.service.GetByID(ctx, req.UserID)
+	if err != nil {
+		uh.logger.Errorf("error in get user by id: %v", err)
+		return nil, err
+	}
+	return &proto.GetResponse{
+		UserID:   user.ID,
+		Email:    user.Email,
+		Username: user.Username,
+	}, nil
+}
+
 /* TODO implement:
 type UserServer interface {
 	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
-	GetById(context.Context, *GetByIDRequest) (*GetResponse, error)
-	GetMe(context.Context, *ValidateRequest) (*GetResponse, error)
 	mustEmbedUnimplementedUserServer()
 }
 */

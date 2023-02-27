@@ -200,3 +200,6 @@
 [2023-02-27 13:55:26] DEBUG get user info by access token
 [2023-02-27 13:55:26] DEBUG get user info by access token
 [2023-02-27 13:55:26] DEBUG get user info by access token
+[2023-02-27 14:02:23]  INFO server is started
+[2023-02-27 14:02:40] ERROR error in get user by id: user repo get by ID - select - user not found
+[2023-02-27 14:02:48] ERROR error in get user by id: user repo get by ID - select - user not found
