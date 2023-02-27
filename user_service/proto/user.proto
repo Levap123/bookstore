@@ -34,6 +34,7 @@ message SignInResponse {
 message UpdateUserRequest {
     string username = 1;
     string password = 2;
+    string access = 3;
 }
 
 message UpdateUserResponse {

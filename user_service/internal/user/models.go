@@ -1,4 +1,3 @@
-
 package user
 
 import (
@@ -25,6 +24,19 @@ type GetUserDTO struct {
 	Password string
 }
 
+type UpdateUserDTO struct {
+	ID       int
+	Username string
+	Password string
+}
+
+func NewUpdateUserDTO(pb *proto.UpdateUserRequest) *UpdateUserDTO {
+	return &UpdateUserDTO{
+		Username: pb.Username,
+		Password: pb.Password,
+	}
+}
+
 func NewGetUserDTO(pb *proto.SignInRequest) *GetUserDTO {
 	return &GetUserDTO{
 		Email:    pb.Email,
@@ -43,6 +55,14 @@ func NewCreateUserDTO(pb *proto.SignUpRequest) *CreateUserDTO {
 func NewUserFromCreateDTO(dto *CreateUserDTO) *User {
 	return &User{
 		Email:    dto.Email,
+		Username: dto.Username,
+		Password: dto.Password,
+	}
+}
+
+func NewUserFromUpdateDTO(dto *UpdateUserDTO) *User {
+	return &User{
+		ID:       uint64(dto.ID),
 		Username: dto.Username,
 		Password: dto.Password,
 	}

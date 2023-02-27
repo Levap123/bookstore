@@ -72,6 +72,21 @@ func (uh *UserHandler) ValidateUser(ctx context.Context, req *proto.ValidateRequ
 	}, nil
 }
 
+// func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequest) (*proto.UpdateUserResponse, error) {
+// 	uh.logger.Debugln("update user credentials")
+
+// 	userID, err := uh.service.Validate(ctx, req.Access)
+// 	if err != nil {
+// 		uh.logger.Errorf("error in parse user token: %v", err)
+// 		return nil, err
+// 	}
+
+// 	dto := NewUpdateUserDTO(req)
+// 	dto.ID = userID
+
+
+// }
+
 /* TODO implement:
 type UserServer interface {
 	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
