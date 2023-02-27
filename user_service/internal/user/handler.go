@@ -26,6 +26,7 @@ type IUserService interface {
 	GenerateTokens(ctx context.Context, dto *GetUserDTO) (string, string, error)
 	Validate(ctx context.Context, accessToken string) (int, error)
 	GetByID(ctx context.Context, userID uint64) (*User, error)
+	UpdateUser(ctx context.Context, dto *UpdateUserDTO) (int, error)
 }
 
 func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*proto.SignUpResponse, error) {
@@ -95,6 +96,8 @@ func (uh *UserHandler) GetMe(ctx context.Context, req *proto.ValidateRequest) (*
 }
 
 func (uh *UserHandler) GetById(ctx context.Context, req *proto.GetByIDRequest) (*proto.GetResponse, error) {
+	uh.logger.Debugln("get user by id")
+
 	user, err := uh.service.GetByID(ctx, req.UserID)
 	if err != nil {
 		uh.logger.Errorf("error in get user by id: %v", err)
@@ -114,16 +117,17 @@ type UserServer interface {
 }
 */
 
-// func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequest) (*proto.UpdateUserResponse, error) {
-// 	uh.logger.Debugln("update user credentials")
+func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequest) (*proto.UpdateUserResponse, error) {
+	uh.logger.Debugln("update user credentials")
+	dto := NewUpdateUserDTO(req)
 
-// 	userID, err := uh.service.Validate(ctx, req.Access)
-// 	if err != nil {
-// 		uh.logger.Errorf("error in parse user token: %v", err)
-// 		return nil, err
-// 	}
+	userID, err := uh.service.UpdateUser(ctx, dto)
+	if err != nil {
+		uh.logger.Errorf("error in updating user: %v", err)
+		return nil, err
+	}
 
-// 	dto := NewUpdateUserDTO(req)
-// 	dto.ID = userID
-
-// }
+	return &proto.UpdateUserResponse{
+		UserID: uint64(userID),
+	}, nil
+}

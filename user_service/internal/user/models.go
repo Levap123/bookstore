@@ -1,6 +1,7 @@
 package user
 
 import (
+	"fmt"
 	"user_service/proto"
 
 	"github.com/Levap123/utils/crypt"
@@ -25,14 +26,17 @@ type GetUserDTO struct {
 }
 
 type UpdateUserDTO struct {
-	ID       int
-	Username string
+	ID          uint64
+	Username    string
+	OldPassword string
 	NewPassword string
 }
 
 func NewUpdateUserDTO(pb *proto.UpdateUserRequest) *UpdateUserDTO {
 	return &UpdateUserDTO{
-		Username: pb.Username,
+		ID:          pb.UserID,
+		Username:    pb.Username,
+		OldPassword: pb.OldPassword,
 		NewPassword: pb.NewPassword,
 	}
 }
@@ -60,6 +64,14 @@ func NewUserFromCreateDTO(dto *CreateUserDTO) *User {
 	}
 }
 
+func NewUserFromUpdateDTO(dto *UpdateUserDTO) *User {
+	return &User{
+		ID:       dto.ID,
+		Username: dto.Username,
+		Password: dto.NewPassword,
+	}
+}
+
 func (user *User) generatePasswordHash() error {
 	pwd, err := crypt.GeneratePasswordHash(user.Password)
 	if err != nil {
@@ -70,5 +82,6 @@ func (user *User) generatePasswordHash() error {
 }
 
 func (user *User) PasswordCorrect(password string) bool {
+	fmt.Println(crypt.ComparePassword(password, user.Password))
 	return crypt.ComparePassword(password, user.Password) == nil
 }

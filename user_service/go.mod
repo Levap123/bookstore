@@ -3,7 +3,7 @@ module user_service
 go 1.20
 
 require (
-	github.com/Levap123/utils v0.0.0-20230227065828-020777add99d
+	github.com/Levap123/utils v0.0.0-20230227100813-16b264f1e5ce
 	github.com/ilyakaznacheev/cleanenv v1.4.2
 	github.com/jackc/pgx v3.6.2+incompatible
 	github.com/jmoiron/sqlx v1.3.5

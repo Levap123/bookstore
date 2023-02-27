@@ -33,9 +33,7 @@ func (ur *UserRepo) Create(ctx context.Context, user *user.User) (uint64, error)
 		ur.lg.Error(err)
 		return 0, fmt.Errorf("user repo create - start tx - %w", err)
 	}
-	defer func() {
-		err = tx.Rollback()
-	}()
+	defer tx.Rollback()
 
 	query := fmt.Sprintf("INSERT INTO %s(email, username, password) VALUES ($1, $2, $3) RETURNING id", userTable)
 	var userID uint64
@@ -61,9 +59,7 @@ func (ur *UserRepo) GetByEmail(ctx context.Context, email string) (*user.User, e
 		return nil, fmt.Errorf("user repo get - start tx - %w", err)
 	}
 
-	defer func() {
-		err = tx.Rollback()
-	}()
+	defer tx.Rollback()
 
 	query := fmt.Sprintf("SELECT * FROM %s WHERE email = $1", userTable)
 	var user user.User
@@ -75,6 +71,11 @@ func (ur *UserRepo) GetByEmail(ctx context.Context, email string) (*user.User, e
 		return nil, fmt.Errorf("user repo get - select - %w", err)
 	}
 
+	if err := tx.Commit(); err != nil {
+		ur.lg.Error(err)
+		return nil, fmt.Errorf("user repo get by email - commit tx - %w", err)
+	}
+
 	return &user, nil
 }
 
@@ -82,42 +83,51 @@ func (ur *UserRepo) GetByID(ctx context.Context, ID uint64) (*user.User, error) 
 	tx, err := ur.DB.BeginTxx(ctx, nil)
 	if err != nil {
 		ur.lg.Error(err)
-		return nil, fmt.Errorf("user repo get by ID - start tx - %w", err)
+		return nil, fmt.Errorf("user repo - get by ID - start tx - %w", err)
 	}
 
-	defer func() {
-		err = tx.Rollback()
-	}()
+	defer tx.Rollback()
 
 	query := fmt.Sprintf("SELECT * FROM %s WHERE id = $1", userTable)
 	var user user.User
 
 	if err := tx.Get(&user, query, ID); err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
-			return nil, fmt.Errorf("user repo get by ID - select - %w", domain.ErrUserNotFound)
+			return nil, fmt.Errorf("user repo - get by ID - select - %w", domain.ErrUserNotFound)
 		}
-		return nil, fmt.Errorf("user repo get by ID - select - %w", err)
+		return nil, fmt.Errorf("user repo get - by ID - select - %w", err)
 	}
-	return &user, nil
+
+	if err := tx.Commit(); err != nil {
+		ur.lg.Error(err)
+		return nil, fmt.Errorf("user repo get by id - commit tx - %w", err)
+	}
+
+	return &user, tx.Commit()
 }
 
-// func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error) {
-// 	tx, err := ur.DB.BeginTxx(ctx, nil)
-// 	if err != nil {
-// 		ur.lg.Error(err)
-// 		return 0, fmt.Errorf("user repo get - start tx - %w", err)
-// 	}
+func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error) {
+	tx, err := ur.DB.BeginTxx(ctx, nil)
+	if err != nil {
+		ur.lg.Error(err)
+		return 0, fmt.Errorf("user repo get - start tx - %w", err)
+	}
 
-// 	defer func() {
-// 		err = tx.Rollback()
-// 	}()
+	defer tx.Rollback()
 
-// 	query := fmt.Sprintf("UPDATE %s SET username = $1, password = $2 WHERE id = $3 RETURNING id", userTable)
-// 	var userID int
+	query := fmt.Sprintf("UPDATE %s SET username = $1, password = $2 WHERE id = $3 RETURNING id", userTable)
+	var userID int
 
-// 	if err := tx.Get(&userID, query, user.Username, user.Password, user.ID); err != nil {
-// 		if errors.Is(err, sql.ErrNoRows){
-// 			return
-// 		}
-// 	}
-// }
+	if err := tx.Get(&userID, query, user.Username, user.Password, user.ID); err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return 0, fmt.Errorf("user repo - update user - select - %w", domain.ErrUserNotFound)
+		}
+	}
+
+	if err := tx.Commit(); err != nil {
+		ur.lg.Error(err)
+		return 0, fmt.Errorf("user update info - commit tx - %w", err)
+	}
+
+	return 0, tx.Commit()
+}

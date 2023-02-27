@@ -34,9 +34,10 @@ message SignInResponse {
 }
 
 message UpdateUserRequest {
-    string username = 1;
-    string new_password = 2;
-    string access = 3;
+    uint64 userID = 1; 
+    string username = 2;
+    string new_password = 3;
+    string old_password = 4;
 }
 
 message UpdateUserResponse {

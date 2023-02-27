@@ -24,6 +24,7 @@ type IUserRepo interface {
 	Create(ctx context.Context, user *User) (uint64, error)
 	GetByEmail(ctx context.Context, email string) (*User, error)
 	GetByID(ctx context.Context, ID uint64) (*User, error)
+	UpdateInfo(ctx context.Context, user *User) (int, error)
 }
 
 func (us *UserService) Create(ctx context.Context, dto *CreateUserDTO) (uint64, error) {
@@ -31,6 +32,7 @@ func (us *UserService) Create(ctx context.Context, dto *CreateUserDTO) (uint64, 
 	if err := user.generatePasswordHash(); err != nil {
 		return 0, fmt.Errorf("user service - generate hash - %w", err)
 	}
+
 	userID, err := us.repo.Create(ctx, user)
 	if err != nil {
 		return 0, fmt.Errorf("user service - repo create - %w", err)
@@ -71,6 +73,7 @@ func (us *UserService) Validate(ctx context.Context, accessToken string) (int, e
 	if err != nil {
 		return 0, err
 	}
+
 	if claims.TokenType != accessType {
 		return 0, domain.ErrIncorrectTokenType
 	}
@@ -79,4 +82,27 @@ func (us *UserService) Validate(ctx context.Context, accessToken string) (int, e
 
 func (us *UserService) GetByID(ctx context.Context, userID uint64) (*User, error) {
 	return us.repo.GetByID(ctx, userID)
+}
+
+func (us *UserService) UpdateUser(ctx context.Context, dto *UpdateUserDTO) (int, error) {
+	user, err := us.repo.GetByID(ctx, dto.ID)
+	if err != nil {
+		return 0, fmt.Errorf("user service - update user - get by id - %w", err)
+	}
+	fmt.Println(dto.OldPassword )
+	if !user.PasswordCorrect(dto.OldPassword) {
+		return 0, fmt.Errorf("user service - update user - check password - %w", domain.ErrIncorrectPassword)
+	}
+
+	user = NewUserFromUpdateDTO(dto)
+	if err := user.generatePasswordHash(); err != nil {
+		return 0, fmt.Errorf("user service - update user - generate password hash - %w", err)
+	}
+
+	userID, err := us.repo.UpdateInfo(ctx, user)
+	if err != nil {
+		return 0, fmt.Errorf("user service - update user - %w", err)
+	}
+
+	return userID, nil
 }
