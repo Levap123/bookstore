@@ -7,3 +7,5 @@ postgres:
 
 server:
   addr: :8000
+
+jwt_sign: ejqwiohd192837(*&^*&@3sfgafiafsh)

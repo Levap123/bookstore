@@ -104,3 +104,75 @@
 [2023-02-26 18:32:49] ERROR error in signin: user service - user repo get - select - user with this email not found
 [2023-02-26 18:32:58] DEBUG signin user
 [2023-02-26 18:32:58] ERROR error in signin: user password incorrect
+[2023-02-27 13:03:11] FATAL ping db error: dial tcp 127.0.0.1:5432: connect: connection refused
+[2023-02-27 13:03:46] DEBUG server is started
+[2023-02-27 13:04:06]  INFO server is started
+[2023-02-27 13:04:20] DEBUG signin user
+[2023-02-27 13:04:20] ERROR error in signin: user password incorrect
+[2023-02-27 13:04:29] DEBUG signup user
+[2023-02-27 13:04:29] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:04:29] ERROR error in creating user: user service - repo create - user repo create - insert - ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:04:51]  INFO server is started
+[2023-02-27 13:04:52] DEBUG signup user
+[2023-02-27 13:04:52] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:04:52] ERROR error in creating user: user service - repo create - user repo create - insert - ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:04:54] DEBUG signup user
+[2023-02-27 13:04:54] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:04:54] ERROR error in creating user: user service - repo create - user repo create - insert - ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:05:12]  INFO server is started
+[2023-02-27 13:05:13] DEBUG signup user
+[2023-02-27 13:05:13] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:05:13] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-27 13:05:14] DEBUG signup user
+[2023-02-27 13:05:14] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:05:14] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-27 13:05:14] DEBUG signup user
+[2023-02-27 13:05:14] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-27 13:05:14] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-27 13:05:18] DEBUG signup user
+[2023-02-27 13:05:18] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-02-27 13:05:18] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-27 13:05:23] DEBUG signup user
+[2023-02-27 13:05:37] DEBUG signin user
+[2023-02-27 13:06:04] DEBUG valivate user access token
+[2023-02-27 13:06:04] ERROR error in parse user token: token contains an invalid number of segments
+[2023-02-27 13:07:06] DEBUG valivate user access token
+[2023-02-27 13:07:09] DEBUG valivate user access token
+[2023-02-27 13:07:09] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:10] DEBUG valivate user access token
+[2023-02-27 13:07:10] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:11] DEBUG valivate user access token
+[2023-02-27 13:07:11] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:22] DEBUG valivate user access token
+[2023-02-27 13:07:23] DEBUG valivate user access token
+[2023-02-27 13:07:24] DEBUG valivate user access token
+[2023-02-27 13:07:24] DEBUG valivate user access token
+[2023-02-27 13:07:25] DEBUG valivate user access token
+[2023-02-27 13:07:25] DEBUG valivate user access token
+[2023-02-27 13:07:25] DEBUG valivate user access token
+[2023-02-27 13:07:26] DEBUG valivate user access token
+[2023-02-27 13:07:26] DEBUG valivate user access token
+[2023-02-27 13:07:26] DEBUG valivate user access token
+[2023-02-27 13:07:27] DEBUG valivate user access token
+[2023-02-27 13:07:27] DEBUG valivate user access token
+[2023-02-27 13:07:28] DEBUG valivate user access token
+[2023-02-27 13:07:28] DEBUG valivate user access token
+[2023-02-27 13:07:28] DEBUG valivate user access token
+[2023-02-27 13:07:37] DEBUG valivate user access token
+[2023-02-27 13:07:37] DEBUG valivate user access token
+[2023-02-27 13:07:37] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:41] DEBUG valivate user access token
+[2023-02-27 13:07:41] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:42] DEBUG valivate user access token
+[2023-02-27 13:07:42] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:43] DEBUG valivate user access token
+[2023-02-27 13:07:43] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:44] DEBUG valivate user access token
+[2023-02-27 13:07:44] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:44] DEBUG valivate user access token
+[2023-02-27 13:07:44] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:45] DEBUG valivate user access token
+[2023-02-27 13:07:45] ERROR error in parse user token: token type must be access
+[2023-02-27 13:07:46] DEBUG valivate user access token
+[2023-02-27 13:07:49] DEBUG valivate user access token
+[2023-02-27 13:07:49] ERROR error in parse user token: token contains an invalid number of segments

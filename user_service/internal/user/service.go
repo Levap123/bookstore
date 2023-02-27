@@ -10,10 +10,14 @@ import (
 
 type UserService struct {
 	repo IUserRepo
+	j    *jwt.JWT
 }
 
-func NewUserService(repo IUserRepo) *UserService {
-	return &UserService{repo: repo}
+func NewUserService(repo IUserRepo, j *jwt.JWT) *UserService {
+	return &UserService{
+		repo: repo,
+		j:    j,
+	}
 }
 
 type IUserRepo interface {
@@ -48,12 +52,12 @@ func (us *UserService) GenerateTokens(ctx context.Context, dto *GetUserDTO) (str
 		return "", "", domain.ErrIncorrectPassword
 	}
 
-	accessToken, err := jwt.GenerateJwt(int(user.ID), 2, accessType)
+	accessToken, err := us.j.GenerateJwt(int(user.ID), 2, accessType)
 	if err != nil {
 		return "", "", fmt.Errorf("user service - generate access token - %w", err)
 	}
 
-	refreshToken, err := jwt.GenerateJwt(int(user.ID), 2, refreshType)
+	refreshToken, err := us.j.GenerateJwt(int(user.ID), 2, refreshType)
 	if err != nil {
 		return "", "", fmt.Errorf("user service - generate refresh token - %w", err)
 	}
@@ -62,11 +66,11 @@ func (us *UserService) GenerateTokens(ctx context.Context, dto *GetUserDTO) (str
 }
 
 func (us *UserService) Validate(ctx context.Context, accessToken string) (int, error) {
-	claims, err := jwt.ParseToken(accessToken)
+	claims, err := us.j.ParseToken(accessToken)
 	if err != nil {
 		return 0, err
 	}
-	if claims.TokenType != accessToken {
+	if claims.TokenType != accessType {
 		return 0, domain.ErrIncorrectTokenType
 	}
 	return claims.UserID, nil

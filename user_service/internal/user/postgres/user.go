@@ -5,10 +5,10 @@ import (
 	"database/sql"
 	"errors"
 	"fmt"
+	"strings"
 	"user_service/internal/domain"
 	"user_service/internal/user"
 
-	"github.com/jackc/pgx"
 	"github.com/jmoiron/sqlx"
 	"github.com/sirupsen/logrus"
 )
@@ -41,7 +41,7 @@ func (ur *UserRepo) Create(ctx context.Context, user *user.User) (uint64, error)
 	var userID uint64
 	if err := tx.Get(&userID, query, user.Email, user.Username, user.Password); err != nil {
 		ur.lg.Error(err)
-		if errors.Is(err, pgx.ErrNoRows) {
+		if strings.Contains(err.Error(), "duplicate key value violates unique constraint") {
 			return 0, fmt.Errorf("user repo create - insert - %w", domain.ErrUnique)
 		}
 		return 0, fmt.Errorf("user repo create - insert - %w", err)

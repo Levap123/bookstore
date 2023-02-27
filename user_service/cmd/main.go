@@ -10,6 +10,7 @@ import (
 	"user_service/internal/user/postgres"
 	"user_service/proto"
 
+	"github.com/Levap123/utils/jwt"
 	"github.com/Levap123/utils/lg"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -45,14 +46,15 @@ func main() {
 
 	repo := postgres.NewUserRepo(DB, lg)
 
-	service := user.NewUserService(repo)
+	jwt := jwt.NewJWT(cfg.JWTSign)
+	service := user.NewUserService(repo, jwt)
 
 	handler := user.NewUserHandler(service, lg)
 
 	srv := grpc.NewServer()
 	proto.RegisterUserServer(srv, handler)
 	reflection.Register(srv)
-	lg.Debugf("server is started")
+	lg.Info("server is started")
 	if err := srv.Serve(listener); err != nil {
 		log.Fatalln(err, 123)
 	}
