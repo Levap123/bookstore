@@ -13,8 +13,6 @@ func NewUserRepo() *UserRepo {
 	return &UserRepo{}
 }
 
-const userTable = "users"
-
 var users = []*user.User{
 	{
 		ID:       1,
@@ -36,9 +34,9 @@ var users = []*user.User{
 	},
 }
 
-func Create(ctx context.Context, user *user.User) (uint64, error) {
+func (ur *UserRepo) Create(ctx context.Context, user *user.User) (uint64, error) {
 	for _, userIn := range users {
-		if userIn.Email == user.Email || userIn.Username == userIn.Username {
+		if userIn.Email == user.Email || userIn.Username == user.Username {
 			return 0, domain.ErrUnique
 		}
 	}
@@ -47,7 +45,7 @@ func Create(ctx context.Context, user *user.User) (uint64, error) {
 	return user.ID, nil
 }
 
-func GetByEmail(ctx context.Context, email string) (*user.User, error) {
+func (ur *UserRepo) GetByEmail(ctx context.Context, email string) (*user.User, error) {
 	for _, userIn := range users {
 		if userIn.Email == email {
 			return userIn, nil
@@ -56,7 +54,7 @@ func GetByEmail(ctx context.Context, email string) (*user.User, error) {
 	return nil, domain.ErrUserNotFound
 }
 
-func GetByID(ctx context.Context, ID uint64) (*user.User, error) {
+func (ur *UserRepo) GetByID(ctx context.Context, ID uint64) (*user.User, error) {
 	for _, userIn := range users {
 		if userIn.ID == ID {
 			return userIn, nil
@@ -65,9 +63,10 @@ func GetByID(ctx context.Context, ID uint64) (*user.User, error) {
 	return nil, domain.ErrUserNotFound
 }
 
-func UpdateInfo(ctx context.Context, user *user.User) (int, error) {
+func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error) {
 	for ind, userIn := range users {
 		if userIn.ID == user.ID {
+			user.Email = users[ind].Email
 			users[ind] = user
 			return ind + 1, nil
 		}

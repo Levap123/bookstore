@@ -708,3 +708,4 @@
 [2023-02-28 12:48:12] DEBUG refresh access and refresh tokens
 [2023-02-28 12:48:12] ERROR error in refreshing tokens: user service - refresh tokens - invalid character 'Ü' in string escape code
 [2023-02-28 12:48:20] DEBUG refresh access and refresh tokens
+[2023-02-28 13:37:56]  INFO server is started
