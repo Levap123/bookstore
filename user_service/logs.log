@@ -710,3 +710,67 @@
 [2023-02-28 12:48:20] DEBUG refresh access and refresh tokens
 [2023-02-28 13:37:56]  INFO server is started
 [2023-02-28 15:51:39]  INFO server is started
+[2023-02-28 15:58:40]  INFO server is started
+[2023-02-28 15:58:47] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:48] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:48] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:49] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:49] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:49] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:50] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:50] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:50] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:51] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:51] DEBUG refresh access and refresh tokens
+[2023-02-28 15:58:55] DEBUG signup user
+[2023-02-28 15:59:00] DEBUG signup user
+[2023-02-28 15:59:05] DEBUG signup user
+[2023-02-28 15:59:07] DEBUG signup user
+[2023-02-28 15:59:12] DEBUG signup user
+[2023-02-28 15:59:15] DEBUG signup user
+[2023-02-28 15:59:16] DEBUG signup user
+[2023-02-28 15:59:17] DEBUG signup user
+[2023-02-28 15:59:17] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:17] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:18] DEBUG signup user
+[2023-02-28 15:59:18] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:18] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:18] DEBUG signup user
+[2023-02-28 15:59:19] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:19] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:19] DEBUG signup user
+[2023-02-28 15:59:19] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:19] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:19] DEBUG signup user
+[2023-02-28 15:59:19] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:19] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:20] DEBUG signup user
+[2023-02-28 15:59:20] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:20] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:20] DEBUG signup user
+[2023-02-28 15:59:20] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:20] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:20] DEBUG signup user
+[2023-02-28 15:59:20] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:20] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:21] DEBUG signup user
+[2023-02-28 15:59:21] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:21] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:21] DEBUG signup user
+[2023-02-28 15:59:21] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:21] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:22] DEBUG signup user
+[2023-02-28 15:59:22] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:22] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:22] DEBUG signup user
+[2023-02-28 15:59:22] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:22] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:22] DEBUG signup user
+[2023-02-28 15:59:22] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:22] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:22] DEBUG signup user
+[2023-02-28 15:59:22] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:22] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-02-28 15:59:23] DEBUG signup user
+[2023-02-28 15:59:23] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-02-28 15:59:23] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists

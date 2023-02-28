@@ -34,7 +34,7 @@ func (ur *UserRepo) Create(ctx context.Context, user *user.User) (uint64, error)
 		ur.lg.Error(err)
 		return 0, fmt.Errorf("user repo create - start tx - %w", err)
 	}
-	defer tx.Rollback()
+	defer func() { err = tx.Rollback() }()
 
 	query := fmt.Sprintf("INSERT INTO %s(email, username, password) VALUES ($1, $2, $3) RETURNING id", userTable)
 	var userID uint64
@@ -60,7 +60,7 @@ func (ur *UserRepo) GetByEmail(ctx context.Context, email string) (*user.User, e
 		return nil, fmt.Errorf("user repo get - start tx - %w", err)
 	}
 
-	defer tx.Rollback()
+	defer func() { err = tx.Rollback() }()
 
 	query := fmt.Sprintf("SELECT * FROM %s WHERE email = $1", userTable)
 	var user user.User
@@ -87,7 +87,7 @@ func (ur *UserRepo) GetByID(ctx context.Context, ID uint64) (*user.User, error) 
 		return nil, fmt.Errorf("user repo - get by ID - start tx - %w", err)
 	}
 
-	defer tx.Rollback()
+	defer func() { err = tx.Rollback() }()
 
 	query := fmt.Sprintf("SELECT * FROM %s WHERE id = $1", userTable)
 	var user user.User
@@ -114,7 +114,7 @@ func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error
 		return 0, fmt.Errorf("user repo get - start tx - %w", err)
 	}
 
-	defer tx.Rollback()
+	defer func() { err = tx.Rollback() }()
 
 	query := fmt.Sprintf("UPDATE %s SET username = $1, password = $2 WHERE id = $3 RETURNING id", userTable)
 	var userID int
