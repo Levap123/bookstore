@@ -34,6 +34,7 @@ type IUserService interface {
 	Validate(ctx context.Context, accessToken string) (int, error)
 	GetByID(ctx context.Context, userID uint64) (*User, error)
 	UpdateUser(ctx context.Context, dto *UpdateUserDTO) (int, error)
+	RefreshTokens(ctx context.Context, accessToken, refreshToken string) (string, string, error)
 }
 
 func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*proto.SignUpResponse, error) {
@@ -58,6 +59,7 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 	userID, err := uh.service.Create(ctx, dto)
 	if err != nil {
 		uh.logger.Errorf("error in creating user: %v", err)
+
 		if errors.Is(err, domain.ErrUnique) {
 			return nil, apperror.MakeBadRequestErr(err, domain.ErrUnique.Error())
 		}
@@ -76,6 +78,7 @@ func (uh *UserHandler) SignIn(ctx context.Context, req *proto.SignInRequest) (*p
 	accessToken, refreshToken, err := uh.service.GenerateTokens(ctx, dto)
 	if err != nil {
 		uh.logger.Errorf("error in signin: %v", err)
+
 		switch {
 		case errors.Is(err, domain.ErrIncorrectPassword):
 			return nil, apperror.MakeBadRequestErr(err, domain.ErrIncorrectPassword.Error())
@@ -116,6 +119,7 @@ func (uh *UserHandler) GetMe(ctx context.Context, req *proto.ValidateRequest) (*
 	user, err := uh.service.GetByID(ctx, uint64(userID))
 	if err != nil {
 		uh.logger.Errorf("error in get user by id: %v", err)
+
 		if errors.Is(err, domain.ErrUserNotFound) {
 			return nil, apperror.MakeNotFoundErr(err, "user with this id not found")
 		}
@@ -169,5 +173,21 @@ func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequ
 
 	return &proto.UpdateUserResponse{
 		UserID: uint64(userID),
+	}, nil
+}
+
+func (uh *UserHandler) Refresh(ctx context.Context, req *proto.RefreshRequestResponse) (*proto.RefreshRequestResponse, error) {
+	uh.logger.Debugln("refresh access and refresh tokens")
+
+	accessToken, refreshToken, err := uh.service.RefreshTokens(ctx, req.Access, req.Refresh)
+	if err != nil {
+		uh.logger.Errorf("error in refreshing tokens: %v", err)
+
+		return nil, apperror.MakeUnoauthorizedErr(err)
+	}
+
+	return &proto.RefreshRequestResponse{
+		Access:  accessToken,
+		Refresh: refreshToken,
 	}, nil
 }

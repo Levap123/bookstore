@@ -60,7 +60,7 @@ func (us *UserService) GenerateTokens(ctx context.Context, dto *GetUserDTO) (str
 		return "", "", fmt.Errorf("user service - generate access token - %w", err)
 	}
 
-	refreshToken, err := us.j.GenerateJwt(int(user.ID), 2, refreshType)
+	refreshToken, err := us.j.GenerateJwt(int(user.ID), 30, refreshType)
 	if err != nil {
 		return "", "", fmt.Errorf("user service - generate refresh token - %w", err)
 	}
@@ -104,4 +104,40 @@ func (us *UserService) UpdateUser(ctx context.Context, dto *UpdateUserDTO) (int,
 	}
 
 	return userID, nil
+}
+
+func (us *UserService) RefreshTokens(ctx context.Context, accessToken, refreshToken string) (string, string, error) {
+	claimsAccess, err := us.j.ParseToken(accessToken)
+	if err != nil {
+		return "", "", fmt.Errorf("user service - refresh tokens - %w", err)
+	}
+
+	if claimsAccess.TokenType != accessType {
+		return "", "", fmt.Errorf("user service - refresh tokens - %w", domain.ErrIncorrectTokenType)
+	}
+
+	claimsRefresh, err := us.j.ParseToken(refreshToken)
+	if err != nil {
+		return "", "", fmt.Errorf("user service - refresh tokens - %w", err)
+	}
+
+	if claimsRefresh.TokenType != refreshType {
+		return "", "", fmt.Errorf("user service - refresh tokens - %w", domain.ErrIncorrectTokenType)
+	}
+
+	if claimsRefresh.UserID != claimsAccess.UserID {
+		return "", "", fmt.Errorf("user service - refresh tokens - %w", domain.ErrTokensMissmatched)
+	}
+
+	newAccessToken, err := us.j.GenerateJwt(claimsAccess.UserID, 2, accessType)
+	if err != nil {
+		return "", "", fmt.Errorf("user service - refresh tokens - %w", err)
+	}
+
+	newRefreshToken, err := us.j.GenerateJwt(claimsAccess.UserID, 30, refreshType)
+	if err != nil {
+		return "", "", fmt.Errorf("user service - refresh tokens - %w", err)
+	}
+
+	return newAccessToken, newRefreshToken, nil
 }

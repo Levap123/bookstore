@@ -11,6 +11,7 @@ service User {
     rpc ValidateUser(ValidateRequest) returns (ValidateResponse);
     rpc GetById(GetByIDRequest) returns (GetResponse);
     rpc GetMe(ValidateRequest) returns (GetResponse);
+    rpc Refresh(RefreshRequestResponse) returns(RefreshRequestResponse);
 }
 
 message SignUpRequest {
@@ -60,4 +61,9 @@ message GetResponse {
     uint64 userID = 1;
     string username = 2;
     string email = 3;
+}
+
+message RefreshRequestResponse {
+    string access = 1;
+    string refresh = 2;
 }

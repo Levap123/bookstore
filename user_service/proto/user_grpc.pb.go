@@ -28,6 +28,7 @@ type UserClient interface {
 	ValidateUser(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*ValidateResponse, error)
 	GetById(ctx context.Context, in *GetByIDRequest, opts ...grpc.CallOption) (*GetResponse, error)
 	GetMe(ctx context.Context, in *ValidateRequest, opts ...grpc.CallOption) (*GetResponse, error)
+	Refresh(ctx context.Context, in *RefreshRequestResponse, opts ...grpc.CallOption) (*RefreshRequestResponse, error)
 }
 
 type userClient struct {
@@ -92,6 +93,15 @@ func (c *userClient) GetMe(ctx context.Context, in *ValidateRequest, opts ...grp
 	return out, nil
 }
 
+func (c *userClient) Refresh(ctx context.Context, in *RefreshRequestResponse, opts ...grpc.CallOption) (*RefreshRequestResponse, error) {
+	out := new(RefreshRequestResponse)
+	err := c.cc.Invoke(ctx, "/proto.User/Refresh", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServer is the server API for User service.
 // All implementations must embed UnimplementedUserServer
 // for forward compatibility
@@ -102,6 +112,7 @@ type UserServer interface {
 	ValidateUser(context.Context, *ValidateRequest) (*ValidateResponse, error)
 	GetById(context.Context, *GetByIDRequest) (*GetResponse, error)
 	GetMe(context.Context, *ValidateRequest) (*GetResponse, error)
+	Refresh(context.Context, *RefreshRequestResponse) (*RefreshRequestResponse, error)
 	mustEmbedUnimplementedUserServer()
 }
 
@@ -126,6 +137,9 @@ func (UnimplementedUserServer) GetById(context.Context, *GetByIDRequest) (*GetRe
 }
 func (UnimplementedUserServer) GetMe(context.Context, *ValidateRequest) (*GetResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetMe not implemented")
+}
+func (UnimplementedUserServer) Refresh(context.Context, *RefreshRequestResponse) (*RefreshRequestResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Refresh not implemented")
 }
 func (UnimplementedUserServer) mustEmbedUnimplementedUserServer() {}
 
@@ -248,6 +262,24 @@ func _User_GetMe_Handler(srv interface{}, ctx context.Context, dec func(interfac
 	return interceptor(ctx, in, info, handler)
 }
 
+func _User_Refresh_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RefreshRequestResponse)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServer).Refresh(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.User/Refresh",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServer).Refresh(ctx, req.(*RefreshRequestResponse))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // User_ServiceDesc is the grpc.ServiceDesc for User service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -278,6 +310,10 @@ var User_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetMe",
 			Handler:    _User_GetMe_Handler,
+		},
+		{
+			MethodName: "Refresh",
+			Handler:    _User_Refresh_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

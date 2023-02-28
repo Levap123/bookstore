@@ -685,3 +685,26 @@
 [2023-02-28 11:10:25] ERROR error in signin: user service - user repo get - select - user not found
 [2023-02-28 11:10:27] DEBUG signin user
 [2023-02-28 11:10:27] ERROR error in signin: user service - user repo get - select - user not found
+[2023-02-28 12:47:34]  INFO server is started
+[2023-02-28 12:47:42] DEBUG signin user
+[2023-02-28 12:47:42] ERROR error in signin: user service - user repo get - select - user not found
+[2023-02-28 12:47:47] DEBUG signin user
+[2023-02-28 12:47:47] ERROR error in signin: user service - user repo get - select - user not found
+[2023-02-28 12:47:48] DEBUG signin user
+[2023-02-28 12:47:48] ERROR error in signin: user service - user repo get - select - user not found
+[2023-02-28 12:47:49] DEBUG signin user
+[2023-02-28 12:47:49] ERROR error in signin: user service - user repo get - select - user not found
+[2023-02-28 12:47:50] DEBUG signin user
+[2023-02-28 12:47:50] ERROR error in signin: user service - user repo get - select - user not found
+[2023-02-28 12:47:53] DEBUG signin user
+[2023-02-28 12:47:53] ERROR error in signin: user password incorrect
+[2023-02-28 12:47:54] DEBUG signin user
+[2023-02-28 12:47:54] ERROR error in signin: user password incorrect
+[2023-02-28 12:47:57] DEBUG signin user
+[2023-02-28 12:48:07] DEBUG refresh access and refresh tokens
+[2023-02-28 12:48:08] DEBUG refresh access and refresh tokens
+[2023-02-28 12:48:09] DEBUG refresh access and refresh tokens
+[2023-02-28 12:48:10] DEBUG refresh access and refresh tokens
+[2023-02-28 12:48:12] DEBUG refresh access and refresh tokens
+[2023-02-28 12:48:12] ERROR error in refreshing tokens: user service - refresh tokens - invalid character 'Ü' in string escape code
+[2023-02-28 12:48:20] DEBUG refresh access and refresh tokens
