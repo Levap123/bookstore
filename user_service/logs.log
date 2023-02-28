@@ -656,3 +656,32 @@
 [2023-02-27 17:48:10] DEBUG signup user
 [2023-02-27 17:48:10] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
 [2023-02-27 17:48:10] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exist
+[2023-02-28 11:07:02] FATAL ping db error: dial tcp 127.0.0.1:5432: connect: connection refused
+[2023-02-28 11:08:15]  INFO server is started
+[2023-02-28 11:08:25] DEBUG signin user
+[2023-02-28 11:08:29] DEBUG signin user
+[2023-02-28 11:08:29] ERROR error in signin: user password incorrect
+[2023-02-28 11:09:43] DEBUG signin user
+[2023-02-28 11:09:43] ERROR error in signin: user password incorrect
+[2023-02-28 11:09:43] DEBUG signin user
+[2023-02-28 11:09:43] ERROR error in signin: user password incorrect
+[2023-02-28 11:09:44] DEBUG signin user
+[2023-02-28 11:09:44] ERROR error in signin: user password incorrect
+[2023-02-28 11:09:45] DEBUG signin user
+[2023-02-28 11:09:45] ERROR error in signin: user password incorrect
+[2023-02-28 11:09:46] DEBUG signin user
+[2023-02-28 11:09:46] ERROR error in signin: user password incorrect
+[2023-02-28 11:09:46] DEBUG signin user
+[2023-02-28 11:09:46] ERROR error in signin: user password incorrect
+[2023-02-28 11:09:47] DEBUG signin user
+[2023-02-28 11:09:47] ERROR error in signin: user password incorrect
+[2023-02-28 11:09:48] DEBUG signin user
+[2023-02-28 11:09:48] ERROR error in signin: user password incorrect
+[2023-02-28 11:10:20] DEBUG signin user
+[2023-02-28 11:10:20] ERROR error in signin: user password incorrect
+[2023-02-28 11:10:24] DEBUG signin user
+[2023-02-28 11:10:24] ERROR error in signin: user service - user repo get - select - user not found
+[2023-02-28 11:10:25] DEBUG signin user
+[2023-02-28 11:10:25] ERROR error in signin: user service - user repo get - select - user not found
+[2023-02-28 11:10:27] DEBUG signin user
+[2023-02-28 11:10:27] ERROR error in signin: user service - user repo get - select - user not found

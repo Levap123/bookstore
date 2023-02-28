@@ -2,11 +2,14 @@ package user
 
 import (
 	"context"
+	"errors"
 	"fmt"
+
 	"user_service/internal/domain"
 	"user_service/internal/validator"
 	"user_service/proto"
 
+	"github.com/Levap123/utils/apperror"
 	"github.com/sirupsen/logrus"
 )
 
@@ -39,22 +42,25 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 	dto := NewCreateUserDTO(req)
 
 	if !uh.validator.IsPasswordLenghtCorrect(dto.Password) {
-		return nil, fmt.Errorf("%w: password length should be from %d to %d",
-			domain.ErrIncorrectPassword, uh.validator.PasswordMin, uh.validator.PasswordMax)
+		return nil, apperror.MakeBadRequestErr(domain.ErrPasswordLengthIncorrect, fmt.Sprintf("password length should be from %d to %d",
+			uh.validator.PasswordMin, uh.validator.PasswordMax))
 	}
 
 	if !uh.validator.IsUsernameLengthCorrect(dto.Username) {
-		return nil, fmt.Errorf("%w: username length should be from %d to %d",
-			domain.ErrUsernameLengthIncorrect, uh.validator.UsernameMin, uh.validator.UsernameMax)
+		return nil, apperror.MakeBadRequestErr(domain.ErrUsernameLengthIncorrect, fmt.Sprintf("username length should be from %d to %d",
+			uh.validator.UsernameMin, uh.validator.UsernameMax))
 	}
 
 	if !uh.validator.IsEmailCorrect(dto.Email) {
-		return nil, domain.ErrIncorrectEmail
+		return nil, apperror.MakeBadRequestErr(domain.ErrIncorrectEmail, domain.ErrIncorrectEmail.Error())
 	}
 
 	userID, err := uh.service.Create(ctx, dto)
 	if err != nil {
 		uh.logger.Errorf("error in creating user: %v", err)
+		if errors.Is(err, domain.ErrUnique) {
+			return nil, apperror.MakeBadRequestErr(err, domain.ErrUnique.Error())
+		}
 		return nil, fmt.Errorf("user handler - signup - %w", err)
 	}
 
@@ -70,7 +76,14 @@ func (uh *UserHandler) SignIn(ctx context.Context, req *proto.SignInRequest) (*p
 	accessToken, refreshToken, err := uh.service.GenerateTokens(ctx, dto)
 	if err != nil {
 		uh.logger.Errorf("error in signin: %v", err)
-		return nil, fmt.Errorf("user handler - signin - %w", err)
+		switch {
+		case errors.Is(err, domain.ErrIncorrectPassword):
+			return nil, apperror.MakeBadRequestErr(err, domain.ErrIncorrectPassword.Error())
+		case errors.Is(err, domain.ErrUserNotFound):
+			return nil, apperror.MakeBadRequestErr(err, "check that you print correct email")
+		default:
+			return nil, fmt.Errorf("user handler - signin - %w", err)
+		}
 	}
 	return &proto.SignInResponse{
 		Access:  accessToken,
@@ -84,7 +97,7 @@ func (uh *UserHandler) ValidateUser(ctx context.Context, req *proto.ValidateRequ
 	userID, err := uh.service.Validate(ctx, req.Access)
 	if err != nil {
 		uh.logger.Errorf("error in parse user token: %v", err)
-		return nil, err
+		return nil, apperror.MakeUnoauthorizedErr(err)
 	}
 	return &proto.ValidateResponse{
 		UserID: uint64(userID),
@@ -97,12 +110,15 @@ func (uh *UserHandler) GetMe(ctx context.Context, req *proto.ValidateRequest) (*
 	userID, err := uh.service.Validate(ctx, req.Access)
 	if err != nil {
 		uh.logger.Errorf("error in parse user token: %v", err)
-		return nil, err
+		return nil, apperror.MakeUnoauthorizedErr(err)
 	}
 
 	user, err := uh.service.GetByID(ctx, uint64(userID))
 	if err != nil {
 		uh.logger.Errorf("error in get user by id: %v", err)
+		if errors.Is(err, domain.ErrUserNotFound) {
+			return nil, apperror.MakeNotFoundErr(err, "user with this id not found")
+		}
 		return nil, err
 	}
 	return &proto.GetResponse{
@@ -118,6 +134,10 @@ func (uh *UserHandler) GetById(ctx context.Context, req *proto.GetByIDRequest) (
 	user, err := uh.service.GetByID(ctx, req.UserID)
 	if err != nil {
 		uh.logger.Errorf("error in get user by id: %v", err)
+
+		if errors.Is(err, domain.ErrUserNotFound) {
+			return nil, apperror.MakeNotFoundErr(err, "user with this id not found")
+		}
 		return nil, err
 	}
 	return &proto.GetResponse{
@@ -134,7 +154,17 @@ func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequ
 	userID, err := uh.service.UpdateUser(ctx, dto)
 	if err != nil {
 		uh.logger.Errorf("error in updating user: %v", err)
-		return nil, err
+
+		switch {
+		case errors.Is(err, domain.ErrIncorrectPassword):
+			return nil, apperror.MakeBadRequestErr(err, domain.ErrIncorrectPassword.Error())
+		case errors.Is(err, domain.ErrUnique):
+			return nil, apperror.MakeBadRequestErr(err, "this username is busy")
+		case errors.Is(err, domain.ErrUserNotFound):
+			return nil, apperror.MakeNotFoundErr(err, "user with this id not found")
+		default:
+			return nil, err
+		}
 	}
 
 	return &proto.UpdateUserResponse{

@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 	"fmt"
+
 	"user_service/internal/domain"
 
 	"github.com/Levap123/utils/jwt"
@@ -88,7 +89,6 @@ func (us *UserService) UpdateUser(ctx context.Context, dto *UpdateUserDTO) (int,
 	if err != nil {
 		return 0, fmt.Errorf("user service - update user - get by id - %w", err)
 	}
-	fmt.Println(dto.OldPassword)
 	if !user.PasswordCorrect(dto.OldPassword) {
 		return 0, fmt.Errorf("user service - update user - check password - %w", domain.ErrIncorrectPassword)
 	}

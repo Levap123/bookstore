@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"strings"
+
 	"user_service/internal/domain"
 	"user_service/internal/user"
 
@@ -119,6 +120,9 @@ func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error
 	var userID int
 
 	if err := tx.Get(&userID, query, user.Username, user.Password, user.ID); err != nil {
+		if strings.Contains(err.Error(), "duplicate key value violates unique constraint") {
+			return 0, fmt.Errorf("user repo - update user - select - %w", domain.ErrUnique)
+		}
 		if errors.Is(err, sql.ErrNoRows) {
 			return 0, fmt.Errorf("user repo - update user - select - %w", domain.ErrUserNotFound)
 		}
