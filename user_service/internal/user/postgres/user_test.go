@@ -143,7 +143,7 @@ func TestGetByEmail(t *testing.T) {
 			wantErr: false,
 		},
 		{
-			name: "should throw error",
+			name: "should throw error 'user not found'",
 			args: args{
 				ctx:   context.Background(),
 				email: "does not exist@gmail.com",
@@ -152,7 +152,7 @@ func TestGetByEmail(t *testing.T) {
 			wantThisErr: domain.ErrUserNotFound,
 		},
 		{
-			name: "should throw error",
+			name: "should throw error 'user not found'",
 			args: args{
 				ctx:   context.Background(),
 				email: "123123@gmail.com",
@@ -176,6 +176,72 @@ func TestGetByEmail(t *testing.T) {
 			}
 			if reflect.DeepEqual(got, users[0]) {
 				t.Errorf("UserRepository.GetByEmail(), expected = %v, got %v", tt.want, got)
+			}
+		})
+	}
+}
+
+func TestGetByID(t *testing.T) {
+	repo := postgres.NewUserRepo(DB, log)
+
+	type args struct {
+		ctx    context.Context
+		userID uint64
+	}
+
+	tests := []struct {
+		name        string
+		args        args
+		wantErr     bool
+		wantThisErr error
+		want        *user.User
+	}{
+		{
+			name: "should get user without any error",
+			args: args{
+				context.Background(),
+				1,
+			},
+			wantErr: false,
+			want:    users[0],
+		},
+		{
+			name: "should get user without any error",
+			args: args{
+				context.Background(),
+				2,
+			},
+			wantErr: false,
+			want:    users[2],
+		},
+		{
+			name: "should throw error 'user not found'",
+			args: args{
+				context.Background(),
+				100,
+			},
+			wantErr:     true,
+			wantThisErr: domain.ErrUserNotFound,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := repo.GetByID(tt.args.ctx, tt.args.userID)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("UserRepository.GetByID(), expected = %v, wantErr %v", tt.want, tt.wantErr)
+				return
+			}
+
+			if tt.wantErr {
+				if !errors.Is(err, domain.ErrUserNotFound) {
+					t.Errorf("UserRepository.GetByID(), expected err = %v, got %v", tt.want, got)
+					return
+				}
+			}
+
+			if reflect.DeepEqual(got, users[0]) {
+				t.Errorf("UserRepository.GetByID(), expected = %v, got %v", tt.want, got)
 			}
 		})
 	}
