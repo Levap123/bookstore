@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"user_service/internal/user"
-	"user_service/internal/user/mock"
+	"github.com/Levap123/user_service/internal/user"
+	"github.com/Levap123/user_service/internal/user/mock"
 
 	"github.com/Levap123/utils/jwt"
 )

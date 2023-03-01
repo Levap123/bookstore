@@ -5,9 +5,9 @@ import (
 	"errors"
 	"fmt"
 
-	"user_service/internal/domain"
-	"user_service/internal/validator"
-	"user_service/proto"
+	"github.com/Levap123/user_service/internal/domain"
+	"github.com/Levap123/user_service/internal/validator"
+	"github.com/Levap123/user_service/proto"
 
 	"github.com/Levap123/utils/apperror"
 	"github.com/sirupsen/logrus"
@@ -43,8 +43,7 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 	dto := NewCreateUserDTO(req)
 
 	if !uh.validator.IsPasswordLenghtCorrect(dto.Password) {
-		return nil, apperror.MakeBadRequestErr(domain.ErrPasswordLengthIncorrect, fmt.Sprintf("password length should be from %d to %d",
-			uh.validator.PasswordMin, uh.validator.PasswordMax))
+		return nil, domain.ErrPasswordLengthIncorrect
 	}
 
 	if !uh.validator.IsUsernameLengthCorrect(dto.Username) {

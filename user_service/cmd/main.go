@@ -9,11 +9,11 @@ import (
 	"syscall"
 	"time"
 
-	"user_service/internal/configs"
-	"user_service/internal/user"
-	"user_service/internal/user/postgres"
-	"user_service/internal/validator"
-	"user_service/proto"
+	"github.com/Levap123/user_service/internal/configs"
+	"github.com/Levap123/user_service/internal/user"
+	"github.com/Levap123/user_service/internal/user/postgres"
+	"github.com/Levap123/user_service/internal/validator"
+	"github.com/Levap123/user_service/proto"
 
 	"github.com/Levap123/utils/jwt"
 	"github.com/Levap123/utils/lg"

@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"strings"
 
-	"user_service/internal/domain"
-	"user_service/internal/user"
+	"github.com/Levap123/user_service/internal/domain"
+	"github.com/Levap123/user_service/internal/user"
 
 	"github.com/jmoiron/sqlx"
 	"github.com/sirupsen/logrus"

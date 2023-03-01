@@ -2,7 +2,7 @@ package postgres
 
 import (
 	"fmt"
-	"user_service/internal/configs"
+	"github.com/Levap123/user_service/internal/configs"
 
     _ "github.com/jackc/pgx/stdlib"
 		"github.com/jmoiron/sqlx"

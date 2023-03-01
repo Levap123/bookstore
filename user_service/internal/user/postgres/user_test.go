@@ -7,9 +7,10 @@ import (
 	"reflect"
 
 	"testing"
-	"user_service/internal/domain"
-	"user_service/internal/user"
-	"user_service/internal/user/postgres"
+
+	"github.com/Levap123/user_service/internal/domain"
+	"github.com/Levap123/user_service/internal/user"
+	"github.com/Levap123/user_service/internal/user/postgres"
 
 	"github.com/sirupsen/logrus"
 )

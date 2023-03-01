@@ -1,7 +1,7 @@
 package user
 
 import (
-	"user_service/proto"
+	"github.com/Levap123/user_service/proto"
 
 	"github.com/Levap123/utils/crypt"
 )

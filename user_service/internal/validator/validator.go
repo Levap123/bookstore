@@ -2,7 +2,8 @@ package validator
 
 import (
 	"regexp"
-	"user_service/internal/configs"
+
+	"github.com/Levap123/user_service/internal/configs"
 )
 
 type Validator struct {

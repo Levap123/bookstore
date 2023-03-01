@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"user_service/internal/domain"
+	"github.com/Levap123/user_service/internal/domain"
 
 	"github.com/Levap123/utils/jwt"
 )
