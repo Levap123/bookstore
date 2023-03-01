@@ -4,6 +4,9 @@ import (
 	"context"
 	"log"
 	"net"
+	"os"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"user_service/internal/configs"
@@ -58,7 +61,15 @@ func main() {
 	proto.RegisterUserServer(srv, handler)
 	reflection.Register(srv)
 	lg.Info("server is started")
-	if err := srv.Serve(listener); err != nil {
-		log.Fatalln(err, 123)
-	}
+	quit := make(chan os.Signal)
+	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
+	go func() {
+		if err := srv.Serve(listener); err != nil {
+			log.Fatalln(err)
+		}
+	}()
+	<-quit
+	srv.Stop()
+	lg.Info("server is stoped")
+
 }
