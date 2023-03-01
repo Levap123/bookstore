@@ -19,7 +19,7 @@ func InitUserClient(conn *grpc.ClientConn) *UserClient {
 	}
 }
 
-func (uc *UserClient) signUp(ctx context.Context, dto *dto.SignUpDTO) (uint64, error) {
+func (uc *UserClient) SignUp(ctx context.Context, dto *dto.SignUpDTO) (uint64, error) {
 	request := &proto.SignUpRequest{
 		Username: dto.Username,
 		Email:    dto.Email,

@@ -3,10 +3,13 @@ package handler
 import (
 	"net/http"
 
+	"api-gateway/internal/middlwares"
+
 	"github.com/julienschmidt/httprouter"
 )
 
 func (h *Handler) InitRoutes() http.Handler {
 	r := httprouter.New()
-	r.POST("/auth/sign-up", h.signUp)
+	r.Handler(http.MethodPost, "/auth/sign-up", middlwares.CheckErrorMiddlware(h.signUp))
+	return r
 }
