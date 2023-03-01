@@ -246,3 +246,71 @@ func TestGetByID(t *testing.T) {
 		})
 	}
 }
+
+func TestUpdateInfo(t *testing.T) {
+	repo := postgres.NewUserRepo(DB, log)
+
+	type args struct {
+		ctx  context.Context
+		user *user.User
+	}
+
+	tests := []struct {
+		name        string
+		args        args
+		wantErr     bool
+		wantThisErr error
+		want        int
+	}{
+		{
+			name: "should update user with error 'unique'",
+			args: args{
+				ctx: context.Background(),
+				user: &user.User{
+					ID:       3,
+					Username: "unique",
+					Email:    "unique@gmail.com",
+					Password: "new password",
+				},
+			},
+			wantErr:     true,
+			wantThisErr: domain.ErrUnique,
+		},
+		{
+			name: "should update user without error",
+			args: args{
+				ctx: context.Background(),
+				user: &user.User{
+					ID:       1,
+					Username: "new username",
+					Email:    "new email",
+					Password: "new password",
+				},
+			},
+			want:    1,
+			wantErr: false,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := repo.UpdateInfo(tt.args.ctx, tt.args.user)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("UserRepository.UpdateInfo(), expected = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+
+			if tt.wantErr {
+				if !errors.Is(err, tt.wantThisErr) {
+					t.Errorf("UserRepository.UpdateInfo(), expected err = %v, got  %v", tt.wantThisErr, err)
+					return
+				}
+			}
+
+			if got != tt.want {
+				t.Errorf("UserRepository.UpdateInfo(), expected  = %v, got  %v", tt.want, got)
+				return
+			}
+		})
+	}
+}
