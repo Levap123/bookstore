@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./;proto";
+
+service User {
+    rpc SignIn(SignInRequest) returns (SignInResponse);
+    rpc SignUp(SignUpRequest) returns (SignUpResponse);
+    rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+    rpc ValidateUser(ValidateRequest) returns (ValidateResponse);
+    rpc GetById(GetByIDRequest) returns (GetResponse);
+    rpc GetMe(ValidateRequest) returns (GetResponse);
+    rpc Refresh(RefreshRequestResponse) returns(RefreshRequestResponse);
+}
+
+message SignUpRequest {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message SignUpResponse {
+    uint64 userID = 1;
+}
+
+message SignInRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message SignInResponse {
+    string access = 1;
+    string refresh = 2;
+}
+
+message UpdateUserRequest {
+    uint64 userID = 1; 
+    string username = 2;
+    string new_password = 3;
+    string old_password = 4;
+}
+
+message UpdateUserResponse {
+    uint64 userID = 1;
+}
+
+message ValidateRequest {
+    string access = 1;
+}
+
+message ValidateResponse {
+    uint64 userID = 1;
+}
+
+message GetByIDRequest {
+    uint64 userID = 1;
+}
+
+message GetResponse {
+    uint64 userID = 1;
+    string username = 2;
+    string email = 3;
+}
+
+message RefreshRequestResponse {
+    string access = 1;
+    string refresh = 2;
+}
