@@ -9,3 +9,19 @@ proto_compile:
 
 tests:
 		go test -v ./...
+
+up_testdb:
+	docker run -d --name test \
+  	-e POSTGRES_DB=testdb \
+  	-e POSTGRES_USER=test \
+  	-e POSTGRES_PASSWORD=test \
+  	-p 5000:5432 \
+  	--health-cmd="pg_isready -U postgres" \
+  	--health-interval=5s \
+  	--health-timeout=5s \
+  	--health-retries=5 \
+  	postgres:14.3
+
+down_testdb:
+	sudo docker stop test
+	sudo docker rm test

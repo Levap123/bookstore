@@ -774,3 +774,4 @@
 [2023-02-28 15:59:23] DEBUG signup user
 [2023-02-28 15:59:23] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
 [2023-02-28 15:59:23] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-01 13:30:49]  INFO server is started
