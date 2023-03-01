@@ -1,10 +1,10 @@
 package main
 
 import (
-	apiclients "api-gateway/internal/api_clients"
-	"api-gateway/internal/configs"
-	"api-gateway/internal/handler"
-	"api-gateway/pkg/server"
+	apiclients "github.com/Levap123/api_gateway/internal/api_clients"
+	"github.com/Levap123/api_gateway/internal/configs"
+	"github.com/Levap123/api_gateway/internal/handler"
+	"github.com/Levap123/api_gateway/pkg/server"
 	"os"
 	"os/signal"
 	"syscall"
@@ -34,7 +34,7 @@ func main() {
 	opts := []grpc.DialOption{
 		grpc.WithInsecure(),
 	}
-	conn, err := grpc.DialContext(ctx, userServiceAddress, opts)
+	conn, err := grpc.DialContext(ctx, userServiceAddress, opts...)
 	if err != nil {
 		log.Fatalf("fatal in connect to user service: %v", err)
 	}
@@ -51,7 +51,7 @@ func main() {
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
 
 	go func() {
-		if err := server.Run(handler.InitRoutes()); err != nil {
+		if err := server.Run(handler.InitRoutes(), cfg.Server.Addr); err != nil {
 			log.Fatalf("fatal in running server: %v", err)
 		}
 	}()

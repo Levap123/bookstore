@@ -1,1 +1,63 @@
 [2023-03-01 21:19:41] FATAL fatal in connect to user service: grpc: no transport security set (use grpc.WithTransportCredentials(insecure.NewCredentials()) explicitly or set credentials)
+[2023-03-01 21:21:06]  INFO server started
+[2023-03-01 21:21:06] FATAL fatal in running server: listen tcp :80: bind: permission denied
+[2023-03-01 21:21:43]  INFO server started
+[2023-03-01 21:23:00] DEBUG user signup handler
+[2023-03-01 21:23:00] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 21:27:42] FATAL fatal in running server: http: Server closed
+[2023-03-01 21:27:43]  INFO server started
+[2023-03-01 21:27:45] DEBUG user signup handler
+[2023-03-01 21:27:45] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 21:27:46] DEBUG user signup handler
+[2023-03-01 21:27:46] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 21:35:40] FATAL fatal in running server: http: Server closed
+[2023-03-01 21:35:41]  INFO server started
+[2023-03-01 21:35:43] DEBUG user signup handler
+[2023-03-01 21:35:43] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 21:35:44] DEBUG user signup handler
+[2023-03-01 21:35:44] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 22:19:03] FATAL fatal in running server: http: Server closed
+[2023-03-01 22:23:52]  INFO server started
+[2023-03-01 22:23:54] DEBUG user signup handler
+[2023-03-01 22:23:54] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:23:55] DEBUG user signup handler
+[2023-03-01 22:23:55] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:25:27] FATAL fatal in running server: http: Server closed
+[2023-03-01 22:25:28]  INFO server started
+[2023-03-01 22:25:29] DEBUG user signup handler
+[2023-03-01 22:25:29] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:25:30] DEBUG user signup handler
+[2023-03-01 22:25:30] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:25:41] FATAL fatal in running server: http: Server closed
+[2023-03-01 22:25:42]  INFO server started
+[2023-03-01 22:25:43] DEBUG user signup handler
+[2023-03-01 22:25:43] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:25:52] FATAL fatal in running server: http: Server closed
+[2023-03-01 22:25:53]  INFO server started
+[2023-03-01 22:25:54] DEBUG user signup handler
+[2023-03-01 22:25:54] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:25:56] DEBUG user signup handler
+[2023-03-01 22:25:56] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:32:29] FATAL fatal in running server: http: Server closed
+[2023-03-01 22:32:30]  INFO server started
+[2023-03-01 22:32:32] DEBUG user signup handler
+[2023-03-01 22:32:32] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:32:33] DEBUG user signup handler
+[2023-03-01 22:32:33] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:32:33] DEBUG user signup handler
+[2023-03-01 22:32:33] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length should be from 8 to 20
+[2023-03-01 22:34:26] DEBUG user signup handler
+[2023-03-01 22:34:26] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 22:34:27] DEBUG user signup handler
+[2023-03-01 22:34:27] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 22:34:35] DEBUG user signup handler
+[2023-03-01 22:34:35] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 22:34:36] DEBUG user signup handler
+[2023-03-01 22:34:36] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 22:34:36] DEBUG user signup handler
+[2023-03-01 22:34:36] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 22:35:21] DEBUG user signup handler
+[2023-03-01 22:35:21] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 22:35:22] DEBUG user signup handler
+[2023-03-01 22:35:22] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-01 22:38:12] FATAL fatal in running server: http: Server closed

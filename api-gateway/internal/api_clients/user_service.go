@@ -1,8 +1,8 @@
 package apiclients
 
 import (
-	"api-gateway/internal/dto"
-	"api-gateway/proto"
+	"github.com/Levap123/api_gateway/internal/dto"
+	"github.com/Levap123/api_gateway/proto"
 	"context"
 
 	"google.golang.org/grpc"

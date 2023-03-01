@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"api-gateway/internal/dto"
-	jsend "api-gateway/pkg/json"
+	"github.com/Levap123/api_gateway/internal/dto"
+	jsend "github.com/Levap123/api_gateway/pkg/json"
 	"context"
 	"encoding/json"
 	"io"

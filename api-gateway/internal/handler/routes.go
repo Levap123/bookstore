@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"api-gateway/internal/middlwares"
+	"github.com/Levap123/api_gateway/internal/middlwares"
 
 	"github.com/julienschmidt/httprouter"
 )

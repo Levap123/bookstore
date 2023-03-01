@@ -10,12 +10,13 @@ type Server struct {
 	srv *http.Server
 }
 
-func (s *Server) Run(router http.Handler) error {
+func (s *Server) Run(router http.Handler, addr string) error {
 	s.srv = &http.Server{
 		ReadTimeout:    time.Second * 2,
 		WriteTimeout:   time.Second * 2,
 		MaxHeaderBytes: http.DefaultMaxHeaderBytes,
 		Handler:        router,
+		Addr:           addr,
 	}
 	return s.srv.ListenAndServe()
 }

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	apiclients "api-gateway/internal/api_clients"
+	apiclients "github.com/Levap123/api_gateway/internal/api_clients"
 
 	"github.com/sirupsen/logrus"
 )
