@@ -31,10 +31,14 @@ func main() {
 	defer cancel()
 
 	userServiceAddress := cfg.UserService.Addr
-	conn, err := grpc.DialContext(ctx, userServiceAddress)
+	opts := []grpc.DialOption{
+		grpc.WithInsecure(),
+	}
+	conn, err := grpc.DialContext(ctx, userServiceAddress, opts)
 	if err != nil {
 		log.Fatalf("fatal in connect to user service: %v", err)
 	}
+	defer conn.Close()
 
 	userServiceClient := apiclients.InitUserClient(conn)
 

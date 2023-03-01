@@ -1,0 +1,1 @@
+[2023-03-01 21:19:41] FATAL fatal in connect to user service: grpc: no transport security set (use grpc.WithTransportCredentials(insecure.NewCredentials()) explicitly or set credentials)
