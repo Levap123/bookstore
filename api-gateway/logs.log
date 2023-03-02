@@ -278,3 +278,14 @@
 [2023-03-02 14:25:24] DEBUG user signin handler
 [2023-03-02 14:25:25] DEBUG user signin handler
 [2023-03-02 14:25:26] FATAL fatal in running server: http: Server closed
+[2023-03-02 14:28:10]  INFO server started
+[2023-03-02 14:28:15] DEBUG user signin handler
+[2023-03-02 14:28:15] ERROR error from user service: rpc error: code = NotFound desc = check that you print correct email
+[2023-03-02 14:28:15] ERROR error in sending request to user service: rpc error: code = NotFound desc = check that you print correct email
+[2023-03-02 14:28:26] DEBUG user signin handler
+[2023-03-02 14:28:26] ERROR error from user service: rpc error: code = NotFound desc = check that you print correct email
+[2023-03-02 14:28:26] ERROR error in sending request to user service: rpc error: code = NotFound desc = check that you print correct email
+[2023-03-02 14:28:29] DEBUG user signin handler
+[2023-03-02 14:28:30] DEBUG user signin handler
+[2023-03-02 14:28:31] DEBUG user signin handler
+[2023-03-02 14:41:02] FATAL fatal in running server: http: Server closed

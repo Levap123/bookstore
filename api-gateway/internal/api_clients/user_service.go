@@ -36,14 +36,17 @@ func (uc *UserClient) SignUp(ctx context.Context, dto *dto.SignUpDTO) (uint64, e
 	response, err := uc.cl.SignUp(ctx, request)
 	if err != nil {
 		uc.log.Errorf("error from user service: %v", err)
+
 		status, ok := status.FromError(err)
 		if !ok {
 			return 0, err
 		}
+
 		statusCode := gRPCToHTTP(status.Code())
 		if statusCode == -1 {
 			return 0, err
 		}
+
 		return 0, apperror.NewError(status.Err(), status.Message(), statusCode)
 	}
 
@@ -59,18 +62,49 @@ func (uc *UserClient) SignIn(ctx context.Context, dto *dto.SignInDTO) (*entity.T
 	response, err := uc.cl.SignIn(ctx, request)
 	if err != nil {
 		uc.log.Errorf("error from user service: %v", err)
+
 		status, ok := status.FromError(err)
 		if !ok {
 			return nil, err
 		}
+
 		statusCode := gRPCToHTTP(status.Code())
 		if statusCode == -1 {
 			return nil, err
 		}
+
 		return nil, apperror.NewError(status.Err(), status.Message(), statusCode)
 	}
+
 	return &entity.Tokens{
 		Access:  response.Access,
 		Refresh: response.Refresh,
 	}, nil
 }
+
+func (uc *UserClient) Validate(ctx context.Context, dto *dto.ValidateDTO) (uint64, error) {
+	request := &proto.ValidateRequest{
+		Access: dto.AccessToken,
+	}
+
+	response, err := uc.cl.ValidateUser(ctx, request)
+	if err != nil {
+		uc.log.Errorf("error from user service: %v", err)
+
+		status, ok := status.FromError(err)
+		if !ok {
+			return 0, err
+		}
+
+		statusCode := gRPCToHTTP(status.Code())
+		if statusCode == -1 {
+			return 0, err
+		}
+
+		return 0, apperror.NewError(status.Err(), status.Message(), statusCode)
+	}
+
+	return response.UserID, nil
+}
+
+// func (uc *UserClient) GetByID(ctx context.Context, dto *dto.)
