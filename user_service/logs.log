@@ -906,3 +906,11 @@
 [2023-03-02 13:01:39]  INFO server is stoped
 [2023-03-02 13:01:42]  INFO server is started
 [2023-03-02 13:09:25]  INFO server is stoped
+[2023-03-02 13:12:42]  INFO server is started
+[2023-03-02 13:12:44] DEBUG signup user
+[2023-03-02 13:12:45] DEBUG signup user
+[2023-03-02 13:13:13]  INFO server is stoped
+[2023-03-02 13:13:14]  INFO server is started
+[2023-03-02 13:13:16] DEBUG signup user
+[2023-03-02 13:13:16] DEBUG signup user
+[2023-03-02 13:13:20]  INFO server is stoped
