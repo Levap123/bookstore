@@ -289,3 +289,79 @@
 [2023-03-02 14:28:30] DEBUG user signin handler
 [2023-03-02 14:28:31] DEBUG user signin handler
 [2023-03-02 14:41:02] FATAL fatal in running server: http: Server closed
+[2023-03-02 15:57:00]  INFO server started
+[2023-03-02 15:57:05] DEBUG user signin handler
+[2023-03-02 15:57:05] ERROR error in unmarshalling: %vinvalid character '}' looking for beginning of object key string
+[2023-03-02 15:57:12] DEBUG user signin handler
+[2023-03-02 15:57:12] ERROR error in unmarshalling: %vinvalid character '}' looking for beginning of object key string
+[2023-03-02 15:57:15] DEBUG user signin handler
+[2023-03-02 15:57:15] ERROR error from user service: rpc error: code = NotFound desc = check that you print correct email
+[2023-03-02 15:57:15] ERROR error in sending request to user service: rpc error: code = NotFound desc = check that you print correct email
+[2023-03-02 15:57:16] DEBUG user signin handler
+[2023-03-02 15:57:16] ERROR error from user service: rpc error: code = NotFound desc = check that you print correct email
+[2023-03-02 15:57:16] ERROR error in sending request to user service: rpc error: code = NotFound desc = check that you print correct email
+[2023-03-02 15:57:22] DEBUG user signin handler
+[2023-03-02 15:58:02] ERROR error from user service: rpc error: code = Unauthenticated desc = error in validating user token
+[2023-03-02 15:58:13] ERROR error from user service: rpc error: code = Unauthenticated desc = error in validating user token
+[2023-03-02 15:58:18] ERROR error from user service: rpc error: code = Unauthenticated desc = error in validating user token
+[2023-03-02 16:23:05] FATAL fatal in running server: http: Server closed
+[2023-03-02 16:23:07]  INFO server started
+[2023-03-02 16:25:31]  INFO server started
+[2023-03-02 16:25:38] ERROR error from user service: rpc error: code = Unauthenticated desc = error in validating user token
+[2023-03-02 16:25:40] ERROR error from user service: rpc error: code = Unauthenticated desc = error in validating user token
+[2023-03-02 16:25:50] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:25:52] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:25:56] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:25:57] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:25:59] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:26:01] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:26:04] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:26:06] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:26:07] ERROR error from user service: rpc error: code = NotFound desc = user with this id not found
+[2023-03-02 16:27:28] DEBUG user signup handler
+[2023-03-02 16:27:28] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:28] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:34] DEBUG user signup handler
+[2023-03-02 16:27:34] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:34] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:36] DEBUG user signup handler
+[2023-03-02 16:27:36] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:36] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:37] DEBUG user signup handler
+[2023-03-02 16:27:37] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:37] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:41] DEBUG user signup handler
+[2023-03-02 16:27:42] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:42] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:43] DEBUG user signup handler
+[2023-03-02 16:27:43] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:43] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:43] DEBUG user signup handler
+[2023-03-02 16:27:43] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:43] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:44] DEBUG user signup handler
+[2023-03-02 16:27:44] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:44] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:50] DEBUG user signup handler
+[2023-03-02 16:27:50] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 16:27:50] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 16:27:53] DEBUG user signup handler
+[2023-03-02 16:27:53] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:53] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:54] DEBUG user signup handler
+[2023-03-02 16:27:54] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:54] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:55] DEBUG user signup handler
+[2023-03-02 16:27:55] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:55] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:55] DEBUG user signup handler
+[2023-03-02 16:27:55] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:55] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:56] DEBUG user signup handler
+[2023-03-02 16:27:56] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:27:56] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:28:21] DEBUG user signup handler
+[2023-03-02 16:28:22] DEBUG user signup handler
+[2023-03-02 16:28:22] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:28:22] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 16:29:07] FATAL fatal in running server: http: Server closed

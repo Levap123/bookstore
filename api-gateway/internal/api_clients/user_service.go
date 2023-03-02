@@ -107,4 +107,60 @@ func (uc *UserClient) Validate(ctx context.Context, dto *dto.ValidateDTO) (uint6
 	return response.UserID, nil
 }
 
-// func (uc *UserClient) GetByID(ctx context.Context, dto *dto.)
+func (uc *UserClient) GetMe(ctx context.Context, accessToken string) (*entity.User, error) {
+	request := &proto.ValidateRequest{
+		Access: accessToken,
+	}
+
+	response, err := uc.cl.GetMe(ctx, request)
+	if err != nil {
+		uc.log.Errorf("error from user service: %v", err)
+
+		status, ok := status.FromError(err)
+		if !ok {
+			return nil, err
+		}
+
+		statusCode := gRPCToHTTP(status.Code())
+		if statusCode == -1 {
+			return nil, err
+		}
+
+		return nil, apperror.NewError(status.Err(), status.Message(), statusCode)
+	}
+
+	return &entity.User{
+		ID:       response.UserID,
+		Email:    response.Email,
+		Username: response.Username,
+	}, nil
+}
+
+func (uc *UserClient) GetByID(ctx context.Context, userID uint64) (*entity.User, error) {
+	request := &proto.GetByIDRequest{
+		UserID: userID,
+	}
+
+	response, err := uc.cl.GetById(ctx, request)
+	if err != nil {
+		uc.log.Errorf("error from user service: %v", err)
+
+		status, ok := status.FromError(err)
+		if !ok {
+			return nil, err
+		}
+
+		statusCode := gRPCToHTTP(status.Code())
+		if statusCode == -1 {
+			return nil, err
+		}
+
+		return nil, apperror.NewError(status.Err(), status.Message(), statusCode)
+	}
+
+	return &entity.User{
+		ID:       response.UserID,
+		Email:    response.Email,
+		Username: response.Username,
+	}, nil
+}

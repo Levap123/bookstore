@@ -15,5 +15,6 @@ func NewHandler(log *logrus.Logger, userClient *apiclients.UserClient) *Handler 
 	return &Handler{
 		log:        log,
 		userClient: userClient,
+
 	}
 }
