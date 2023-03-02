@@ -11,5 +11,6 @@ import (
 func (h *Handler) InitRoutes() http.Handler {
 	r := httprouter.New()
 	r.Handler(http.MethodPost, "/auth/sign-up", middlwares.CheckErrorMiddlware(h.signUp))
+	r.Handler(http.MethodPost, "/auth/sign-in", middlwares.CheckErrorMiddlware(h.signIn))
 	return r
 }

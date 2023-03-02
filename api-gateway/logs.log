@@ -253,3 +253,28 @@
 [2023-03-02 13:47:01] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
 [2023-03-02 13:47:01] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
 [2023-03-02 14:12:24] FATAL fatal in running server: http: Server closed
+[2023-03-02 14:23:53]  INFO server started
+[2023-03-02 14:24:16] FATAL fatal in running server: http: Server closed
+[2023-03-02 14:24:17]  INFO server started
+[2023-03-02 14:24:19] DEBUG user signin handler
+[2023-03-02 14:24:19] ERROR error from user service: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp :8000: connect: connection refused"
+[2023-03-02 14:24:19] ERROR error in sending request to user service: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp :8000: connect: connection refused"
+[2023-03-02 14:24:44] DEBUG user signin handler
+[2023-03-02 14:24:45] DEBUG user signin handler
+[2023-03-02 14:24:45] DEBUG user signin handler
+[2023-03-02 14:24:50] DEBUG user signin handler
+[2023-03-02 14:24:50] ERROR error from user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 14:24:50] ERROR error in sending request to user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 14:24:53] DEBUG user signin handler
+[2023-03-02 14:25:05] DEBUG user signin handler
+[2023-03-02 14:25:06] DEBUG user signin handler
+[2023-03-02 14:25:07] DEBUG user signin handler
+[2023-03-02 14:25:13] DEBUG user signin handler
+[2023-03-02 14:25:14] DEBUG user signin handler
+[2023-03-02 14:25:15] DEBUG user signin handler
+[2023-03-02 14:25:20] FATAL fatal in running server: http: Server closed
+[2023-03-02 14:25:21]  INFO server started
+[2023-03-02 14:25:22] DEBUG user signin handler
+[2023-03-02 14:25:24] DEBUG user signin handler
+[2023-03-02 14:25:25] DEBUG user signin handler
+[2023-03-02 14:25:26] FATAL fatal in running server: http: Server closed
