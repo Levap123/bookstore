@@ -155,16 +155,17 @@ func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequ
 	uh.logger.Debugln("update user credentials")
 	dto := NewUpdateUserDTO(req)
 
-	if uh.validator.IsUsernameLengthCorrect(dto.Username) {
+	if !uh.validator.IsUsernameLengthCorrect(dto.Username) {
 		return nil, status.Errorf(codes.InvalidArgument, "username length should be from %d to %d",
 			uh.validator.UsernameMin, uh.validator.UsernameMax)
 	}
 
-	if uh.validator.IsPasswordLenghtCorrect(dto.NewPassword) {
+	if !uh.validator.IsPasswordLenghtCorrect(dto.NewPassword) {
+		fmt.Println(123)
 		return nil, status.Errorf(codes.InvalidArgument, "password length should be from %d to %d",
 			uh.validator.PasswordMin, uh.validator.PasswordMax)
 	}
-	
+
 	userID, err := uh.service.UpdateUser(ctx, dto)
 	if err != nil {
 		uh.logger.Errorf("error in updating user: %v", err)

@@ -1104,3 +1104,40 @@
 [2023-03-02 17:04:09] DEBUG update user credentials
 [2023-03-02 17:04:25] DEBUG get user by id
 [2023-03-02 17:06:32]  INFO server is stoped
+[2023-03-02 17:07:35]  INFO server is started
+[2023-03-02 17:07:36] DEBUG update user credentials
+[2023-03-02 17:07:38] DEBUG update user credentials
+[2023-03-02 17:07:39] DEBUG update user credentials
+[2023-03-02 17:08:28]  INFO server is stoped
+[2023-03-02 17:08:29]  INFO server is started
+[2023-03-02 17:08:30] DEBUG update user credentials
+[2023-03-02 17:08:31] DEBUG update user credentials
+[2023-03-02 17:08:35] DEBUG update user credentials
+[2023-03-02 17:08:36] DEBUG update user credentials
+[2023-03-02 17:08:37] DEBUG update user credentials
+[2023-03-02 17:08:38] DEBUG update user credentials
+[2023-03-02 17:08:46] DEBUG update user credentials
+[2023-03-02 17:08:47] DEBUG update user credentials
+[2023-03-02 17:09:15]  INFO server is stoped
+[2023-03-02 17:09:16]  INFO server is started
+[2023-03-02 17:09:17] DEBUG update user credentials
+[2023-03-02 17:09:30]  INFO server is stoped
+[2023-03-02 17:09:31]  INFO server is started
+[2023-03-02 17:09:33] DEBUG update user credentials
+[2023-03-02 17:09:34] DEBUG update user credentials
+[2023-03-02 17:09:35] DEBUG update user credentials
+[2023-03-02 17:09:36] DEBUG update user credentials
+[2023-03-02 17:09:37] DEBUG update user credentials
+[2023-03-02 17:09:44] DEBUG update user credentials
+[2023-03-02 17:09:45] DEBUG update user credentials
+[2023-03-02 17:09:56] DEBUG update user credentials
+[2023-03-02 17:09:57] DEBUG update user credentials
+[2023-03-02 17:09:57] ERROR error in updating user: user service - update user - check password - user password incorrect
+[2023-03-02 17:10:08] DEBUG signin user
+[2023-03-02 17:10:09] DEBUG signin user
+[2023-03-02 17:10:12] DEBUG signin user
+[2023-03-02 17:10:12] ERROR error in signin: user password incorrect
+[2023-03-02 17:10:17] DEBUG signin user
+[2023-03-02 17:10:34] DEBUG get user by id
+[2023-03-02 17:10:36] DEBUG get user by id
+[2023-03-02 17:10:47]  INFO server is stoped
