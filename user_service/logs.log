@@ -914,3 +914,63 @@
 [2023-03-02 13:13:16] DEBUG signup user
 [2023-03-02 13:13:16] DEBUG signup user
 [2023-03-02 13:13:20]  INFO server is stoped
+[2023-03-02 13:15:39]  INFO server is started
+[2023-03-02 13:15:43] DEBUG signup user
+[2023-03-02 13:15:43] DEBUG signup user
+[2023-03-02 13:15:45] DEBUG signup user
+[2023-03-02 13:15:46] DEBUG signup user
+[2023-03-02 13:15:48] DEBUG signup user
+[2023-03-02 13:17:09] DEBUG signup user
+[2023-03-02 13:18:16] DEBUG signup user
+[2023-03-02 13:22:24]  INFO server is stoped
+[2023-03-02 13:22:25]  INFO server is started
+[2023-03-02 13:22:28] DEBUG signup user
+[2023-03-02 13:22:31] DEBUG signup user
+[2023-03-02 13:25:43] DEBUG signup user
+[2023-03-02 13:29:10]  INFO server is stoped
+[2023-03-02 13:29:11]  INFO server is started
+[2023-03-02 13:29:21] DEBUG signup user
+[2023-03-02 13:29:26] DEBUG signup user
+[2023-03-02 13:29:28] DEBUG signup user
+[2023-03-02 13:29:30] DEBUG signup user
+[2023-03-02 13:29:38] DEBUG signup user
+[2023-03-02 13:29:52] DEBUG signup user
+[2023-03-02 13:29:59] DEBUG signin user
+[2023-03-02 13:30:00] DEBUG signin user
+[2023-03-02 13:30:01] DEBUG signin user
+[2023-03-02 13:30:01] DEBUG signin user
+[2023-03-02 13:30:01] DEBUG signin user
+[2023-03-02 13:30:03] DEBUG signin user
+[2023-03-02 13:30:04] DEBUG signin user
+[2023-03-02 13:30:04] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 13:30:06] DEBUG signin user
+[2023-03-02 13:30:49] DEBUG signup user
+[2023-03-02 13:30:49] ERROR conn is dead
+[2023-03-02 13:30:49] ERROR error in creating user: user service - repo create - user repo create - start tx - conn is dead
+[2023-03-02 13:31:00] DEBUG signup user
+[2023-03-02 13:31:00] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-03-02 13:31:00] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 13:36:04]  INFO server is stoped
+[2023-03-02 13:36:05]  INFO server is started
+[2023-03-02 13:36:10] DEBUG signup user
+[2023-03-02 13:38:17]  INFO server is stoped
+[2023-03-02 13:38:18]  INFO server is started
+[2023-03-02 13:38:21] DEBUG signup user
+[2023-03-02 13:38:23] DEBUG signup user
+[2023-03-02 13:38:27] DEBUG signup user
+[2023-03-02 13:38:58]  INFO server is stoped
+[2023-03-02 13:38:59]  INFO server is started
+[2023-03-02 13:39:01] DEBUG signup user
+[2023-03-02 13:39:03] DEBUG signup user
+[2023-03-02 13:39:04] DEBUG signup user
+[2023-03-02 13:39:11] DEBUG signup user
+[2023-03-02 13:39:23] DEBUG signup user
+[2023-03-02 13:39:24] DEBUG signup user
+[2023-03-02 13:39:41] DEBUG signup user
+[2023-03-02 13:40:33] DEBUG signup user
+[2023-03-02 13:46:55]  INFO server is stoped
+[2023-03-02 13:46:56]  INFO server is started
+[2023-03-02 13:47:01] DEBUG signup user
+[2023-03-02 13:47:01] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-03-02 13:47:01] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 13:47:12]  INFO server is stoped

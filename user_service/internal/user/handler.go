@@ -11,7 +11,6 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/Levap123/utils/apperror"
 	"github.com/sirupsen/logrus"
 )
 
@@ -45,16 +44,16 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 	dto := NewCreateUserDTO(req)
 
 	if !uh.validator.IsPasswordLenghtCorrect(dto.Password) {
-		return nil, status.Error(codes.InvalidArgument, "123")
+		return nil, status.Errorf(codes.InvalidArgument, "password length should be from %d to %d",
+			uh.validator.PasswordMin, uh.validator.PasswordMax)
 	}
 
 	if !uh.validator.IsUsernameLengthCorrect(dto.Username) {
-		return nil, apperror.MakeBadRequestErr(domain.ErrUsernameLengthIncorrect, fmt.Sprintf("username length should be from %d to %d",
-			uh.validator.UsernameMin, uh.validator.UsernameMax))
+		return nil, status.Errorf(codes.InvalidArgument, "username length should be from %d to %d",
+			uh.validator.UsernameMin, uh.validator.UsernameMax)
 	}
-	fmt.Println(dto.Email)
 	if !uh.validator.IsEmailCorrect(dto.Email) {
-		return nil, apperror.MakeBadRequestErr(domain.ErrIncorrectEmail, domain.ErrIncorrectEmail.Error())
+		return nil, status.Errorf(codes.InvalidArgument, domain.ErrIncorrectEmail.Error())
 	}
 
 	userID, err := uh.service.Create(ctx, dto)
@@ -62,7 +61,7 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 		uh.logger.Errorf("error in creating user: %v", err)
 
 		if errors.Is(err, domain.ErrUnique) {
-			return nil, apperror.MakeBadRequestErr(err, domain.ErrUnique.Error())
+			return nil, status.Errorf(codes.InvalidArgument, domain.ErrUnique.Error())
 		}
 		return nil, fmt.Errorf("user handler - signup - %w", err)
 	}
@@ -82,9 +81,9 @@ func (uh *UserHandler) SignIn(ctx context.Context, req *proto.SignInRequest) (*p
 
 		switch {
 		case errors.Is(err, domain.ErrIncorrectPassword):
-			return nil, apperror.MakeBadRequestErr(err, domain.ErrIncorrectPassword.Error())
+			return nil, status.Errorf(codes.Unauthenticated, domain.ErrIncorrectPassword.Error())
 		case errors.Is(err, domain.ErrUserNotFound):
-			return nil, apperror.MakeBadRequestErr(err, "check that you print correct email")
+			return nil, status.Errorf(codes.NotFound, "check that you print correct email")
 		default:
 			return nil, fmt.Errorf("user handler - signin - %w", err)
 		}
@@ -101,7 +100,7 @@ func (uh *UserHandler) ValidateUser(ctx context.Context, req *proto.ValidateRequ
 	userID, err := uh.service.Validate(ctx, req.Access)
 	if err != nil {
 		uh.logger.Errorf("error in parse user token: %v", err)
-		return nil, apperror.MakeUnoauthorizedErr(err)
+		return nil, status.Errorf(codes.Unauthenticated, "error in validating user token")
 	}
 	return &proto.ValidateResponse{
 		UserID: uint64(userID),
@@ -114,7 +113,7 @@ func (uh *UserHandler) GetMe(ctx context.Context, req *proto.ValidateRequest) (*
 	userID, err := uh.service.Validate(ctx, req.Access)
 	if err != nil {
 		uh.logger.Errorf("error in parse user token: %v", err)
-		return nil, apperror.MakeUnoauthorizedErr(err)
+		return nil, status.Errorf(codes.Unauthenticated, "error in validating user token")
 	}
 
 	user, err := uh.service.GetByID(ctx, uint64(userID))
@@ -122,7 +121,7 @@ func (uh *UserHandler) GetMe(ctx context.Context, req *proto.ValidateRequest) (*
 		uh.logger.Errorf("error in get user by id: %v", err)
 
 		if errors.Is(err, domain.ErrUserNotFound) {
-			return nil, apperror.MakeNotFoundErr(err, "user with this id not found")
+			return nil, status.Errorf(codes.NotFound, "user with this id not found")
 		}
 		return nil, err
 	}
@@ -141,7 +140,7 @@ func (uh *UserHandler) GetById(ctx context.Context, req *proto.GetByIDRequest) (
 		uh.logger.Errorf("error in get user by id: %v", err)
 
 		if errors.Is(err, domain.ErrUserNotFound) {
-			return nil, apperror.MakeNotFoundErr(err, "user with this id not found")
+			return nil, status.Errorf(codes.NotFound, "user with this id not found")
 		}
 		return nil, err
 	}
@@ -162,11 +161,11 @@ func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequ
 
 		switch {
 		case errors.Is(err, domain.ErrIncorrectPassword):
-			return nil, apperror.MakeBadRequestErr(err, domain.ErrIncorrectPassword.Error())
+			return nil, status.Errorf(codes.Unauthenticated, domain.ErrIncorrectPassword.Error())
 		case errors.Is(err, domain.ErrUnique):
-			return nil, apperror.MakeBadRequestErr(err, "this username is busy")
+			return nil, status.Errorf(codes.InvalidArgument, "this username is busy")
 		case errors.Is(err, domain.ErrUserNotFound):
-			return nil, apperror.MakeNotFoundErr(err, "user with this id not found")
+			return nil, status.Errorf(codes.NotFound, "user with this id not found")
 		default:
 			return nil, err
 		}
@@ -184,7 +183,7 @@ func (uh *UserHandler) Refresh(ctx context.Context, req *proto.RefreshRequestRes
 	if err != nil {
 		uh.logger.Errorf("error in refreshing tokens: %v", err)
 
-		return nil, apperror.MakeUnoauthorizedErr(err)
+		return nil, status.Errorf(codes.Unauthenticated, "error in refreshing")
 	}
 
 	return &proto.RefreshRequestResponse{
