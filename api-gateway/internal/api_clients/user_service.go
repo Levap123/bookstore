@@ -82,9 +82,9 @@ func (uc *UserClient) SignIn(ctx context.Context, dto *dto.SignInDTO) (*entity.T
 	}, nil
 }
 
-func (uc *UserClient) Validate(ctx context.Context, dto *dto.ValidateDTO) (uint64, error) {
+func (uc *UserClient) Validate(ctx context.Context, accessToken string) (uint64, error) {
 	request := &proto.ValidateRequest{
-		Access: dto.AccessToken,
+		Access: accessToken,
 	}
 
 	response, err := uc.cl.ValidateUser(ctx, request)
@@ -163,4 +163,32 @@ func (uc *UserClient) GetByID(ctx context.Context, userID uint64) (*entity.User,
 		Email:    response.Email,
 		Username: response.Username,
 	}, nil
+}
+
+func (uc *UserClient) Update(ctx context.Context, dto *dto.UpdateUserDTO) (uint64, error) {
+	request := &proto.UpdateUserRequest{
+		Email:       dto.Email,
+		Username:    dto.Username,
+		NewPassword: dto.NewPassword,
+		OldPassword: dto.OldPassword,
+	}
+
+	response, err := uc.cl.UpdateUser(ctx, request)
+	if err != nil {
+		uc.log.Errorf("error from user service: %v", err)
+
+		status, ok := status.FromError(err)
+		if !ok {
+			return 0, err
+		}
+
+		statusCode := gRPCToHTTP(status.Code())
+		if statusCode == -1 {
+			return 0, err
+		}
+
+		return 0, apperror.NewError(status.Err(), status.Message(), statusCode)
+	}
+
+	return response.UserID, nil
 }

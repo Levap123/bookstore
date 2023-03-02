@@ -48,7 +48,7 @@ func (h *Handler) signIn(w http.ResponseWriter, r *http.Request) error {
 
 	bytes, err := io.ReadAll(r.Body)
 	if err != nil {
-		h.log.Errorf("error in readin request: %v", err)
+		h.log.Errorf("error in reading request: %v", err)
 		return apperror.NewError(err, "incorrect request body", http.StatusBadRequest)
 	}
 	defer r.Body.Close()

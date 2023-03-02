@@ -365,3 +365,65 @@
 [2023-03-02 16:28:22] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
 [2023-03-02 16:28:22] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
 [2023-03-02 16:29:07] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:02:00]  INFO server started
+[2023-03-02 17:02:59] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:03:01]  INFO server started
+[2023-03-02 17:03:03] DEBUG update user
+[2023-03-02 17:03:03] ERROR error from user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 17:03:11] DEBUG update user
+[2023-03-02 17:03:11] ERROR error from user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 17:03:40] DEBUG user signin handler
+[2023-03-02 17:03:40] ERROR error from user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 17:03:40] ERROR error in sending request to user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 17:03:44] DEBUG user signin handler
+[2023-03-02 17:03:54] DEBUG update user
+[2023-03-02 17:04:03] DEBUG update user
+[2023-03-02 17:04:03] ERROR error from user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 17:04:09] DEBUG update user
+[2023-03-02 17:04:25] DEBUG get user by ID
+[2023-03-02 17:07:23] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:07:24]  INFO server started
+[2023-03-02 17:07:27] DEBUG update user
+[2023-03-02 17:07:27] ERROR error from user service: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp :8000: connect: connection refused"
+[2023-03-02 17:07:36] DEBUG update user
+[2023-03-02 17:07:38] DEBUG update user
+[2023-03-02 17:07:39] DEBUG update user
+[2023-03-02 17:08:08] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:08:09]  INFO server started
+[2023-03-02 17:08:30] DEBUG update user
+[2023-03-02 17:08:31] DEBUG update user
+[2023-03-02 17:08:35] DEBUG update user
+[2023-03-02 17:08:36] DEBUG update user
+[2023-03-02 17:08:37] DEBUG update user
+[2023-03-02 17:08:38] DEBUG update user
+[2023-03-02 17:08:44] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:08:44]  INFO server started
+[2023-03-02 17:08:46] DEBUG update user
+[2023-03-02 17:08:47] DEBUG update user
+[2023-03-02 17:09:17] DEBUG update user
+[2023-03-02 17:09:33] DEBUG update user
+[2023-03-02 17:09:33] ERROR error from user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 17:09:34] DEBUG update user
+[2023-03-02 17:09:34] ERROR error from user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 17:09:35] DEBUG update user
+[2023-03-02 17:09:35] ERROR error from user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 17:09:36] DEBUG update user
+[2023-03-02 17:09:36] ERROR error from user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 17:09:37] DEBUG update user
+[2023-03-02 17:09:37] ERROR error from user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 17:09:44] DEBUG update user
+[2023-03-02 17:09:44] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 17:09:45] DEBUG update user
+[2023-03-02 17:09:45] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 17:09:56] DEBUG update user
+[2023-03-02 17:09:57] DEBUG update user
+[2023-03-02 17:09:57] ERROR error from user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 17:10:08] DEBUG user signin handler
+[2023-03-02 17:10:09] DEBUG user signin handler
+[2023-03-02 17:10:12] DEBUG user signin handler
+[2023-03-02 17:10:12] ERROR error from user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 17:10:12] ERROR error in sending request to user service: rpc error: code = Unauthenticated desc = user password incorrect
+[2023-03-02 17:10:17] DEBUG user signin handler
+[2023-03-02 17:10:34] DEBUG get user by ID
+[2023-03-02 17:10:36] DEBUG get user by ID
+[2023-03-02 17:10:41] FATAL fatal in running server: http: Server closed
