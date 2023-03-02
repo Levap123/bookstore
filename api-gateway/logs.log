@@ -61,3 +61,61 @@
 [2023-03-01 22:35:22] DEBUG user signup handler
 [2023-03-01 22:35:22] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
 [2023-03-01 22:38:12] FATAL fatal in running server: http: Server closed
+[2023-03-02 12:42:43]  INFO server started
+[2023-03-02 12:43:13] DEBUG user signup handler
+[2023-03-02 12:43:13] ERROR error in unmarshaling: unexpected end of JSON input
+[2023-03-02 12:43:36] DEBUG user signup handler
+[2023-03-02 12:43:36] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:21] FATAL fatal in running server: http: Server closed
+[2023-03-02 12:45:22]  INFO server started
+[2023-03-02 12:45:30] DEBUG user signup handler
+[2023-03-02 12:45:30] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:36] DEBUG user signup handler
+[2023-03-02 12:45:36] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:37] DEBUG user signup handler
+[2023-03-02 12:45:37] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:38] DEBUG user signup handler
+[2023-03-02 12:45:38] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:38] DEBUG user signup handler
+[2023-03-02 12:45:38] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:42] FATAL fatal in running server: http: Server closed
+[2023-03-02 12:45:43]  INFO server started
+[2023-03-02 12:45:45] DEBUG user signup handler
+[2023-03-02 12:45:45] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:48] DEBUG user signup handler
+[2023-03-02 12:45:48] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:49] DEBUG user signup handler
+[2023-03-02 12:45:49] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:49] DEBUG user signup handler
+[2023-03-02 12:45:49] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:45:50] DEBUG user signup handler
+[2023-03-02 12:45:50] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:48:12] FATAL fatal in running server: http: Server closed
+[2023-03-02 12:48:13]  INFO server started
+[2023-03-02 12:48:15] DEBUG user signup handler
+[2023-03-02 12:48:15] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:48:32] FATAL fatal in running server: http: Server closed
+[2023-03-02 12:48:33]  INFO server started
+[2023-03-02 12:48:35] DEBUG user signup handler
+[2023-03-02 12:48:35] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:49:22] FATAL fatal in running server: http: Server closed
+[2023-03-02 12:49:23]  INFO server started
+[2023-03-02 12:49:26] DEBUG user signup handler
+[2023-03-02 12:49:26] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:49:28] DEBUG user signup handler
+[2023-03-02 12:49:28] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:49:30] FATAL fatal in running server: http: Server closed
+[2023-03-02 12:49:31]  INFO server started
+[2023-03-02 12:49:33] DEBUG user signup handler
+[2023-03-02 12:49:33] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:49:35] DEBUG user signup handler
+[2023-03-02 12:49:35] ERROR error in sending request to user service: rpc error: code = Unknown desc = password length incorrect
+[2023-03-02 12:51:47] FATAL fatal in running server: http: Server closed
+[2023-03-02 12:51:47]  INFO server started
+[2023-03-02 12:51:53] DEBUG user signup handler
+[2023-03-02 12:51:53] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 12:51:53] DEBUG user signup handler
+[2023-03-02 12:51:53] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 12:51:54] DEBUG user signup handler
+[2023-03-02 12:51:54] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:00:37] FATAL fatal in running server: http: Server closed
