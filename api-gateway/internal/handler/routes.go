@@ -12,6 +12,7 @@ func (h *Handler) InitRoutes() http.Handler {
 	r := httprouter.New()
 	r.Handler(http.MethodPost, "/auth/sign-up", middlwares.CheckErrorMiddlware(h.signUp))
 	r.Handler(http.MethodPost, "/auth/sign-in", middlwares.CheckErrorMiddlware(h.signIn))
+	r.Handler(http.MethodPost, "/auth/refresh", middlwares.CheckErrorMiddlware(h.refresh))
 
 	r.Handler(http.MethodGet, "/api/user", middlwares.CheckErrorMiddlware(h.getMe))
 	r.Handler(http.MethodPut, "/api/user", middlwares.CheckErrorMiddlware(h.updateUser))

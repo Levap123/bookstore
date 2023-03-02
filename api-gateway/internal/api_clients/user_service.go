@@ -192,3 +192,32 @@ func (uc *UserClient) Update(ctx context.Context, dto *dto.UpdateUserDTO) (uint6
 
 	return response.UserID, nil
 }
+
+func (uc *UserClient) Rerfresh(ctx context.Context, dtoReq *dto.RefreshDTO) (*dto.RefreshDTO, error) {
+	request := &proto.RefreshRequestResponse{
+		Access:  dtoReq.AccessToken,
+		Refresh: dtoReq.RefreshToken,
+	}
+
+	response, err := uc.cl.Refresh(ctx, request)
+	if err != nil {
+		uc.log.Errorf("error from user service: %v", err)
+
+		status, ok := status.FromError(err)
+		if !ok {
+			return nil, err
+		}
+
+		statusCode := gRPCToHTTP(status.Code())
+		if statusCode == -1 {
+			return nil, err
+		}
+
+		return nil, apperror.NewError(status.Err(), status.Message(), statusCode)
+	}
+
+	return &dto.RefreshDTO{
+		AccessToken:  response.Access,
+		RefreshToken: response.Refresh,
+	}, nil
+}

@@ -427,3 +427,24 @@
 [2023-03-02 17:10:34] DEBUG get user by ID
 [2023-03-02 17:10:36] DEBUG get user by ID
 [2023-03-02 17:10:41] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:29:38]  INFO server started
+[2023-03-02 17:30:06] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:30:07]  INFO server started
+[2023-03-02 17:33:58] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:33:59]  INFO server started
+[2023-03-02 17:34:03] DEBUG refresh
+[2023-03-02 17:34:03] ERROR error from user service: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp :8000: connect: connection refused"
+[2023-03-02 17:34:13] DEBUG refresh
+[2023-03-02 17:34:14] DEBUG refresh
+[2023-03-02 17:34:15] DEBUG refresh
+[2023-03-02 17:34:22] FATAL fatal in running server: http: Server closed
+[2023-03-02 17:34:23]  INFO server started
+[2023-03-02 17:34:24] DEBUG refresh
+[2023-03-02 17:34:25] DEBUG refresh
+[2023-03-02 17:34:26] DEBUG refresh
+[2023-03-02 17:34:27] DEBUG refresh
+[2023-03-02 17:34:28] DEBUG refresh
+[2023-03-02 17:34:28] DEBUG refresh
+[2023-03-02 17:34:29] DEBUG refresh
+[2023-03-02 17:34:29] DEBUG refresh
+[2023-03-02 17:35:07] FATAL fatal in running server: http: Server closed
