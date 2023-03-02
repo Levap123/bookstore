@@ -130,13 +130,13 @@ func TestUserService_GenerateTokens(t *testing.T) {
 
 var updateUserDTOs = []*user.UpdateUserDTO{
 	{
-		ID:          4,
+		Email:       "unique",
 		Username:    "unique",
 		OldPassword: "password",
 		NewPassword: "testest",
 	},
 	{
-		ID:          4,
+		Email:       "unique",
 		Username:    "unique",
 		OldPassword: "p12assword",
 		NewPassword: "testest",

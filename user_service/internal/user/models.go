@@ -25,7 +25,7 @@ type GetUserDTO struct {
 }
 
 type UpdateUserDTO struct {
-	ID          uint64
+	Email       string
 	Username    string
 	OldPassword string
 	NewPassword string
@@ -33,7 +33,7 @@ type UpdateUserDTO struct {
 
 func NewUpdateUserDTO(pb *proto.UpdateUserRequest) *UpdateUserDTO {
 	return &UpdateUserDTO{
-		ID:          pb.UserID,
+		Email:       pb.Email,
 		Username:    pb.Username,
 		OldPassword: pb.OldPassword,
 		NewPassword: pb.NewPassword,
@@ -65,7 +65,7 @@ func NewUserFromCreateDTO(dto *CreateUserDTO) *User {
 
 func NewUserFromUpdateDTO(dto *UpdateUserDTO) *User {
 	return &User{
-		ID:       dto.ID,
+		Email:    dto.Email,
 		Username: dto.Username,
 		Password: dto.NewPassword,
 	}

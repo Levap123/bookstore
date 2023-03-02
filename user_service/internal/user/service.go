@@ -85,7 +85,7 @@ func (us *UserService) GetByID(ctx context.Context, userID uint64) (*User, error
 }
 
 func (us *UserService) UpdateUser(ctx context.Context, dto *UpdateUserDTO) (int, error) {
-	user, err := us.repo.GetByID(ctx, dto.ID)
+	user, err := us.repo.GetByEmail(ctx, dto.Email)
 	if err != nil {
 		return 0, fmt.Errorf("user service - update user - get by id - %w", err)
 	}

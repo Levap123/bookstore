@@ -65,7 +65,7 @@ func (ur *UserRepo) GetByID(ctx context.Context, ID uint64) (*user.User, error) 
 
 func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error) {
 	for ind, userIn := range users {
-		if userIn.ID == user.ID {
+		if userIn.Email == user.Email {
 			user.Email = users[ind].Email
 			users[ind] = user
 			return ind + 1, nil

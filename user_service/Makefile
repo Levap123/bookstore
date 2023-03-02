@@ -23,5 +23,5 @@ up_testdb:
   	postgres:14.3
 
 down_testdb:
-	sudo docker stop test
-	sudo docker rm test
+	docker stop test
+	docker rm test

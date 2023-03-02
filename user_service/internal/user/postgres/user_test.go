@@ -5,7 +5,6 @@ import (
 	"errors"
 	"io"
 	"reflect"
-
 	"testing"
 
 	"github.com/Levap123/user_service/internal/domain"
@@ -268,9 +267,8 @@ func TestUpdateInfo(t *testing.T) {
 			args: args{
 				ctx: context.Background(),
 				user: &user.User{
-					ID:       3,
 					Username: "unique",
-					Email:    "unique@gmail.com",
+					Email:    "john@gmail.com",
 					Password: "new password",
 				},
 			},
@@ -284,11 +282,11 @@ func TestUpdateInfo(t *testing.T) {
 				user: &user.User{
 					ID:       1,
 					Username: "new username",
-					Email:    "new email",
+					Email:    "unique@gmail.com",
 					Password: "new password",
 				},
 			},
-			want:    1,
+			want:    2,
 			wantErr: false,
 		},
 	}

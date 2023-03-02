@@ -974,3 +974,119 @@
 [2023-03-02 13:47:01] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
 [2023-03-02 13:47:01] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
 [2023-03-02 13:47:12]  INFO server is stoped
+[2023-03-02 14:24:36]  INFO server is started
+[2023-03-02 14:24:44] DEBUG signin user
+[2023-03-02 14:24:45] DEBUG signin user
+[2023-03-02 14:24:45] DEBUG signin user
+[2023-03-02 14:24:50] DEBUG signin user
+[2023-03-02 14:24:50] ERROR error in signin: user password incorrect
+[2023-03-02 14:24:53] DEBUG signin user
+[2023-03-02 14:25:01]  INFO server is stoped
+[2023-03-02 14:25:02]  INFO server is started
+[2023-03-02 14:25:05] DEBUG signin user
+[2023-03-02 14:25:06] DEBUG signin user
+[2023-03-02 14:25:07] DEBUG signin user
+[2023-03-02 14:25:10]  INFO server is stoped
+[2023-03-02 14:25:11]  INFO server is started
+[2023-03-02 14:25:13] DEBUG signin user
+[2023-03-02 14:25:14] DEBUG signin user
+[2023-03-02 14:25:15] DEBUG signin user
+[2023-03-02 14:25:22] DEBUG signin user
+[2023-03-02 14:25:24] DEBUG signin user
+[2023-03-02 14:25:25] DEBUG signin user
+[2023-03-02 14:28:15] DEBUG signin user
+[2023-03-02 14:28:15] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 14:28:26] DEBUG signin user
+[2023-03-02 14:28:26] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 14:28:29] DEBUG signin user
+[2023-03-02 14:28:30] DEBUG signin user
+[2023-03-02 14:28:31] DEBUG signin user
+[2023-03-02 15:57:15] DEBUG signin user
+[2023-03-02 15:57:15] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 15:57:16] DEBUG signin user
+[2023-03-02 15:57:16] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 15:57:22] DEBUG signin user
+[2023-03-02 15:57:56] DEBUG get user info by access token
+[2023-03-02 15:57:57] DEBUG get user info by access token
+[2023-03-02 15:58:02] DEBUG get user info by access token
+[2023-03-02 15:58:02] ERROR error in parse user token: invalid character '\b' in string escape code
+[2023-03-02 15:58:04] DEBUG get user info by access token
+[2023-03-02 15:58:13] DEBUG get user info by access token
+[2023-03-02 15:58:13] ERROR error in parse user token: token type incorrect
+[2023-03-02 15:58:18] DEBUG get user info by access token
+[2023-03-02 15:58:18] ERROR error in parse user token: token type incorrect
+[2023-03-02 16:25:38] DEBUG get user info by access token
+[2023-03-02 16:25:38] ERROR error in parse user token: token type incorrect
+[2023-03-02 16:25:40] DEBUG get user info by access token
+[2023-03-02 16:25:40] ERROR error in parse user token: token type incorrect
+[2023-03-02 16:25:42] DEBUG get user info by access token
+[2023-03-02 16:25:48] DEBUG get user by id
+[2023-03-02 16:25:50] DEBUG get user by id
+[2023-03-02 16:25:50] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:25:52] DEBUG get user by id
+[2023-03-02 16:25:52] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:25:55] DEBUG get user by id
+[2023-03-02 16:25:56] DEBUG get user by id
+[2023-03-02 16:25:56] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:25:57] DEBUG get user by id
+[2023-03-02 16:25:57] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:25:59] DEBUG get user by id
+[2023-03-02 16:25:59] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:26:01] DEBUG get user by id
+[2023-03-02 16:26:01] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:26:02] DEBUG get user by id
+[2023-03-02 16:26:04] DEBUG get user by id
+[2023-03-02 16:26:04] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:26:06] DEBUG get user by id
+[2023-03-02 16:26:06] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:26:07] DEBUG get user by id
+[2023-03-02 16:26:07] ERROR error in get user by id: user repo - get by ID - select - user not found
+[2023-03-02 16:26:50] DEBUG get user by id
+[2023-03-02 16:26:56] DEBUG get user by id
+[2023-03-02 16:26:56] DEBUG get user by id
+[2023-03-02 16:27:28] DEBUG signup user
+[2023-03-02 16:27:28] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-03-02 16:27:28] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:34] DEBUG signup user
+[2023-03-02 16:27:34] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:34] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:36] DEBUG signup user
+[2023-03-02 16:27:36] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:36] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:37] DEBUG signup user
+[2023-03-02 16:27:37] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:37] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:41] DEBUG signup user
+[2023-03-02 16:27:42] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:42] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:43] DEBUG signup user
+[2023-03-02 16:27:43] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:43] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:43] DEBUG signup user
+[2023-03-02 16:27:43] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:43] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:44] DEBUG signup user
+[2023-03-02 16:27:44] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:44] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:50] DEBUG signup user
+[2023-03-02 16:27:53] DEBUG signup user
+[2023-03-02 16:27:53] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:53] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:54] DEBUG signup user
+[2023-03-02 16:27:54] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:54] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:55] DEBUG signup user
+[2023-03-02 16:27:55] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:55] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:55] DEBUG signup user
+[2023-03-02 16:27:55] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:55] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:27:56] DEBUG signup user
+[2023-03-02 16:27:56] ERROR ERROR: duplicate key value violates unique constraint "users_username_key" (SQLSTATE 23505)
+[2023-03-02 16:27:56] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:28:21] DEBUG signup user
+[2023-03-02 16:28:22] DEBUG signup user
+[2023-03-02 16:28:22] ERROR ERROR: duplicate key value violates unique constraint "users_email_key" (SQLSTATE 23505)
+[2023-03-02 16:28:22] ERROR error in creating user: user service - repo create - user repo create - insert - user with this username or email already exists
+[2023-03-02 16:28:43] DEBUG get user by id
+[2023-03-02 16:40:31]  INFO server is stoped

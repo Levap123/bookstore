@@ -116,10 +116,10 @@ func (ur *UserRepo) UpdateInfo(ctx context.Context, user *user.User) (int, error
 
 	defer func() { err = tx.Rollback() }()
 
-	query := fmt.Sprintf("UPDATE %s SET username = $1, password = $2 WHERE id = $3 RETURNING id", userTable)
+	query := fmt.Sprintf("UPDATE %s SET username = $1, password = $2 WHERE email = $3 RETURNING id", userTable)
 	var userID int
 
-	if err := tx.Get(&userID, query, user.Username, user.Password, user.ID); err != nil {
+	if err := tx.Get(&userID, query, user.Username, user.Password, user.Email); err != nil {
 		if strings.Contains(err.Error(), "duplicate key value violates unique constraint") {
 			return 0, fmt.Errorf("user repo - update user - select - %w", domain.ErrUnique)
 		}
