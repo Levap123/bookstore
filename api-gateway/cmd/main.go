@@ -1,14 +1,15 @@
 package main
 
 import (
-	apiclients "github.com/Levap123/api_gateway/internal/api_clients"
-	"github.com/Levap123/api_gateway/internal/configs"
-	"github.com/Levap123/api_gateway/internal/handler"
-	"github.com/Levap123/api_gateway/pkg/server"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
+
+	apiclients "github.com/Levap123/api_gateway/internal/api_clients"
+	"github.com/Levap123/api_gateway/internal/configs"
+	"github.com/Levap123/api_gateway/internal/handler"
+	"github.com/Levap123/api_gateway/pkg/server"
 
 	"github.com/Levap123/utils/lg"
 	"github.com/sirupsen/logrus"
@@ -40,7 +41,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	userServiceClient := apiclients.InitUserClient(conn)
+	userServiceClient := apiclients.InitUserClient(conn, log)
 
 	handler := handler.NewHandler(log, userServiceClient)
 

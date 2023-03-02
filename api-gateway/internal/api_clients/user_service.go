@@ -1,21 +1,27 @@
 package apiclients
 
 import (
-	"github.com/Levap123/api_gateway/internal/dto"
-	"github.com/Levap123/api_gateway/proto"
 	"context"
 
+	"github.com/Levap123/api_gateway/internal/dto"
+	"github.com/Levap123/api_gateway/proto"
+	"github.com/Levap123/utils/apperror"
+	"github.com/sirupsen/logrus"
+
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/status"
 )
 
 type UserClient struct {
-	cl proto.UserClient
+	cl  proto.UserClient
+	log *logrus.Logger
 }
 
-func InitUserClient(conn *grpc.ClientConn) *UserClient {
+func InitUserClient(conn *grpc.ClientConn, log *logrus.Logger) *UserClient {
 	cl := proto.NewUserClient(conn)
 	return &UserClient{
-		cl: cl,
+		cl:  cl,
+		log: log,
 	}
 }
 
@@ -28,7 +34,16 @@ func (uc *UserClient) SignUp(ctx context.Context, dto *dto.SignUpDTO) (uint64, e
 
 	response, err := uc.cl.SignUp(ctx, request)
 	if err != nil {
-		return 0, err
+		uc.log.Errorf("error from user service: %v", err)
+		status, ok := status.FromError(err)
+		if !ok {
+			return 0, err
+		}
+		statusCode := gRPCToHTTP(status.Code())
+		if statusCode == -1 {
+			return 0, err
+		}
+		return 0, apperror.NewError(status.Err(), status.Message(), statusCode)
 	}
 
 	return response.UserID, nil

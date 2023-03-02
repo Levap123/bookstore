@@ -3,7 +3,7 @@ module github.com/Levap123/api_gateway
 go 1.20
 
 require (
-	github.com/Levap123/utils v0.0.0-20230228052123-e0fbb9596fef
+	github.com/Levap123/utils v0.0.0-20230302065835-070b32a44e5e
 	github.com/ilyakaznacheev/cleanenv v1.4.2
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/sirupsen/logrus v1.9.0

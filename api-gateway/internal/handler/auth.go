@@ -1,13 +1,14 @@
 package handler
 
 import (
-	"github.com/Levap123/api_gateway/internal/dto"
-	jsend "github.com/Levap123/api_gateway/pkg/json"
 	"context"
 	"encoding/json"
 	"io"
 	"net/http"
 	"time"
+
+	"github.com/Levap123/api_gateway/internal/dto"
+	jsend "github.com/Levap123/api_gateway/pkg/json"
 )
 
 func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) error {
@@ -36,8 +37,6 @@ func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	responseBytes := jsend.Marshal(map[string]uint64{"user_id": userID})
-	w.WriteHeader(200)
-	w.Header().Set("Content-Type", "application/json")
-	w.Write(responseBytes)
+	jsend.SendJSON(w, responseBytes, http.StatusOK)
 	return nil
 }

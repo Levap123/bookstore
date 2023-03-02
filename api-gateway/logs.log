@@ -119,3 +119,47 @@
 [2023-03-02 12:51:54] DEBUG user signup handler
 [2023-03-02 12:51:54] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
 [2023-03-02 13:00:37] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:01:46]  INFO server started
+[2023-03-02 13:01:46] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:12:27]  INFO server started
+[2023-03-02 13:12:29] DEBUG user signup handler
+[2023-03-02 13:12:29] ERROR error from user service: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp :8000: connect: connection refused"
+[2023-03-02 13:12:29] ERROR error in sending request to user service: rpc error: code = Unavailable desc = connection error: desc = "transport: Error while dialing: dial tcp :8000: connect: connection refused"
+[2023-03-02 13:12:44] DEBUG user signup handler
+[2023-03-02 13:12:44] ERROR error from user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:12:44] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:12:45] DEBUG user signup handler
+[2023-03-02 13:12:45] ERROR error from user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:12:45] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:13:16] DEBUG user signup handler
+[2023-03-02 13:13:16] ERROR error from user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:13:16] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:13:16] DEBUG user signup handler
+[2023-03-02 13:13:16] ERROR error from user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:13:16] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:43] DEBUG user signup handler
+[2023-03-02 13:15:43] ERROR error from user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:43] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:43] DEBUG user signup handler
+[2023-03-02 13:15:43] ERROR error from user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:43] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:45] DEBUG user signup handler
+[2023-03-02 13:15:45] ERROR error from user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:45] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:46] DEBUG user signup handler
+[2023-03-02 13:15:46] ERROR error from user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:46] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = 123
+[2023-03-02 13:15:48] DEBUG user signup handler
+[2023-03-02 13:15:48] ERROR error from user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-02 13:15:48] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-02 13:16:34] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:17:08]  INFO server started
+[2023-03-02 13:17:09] DEBUG user signup handler
+[2023-03-02 13:17:09] ERROR error from user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-02 13:17:09] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-02 13:18:14] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:18:15]  INFO server started
+[2023-03-02 13:18:16] DEBUG user signup handler
+[2023-03-02 13:18:16] ERROR error from user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-02 13:18:16] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-02 13:18:25] FATAL fatal in running server: http: Server closed
