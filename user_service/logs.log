@@ -1141,3 +1141,16 @@
 [2023-03-02 17:10:34] DEBUG get user by id
 [2023-03-02 17:10:36] DEBUG get user by id
 [2023-03-02 17:10:47]  INFO server is stoped
+[2023-03-02 17:34:11]  INFO server is started
+[2023-03-02 17:34:13] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:14] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:15] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:24] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:25] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:26] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:27] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:28] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:28] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:29] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:29] DEBUG refresh access and refresh tokens
+[2023-03-02 17:34:54]  INFO server is stoped

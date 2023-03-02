@@ -161,7 +161,6 @@ func (uh *UserHandler) UpdateUser(ctx context.Context, req *proto.UpdateUserRequ
 	}
 
 	if !uh.validator.IsPasswordLenghtCorrect(dto.NewPassword) {
-		fmt.Println(123)
 		return nil, status.Errorf(codes.InvalidArgument, "password length should be from %d to %d",
 			uh.validator.PasswordMin, uh.validator.PasswordMax)
 	}
