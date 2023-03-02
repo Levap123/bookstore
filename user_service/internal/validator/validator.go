@@ -1,6 +1,7 @@
 package validator
 
 import (
+	"net/mail"
 	"regexp"
 
 	"github.com/Levap123/user_service/internal/configs"
@@ -34,5 +35,6 @@ func (v *Validator) IsPasswordLenghtCorrect(password string) bool {
 }
 
 func (v *Validator) IsEmailCorrect(email string) bool {
-	return v.emailReg.MatchString(email)
+	_, err := mail.ParseAddress(email)
+	return err == nil
 }

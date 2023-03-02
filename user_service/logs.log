@@ -809,3 +809,100 @@
 [2023-03-01 22:35:21] DEBUG signup user
 [2023-03-01 22:35:22] DEBUG signup user
 [2023-03-01 22:36:19]  INFO server is stoped
+[2023-03-02 12:37:14] FATAL ping db error: dial tcp 127.0.0.1:5432: connect: connection refused
+[2023-03-02 12:38:25]  INFO server is started
+[2023-03-02 12:38:42] DEBUG signin user
+[2023-03-02 12:38:45] DEBUG signin user
+[2023-03-02 12:38:45] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:38:56] DEBUG signin user
+[2023-03-02 12:38:56] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:38:56] DEBUG signin user
+[2023-03-02 12:38:56] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:38:57] DEBUG signin user
+[2023-03-02 12:38:57] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:38:58] DEBUG signin user
+[2023-03-02 12:38:58] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:38:58] DEBUG signin user
+[2023-03-02 12:38:58] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:38:58] DEBUG signin user
+[2023-03-02 12:38:58] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:38:59] DEBUG signin user
+[2023-03-02 12:38:59] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:01] DEBUG signin user
+[2023-03-02 12:39:01] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:02] DEBUG signin user
+[2023-03-02 12:39:02] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:02] DEBUG signin user
+[2023-03-02 12:39:02] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:03] DEBUG signin user
+[2023-03-02 12:39:03] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:03] DEBUG signin user
+[2023-03-02 12:39:03] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:05] DEBUG signin user
+[2023-03-02 12:39:05] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:10] DEBUG signin user
+[2023-03-02 12:39:10] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:11] DEBUG signin user
+[2023-03-02 12:39:11] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:11] DEBUG signin user
+[2023-03-02 12:39:11] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:39:11] DEBUG signin user
+[2023-03-02 12:39:11] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:40:50]  INFO server is stoped
+[2023-03-02 12:40:51]  INFO server is started
+[2023-03-02 12:40:55] DEBUG signin user
+[2023-03-02 12:40:55] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:40:56] DEBUG signin user
+[2023-03-02 12:40:56] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:40:57] DEBUG signin user
+[2023-03-02 12:40:57] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:41:23]  INFO server is stoped
+[2023-03-02 12:41:24]  INFO server is started
+[2023-03-02 12:41:25] DEBUG signin user
+[2023-03-02 12:41:25] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:41:26] DEBUG signin user
+[2023-03-02 12:41:26] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:41:26] DEBUG signin user
+[2023-03-02 12:41:26] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:41:27] DEBUG signin user
+[2023-03-02 12:41:27] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:41:28] DEBUG signin user
+[2023-03-02 12:41:28] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:41:35] DEBUG signin user
+[2023-03-02 12:41:35] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:41:36] DEBUG signin user
+[2023-03-02 12:41:36] ERROR error in signin: user service - user repo get - select - user not found
+[2023-03-02 12:41:52] DEBUG signup user
+[2023-03-02 12:41:53] DEBUG signup user
+[2023-03-02 12:41:54] DEBUG signup user
+[2023-03-02 12:41:54] DEBUG signup user
+[2023-03-02 12:41:54] DEBUG signup user
+[2023-03-02 12:41:55] DEBUG signup user
+[2023-03-02 12:41:55] DEBUG signup user
+[2023-03-02 12:41:55] DEBUG signup user
+[2023-03-02 12:41:55] DEBUG signup user
+[2023-03-02 12:43:36] DEBUG signup user
+[2023-03-02 12:45:30] DEBUG signup user
+[2023-03-02 12:45:36] DEBUG signup user
+[2023-03-02 12:45:37] DEBUG signup user
+[2023-03-02 12:45:38] DEBUG signup user
+[2023-03-02 12:45:38] DEBUG signup user
+[2023-03-02 12:45:45] DEBUG signup user
+[2023-03-02 12:45:48] DEBUG signup user
+[2023-03-02 12:45:49] DEBUG signup user
+[2023-03-02 12:45:49] DEBUG signup user
+[2023-03-02 12:45:50] DEBUG signup user
+[2023-03-02 12:48:15] DEBUG signup user
+[2023-03-02 12:48:35] DEBUG signup user
+[2023-03-02 12:49:26] DEBUG signup user
+[2023-03-02 12:49:28] DEBUG signup user
+[2023-03-02 12:49:33] DEBUG signup user
+[2023-03-02 12:49:35] DEBUG signup user
+[2023-03-02 12:51:49]  INFO server is stoped
+[2023-03-02 12:51:50]  INFO server is started
+[2023-03-02 12:51:53] DEBUG signup user
+[2023-03-02 12:51:53] DEBUG signup user
+[2023-03-02 12:51:54] DEBUG signup user
+[2023-03-02 13:01:39]  INFO server is stoped
+[2023-03-02 13:01:42]  INFO server is started
+[2023-03-02 13:09:25]  INFO server is stoped

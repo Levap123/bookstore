@@ -8,6 +8,8 @@ import (
 	"github.com/Levap123/user_service/internal/domain"
 	"github.com/Levap123/user_service/internal/validator"
 	"github.com/Levap123/user_service/proto"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 
 	"github.com/Levap123/utils/apperror"
 	"github.com/sirupsen/logrus"
@@ -43,14 +45,14 @@ func (uh *UserHandler) SignUp(ctx context.Context, req *proto.SignUpRequest) (*p
 	dto := NewCreateUserDTO(req)
 
 	if !uh.validator.IsPasswordLenghtCorrect(dto.Password) {
-		return nil, domain.ErrPasswordLengthIncorrect
+		return nil, status.Error(codes.InvalidArgument, "123")
 	}
 
 	if !uh.validator.IsUsernameLengthCorrect(dto.Username) {
 		return nil, apperror.MakeBadRequestErr(domain.ErrUsernameLengthIncorrect, fmt.Sprintf("username length should be from %d to %d",
 			uh.validator.UsernameMin, uh.validator.UsernameMax))
 	}
-
+	fmt.Println(dto.Email)
 	if !uh.validator.IsEmailCorrect(dto.Email) {
 		return nil, apperror.MakeBadRequestErr(domain.ErrIncorrectEmail, domain.ErrIncorrectEmail.Error())
 	}
