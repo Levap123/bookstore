@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/Levap123/api_gateway/internal/dto"
+	"github.com/Levap123/api_gateway/internal/entity"
 	"github.com/Levap123/api_gateway/proto"
 	"github.com/Levap123/utils/apperror"
 	"github.com/sirupsen/logrus"
@@ -47,4 +48,29 @@ func (uc *UserClient) SignUp(ctx context.Context, dto *dto.SignUpDTO) (uint64, e
 	}
 
 	return response.UserID, nil
+}
+
+func (uc *UserClient) SignIn(ctx context.Context, dto *dto.SignInDTO) (*entity.Tokens, error) {
+	request := &proto.SignInRequest{
+		Email:    dto.Email,
+		Password: dto.Password,
+	}
+
+	response, err := uc.cl.SignIn(ctx, request)
+	if err != nil {
+		uc.log.Errorf("error from user service: %v", err)
+		status, ok := status.FromError(err)
+		if !ok {
+			return nil, err
+		}
+		statusCode := gRPCToHTTP(status.Code())
+		if statusCode == -1 {
+			return nil, err
+		}
+		return nil, apperror.NewError(status.Err(), status.Message(), statusCode)
+	}
+	return &entity.Tokens{
+		Access:  response.Access,
+		Refresh: response.Refresh,
+	}, nil
 }

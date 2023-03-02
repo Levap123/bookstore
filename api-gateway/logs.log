@@ -163,3 +163,93 @@
 [2023-03-02 13:18:16] ERROR error from user service: rpc error: code = Unknown desc = username length incorrect
 [2023-03-02 13:18:16] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
 [2023-03-02 13:18:25] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:22:22]  INFO server started
+[2023-03-02 13:22:28] DEBUG user signup handler
+[2023-03-02 13:22:28] ERROR error from user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-02 13:22:28] ERROR error in sending request to user service: rpc error: code = Unknown desc = username length incorrect
+[2023-03-02 13:22:31] DEBUG user signup handler
+[2023-03-02 13:22:31] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 13:22:31] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 13:25:22] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:25:41]  INFO server started
+[2023-03-02 13:25:43] DEBUG user signup handler
+[2023-03-02 13:25:43] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 13:25:43] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 13:26:00] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:29:13]  INFO server started
+[2023-03-02 13:29:21] DEBUG user signup handler
+[2023-03-02 13:29:21] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 13:29:21] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 13:29:26] DEBUG user signup handler
+[2023-03-02 13:29:26] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 13:29:26] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20
+[2023-03-02 13:29:28] DEBUG user signup handler
+[2023-03-02 13:29:28] ERROR error from user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 13:29:28] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 13:29:30] DEBUG user signup handler
+[2023-03-02 13:29:30] ERROR error from user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 13:29:30] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = username length should be from 8 to 20
+[2023-03-02 13:29:36] DEBUG user signup handler
+[2023-03-02 13:29:36] ERROR error in unmarshaling: invalid character '\n' in string literal
+[2023-03-02 13:29:38] DEBUG user signup handler
+[2023-03-02 13:29:38] ERROR error from user service: rpc error: code = InvalidArgument desc = incorrect email format
+[2023-03-02 13:29:38] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = incorrect email format
+[2023-03-02 13:29:52] DEBUG user signup handler
+[2023-03-02 13:30:49] DEBUG user signup handler
+[2023-03-02 13:30:49] ERROR error from user service: rpc error: code = Unknown desc = user handler - signup - user service - repo create - user repo create - start tx - conn is dead
+[2023-03-02 13:30:49] ERROR error in sending request to user service: rpc error: code = Unknown desc = user handler - signup - user service - repo create - user repo create - start tx - conn is dead
+[2023-03-02 13:31:00] DEBUG user signup handler
+[2023-03-02 13:31:00] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 13:31:00] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 13:35:59] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:36:00]  INFO server started
+[2023-03-02 13:36:10] DEBUG user signup handler
+[2023-03-02 13:36:10] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=131, int=123, int=123)
+[2023-03-02 13:36:10] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=131, int=123, int=123)
+[2023-03-02 13:38:21] DEBUG user signup handler
+[2023-03-02 13:38:21] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:38:21] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:38:23] DEBUG user signup handler
+[2023-03-02 13:38:23] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:38:23] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:38:25] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:38:26]  INFO server started
+[2023-03-02 13:38:27] DEBUG user signup handler
+[2023-03-02 13:38:27] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:38:27] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:01] DEBUG user signup handler
+[2023-03-02 13:39:01] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:01] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:03] DEBUG user signup handler
+[2023-03-02 13:39:03] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:03] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:04] DEBUG user signup handler
+[2023-03-02 13:39:04] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:04] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:09] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:39:10]  INFO server started
+[2023-03-02 13:39:11] DEBUG user signup handler
+[2023-03-02 13:39:11] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:11] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:23] DEBUG user signup handler
+[2023-03-02 13:39:23] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:23] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:24] DEBUG user signup handler
+[2023-03-02 13:39:24] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:24] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:39] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:39:39]  INFO server started
+[2023-03-02 13:39:41] DEBUG user signup handler
+[2023-03-02 13:39:41] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:39:41] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:40:30] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:40:31]  INFO server started
+[2023-03-02 13:40:33] DEBUG user signup handler
+[2023-03-02 13:40:33] ERROR error from user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:40:33] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = password length should be from 8 to 20%!(EXTRA int=123, int=123, int=123, int=123)
+[2023-03-02 13:46:52] FATAL fatal in running server: http: Server closed
+[2023-03-02 13:46:53]  INFO server started
+[2023-03-02 13:47:01] DEBUG user signup handler
+[2023-03-02 13:47:01] ERROR error from user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 13:47:01] ERROR error in sending request to user service: rpc error: code = InvalidArgument desc = user with this username or email already exists
+[2023-03-02 14:12:24] FATAL fatal in running server: http: Server closed
