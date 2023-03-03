@@ -4,7 +4,7 @@
             "path": ".."
         },
         {
-            "path": "../../api-gateway"
+            "path": "../../api_gateway"
         }
     ]
 }
