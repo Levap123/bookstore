@@ -1,0 +1,6 @@
+server:
+  addr: :8080
+
+user_service:
+  addr: :8000
+
