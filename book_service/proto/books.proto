@@ -1,7 +1,30 @@
-package book
+syntax = "proto3";
 
-import "time"
+package proto;
 
+option go_package = "./;proto";
+
+service Book {
+    rpc Create (CreateBookRequest) returns (CreateBookResponse);
+}
+
+message CreateBookRequest {
+    string title = 1;
+    string description = 2;
+    string image = 3;
+    uint64 pages = 4;
+    string author = 5;
+    string genre = 6;
+    string publisher = 7;
+    bool binding = 8;
+    string series = 9;
+    string langugae = 10;
+}
+
+message CreateBookResponse {
+    string bookID = 1;
+}
+/*
 type Book struct {
 	ID          string    `bson:"_id,omitempty"`
 	Title       string    `bson:"title,omitempty"`
@@ -16,3 +39,4 @@ type Book struct {
 	Language    string    `bson:"language,omitempty"`
 	CreatedAt   time.Time `bson:"created_at,omitempty"`
 }
+*/
