@@ -4,8 +4,29 @@ package proto;
 
 option go_package = "./;proto";
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
 service Book {
-    rpc Create (CreateBookRequest) returns (CreateBookResponse);
+    rpc Create(CreateBookRequest) returns (CreateBookResponse);
+    rpc Delete(DeleteBookRequestResponse) returns (DeleteBookRequestResponse);
+    rpc GetAll(google.protobuf.Empty) returns (stream BookInfo);
+    rpc Get(GetBookRequset) returns (BookInfo);
+}
+
+message BookInfo {
+    string ID = 1;
+    string title = 2;
+    string description = 3;
+    string image = 4;
+    uint64 pages = 5;
+    string author = 6;
+    string genre = 7;
+    string publisher = 8;
+    bool binding = 9;
+    string series = 10;
+    string langugae = 11;
+    google.protobuf.Timestamp added_at = 12;
 }
 
 message CreateBookRequest {
@@ -24,19 +45,28 @@ message CreateBookRequest {
 message CreateBookResponse {
     string bookID = 1;
 }
+
+message DeleteBookRequestResponse {
+    string BookID = 1;
+}
+
+message GetBookRequset {
+    string BookID = 1;
+}
+
 /*
 type Book struct {
-	ID          string    `bson:"_id,omitempty"`
-	Title       string    `bson:"title,omitempty"`
-	Description string    `bson:"description,omitempty"`
-	Image       string    `bson:"image,omitempty"`
-	Pages       int       `bson:"pages,omitempty"`
-	Author      string    `bson:"author,omitempty"`
-	Genre       string    `bson:"genre,omitempty"`
-	Publisher   string    `bson:"publisher,omitempty"`
-	Binding     bool      `bson:"binding,omitempty"`
-	Series      string    `bson:"series,omitempty"`
-	Language    string    `bson:"language,omitempty"`
-	CreatedAt   time.Time `bson:"created_at,omitempty"`
+	1 ID          string    `bson:"_id,omitempty"`
+	2 Title       string    `bson:"title,omitempty"`
+	3 Description string    `bson:"description,omitempty"`
+	4 Image       string    `bson:"image,omitempty"`
+	5 Pages       int       `bson:"pages,omitempty"`
+	6 Author      string    `bson:"author,omitempty"`
+	7 Genre       string    `bson:"genre,omitempty"`
+	8 Publisher   string    `bson:"publisher,omitempty"`
+	9 Binding     bool      `bson:"binding,omitempty"`
+	10 Series      string    `bson:"series,omitempty"`
+	11 Language    string    `bson:"language,omitempty"`
+	12 CreatedAt   time.Time `bson:"created_at,omitempty"`
 }
 */
