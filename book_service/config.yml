@@ -1,6 +1,8 @@
 server:
-  addr: :8080
+  addr: :8181
 
-user_service:
-  addr: :8000
+mongo:
+  addr: localhost:27017
+  password: root
+  username: root
 
