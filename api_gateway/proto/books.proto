@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "./;proto";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service Book {
+    rpc Create(CreateBookRequest) returns (CreateBookResponse);
+    rpc Delete(DeleteBookRequestResponse) returns (DeleteBookRequestResponse);
+    rpc GetAll(google.protobuf.Empty) returns (BookInfoArray);
+    rpc GetByID(GetBookRequset) returns (BookInfo);
+    rpc GetByAuthor(GetByAuthorRequest) returns (BookInfoArray);
+    rpc GetByPublisher(GetByPublisherRequest) returns (BookInfoArray);
+    rpc GetByGenre(GetByGenreRequest) returns (BookInfoArray);
+    rpc GetByLanguage(GetByLanguageRequest) returns (BookInfoArray);
+}
+
+message BookInfo {
+    string ID = 1;
+    string title = 2;
+    string description = 3;
+    string image = 4;
+    uint64 pages = 5;
+    string author = 6;
+    string genre = 7;
+    string publisher = 8;
+    bool binding = 9;
+    string series = 10;
+    string language = 11;
+    google.protobuf.Timestamp added_at = 12;
+}
+
+message BookInfoArray {
+    repeated BookInfo arr = 1;
+}
+message CreateBookRequest {
+    string title = 1;
+    string description = 2;
+    string image = 3;
+    uint64 pages = 4;
+    string author = 5;
+    string genre = 6;
+    string publisher = 7;
+    bool binding = 8;
+    string series = 9;
+    string language = 10;
+}
+
+message CreateBookResponse {
+    string bookID = 1;
+}
+
+message DeleteBookRequestResponse {
+    string bookID = 1;
+}
+
+message GetBookRequset {
+    string bookID = 1;
+}
+
+message GetByAuthorRequest {
+    string author = 1;
+}
+
+message GetByPublisherRequest {
+    string publisher = 1;
+}
+
+message GetByGenreRequest {
+    string genre = 1;
+}
+
+message GetByLanguageRequest {
+    string language = 1;
+}

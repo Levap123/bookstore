@@ -66,5 +66,6 @@ func main() {
 	if err := server.Stop(ctx1); err != nil {
 		log.Fatalf("fatal in stopping server: %v", err)
 	}
+
 	log.Info("server stopped")
 }
