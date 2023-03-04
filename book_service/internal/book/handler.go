@@ -22,6 +22,10 @@ type IBookService interface {
 	Create(ctx context.Context, book *Book) (string, error)
 	GetByID(ctx context.Context, bookID string) (*Book, error)
 	GetAll(ctx context.Context) ([]*Book, error)
+	GetByAuthor(ctx context.Context, author string) ([]*Book, error)
+	GetByPublisher(ctx context.Context, author string) ([]*Book, error)
+	GetByLanguage(ctx context.Context, author string) ([]*Book, error)
+	GetByGenre(ctx context.Context, author string) ([]*Book, error)
 }
 
 func NewBookHandler(service IBookService, log *logrus.Logger) *BookHandler {
@@ -75,14 +79,93 @@ func (h *BookHandler) GetAll(ctx context.Context, req *emptypb.Empty) (*proto.Bo
 	}, nil
 }
 
+func (h *BookHandler) GetByAuthor(ctx context.Context, req *proto.GetByAuthorRequest) (*proto.BookInfoArray, error) {
+	books, err := h.service.GetByAuthor(ctx, req.Author)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(books) == 0 {
+		return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+	}
+
+	requestArray := make([]*proto.BookInfo, 0, len(books))
+
+	for _, book := range books {
+		requestArray = append(requestArray, NewBookResponseFromBook(book))
+	}
+
+	return &proto.BookInfoArray{
+		Arr: requestArray,
+	}, nil
+}
+
+func (h *BookHandler) GetByPublisher(ctx context.Context, req *proto.GetByPublisherRequest) (*proto.BookInfoArray, error) {
+	books, err := h.service.GetByPublisher(ctx, req.Publisher)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(books) == 0 {
+		return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+	}
+
+	requestArray := make([]*proto.BookInfo, 0, len(books))
+
+	for _, book := range books {
+		requestArray = append(requestArray, NewBookResponseFromBook(book))
+	}
+
+	return &proto.BookInfoArray{
+		Arr: requestArray,
+	}, nil
+}
+
+func (h *BookHandler) GetByGenre(ctx context.Context, req *proto.GetByGenreRequest) (*proto.BookInfoArray, error) {
+	books, err := h.service.GetByGenre(ctx, req.Genre)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(books) == 0 {
+		return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+	}
+
+	requestArray := make([]*proto.BookInfo, 0, len(books))
+
+	for _, book := range books {
+		requestArray = append(requestArray, NewBookResponseFromBook(book))
+	}
+
+	return &proto.BookInfoArray{
+		Arr: requestArray,
+	}, nil
+}
+
+func (h *BookHandler) GetByLanguage(ctx context.Context, req *proto.GetByLanguageRequest) (*proto.BookInfoArray, error) {
+	books, err := h.service.GetByLanguage(ctx, req.Language)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(books) == 0 {
+		return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+	}
+
+	requestArray := make([]*proto.BookInfo, 0, len(books))
+
+	for _, book := range books {
+		requestArray = append(requestArray, NewBookResponseFromBook(book))
+	}
+
+	return &proto.BookInfoArray{
+		Arr: requestArray,
+	}, nil
+}
+
 /* TODO: implement
 type BookServer interface {
 	Delete(context.Context, *DeleteBookRequestResponse) (*DeleteBookRequestResponse, error)
-	GetAll(context.Context, *emptypb.Empty) (*BookInfoArray, error)
-	GetByAuthor(context.Context, *GetByAuthorRequest) (*BookInfoArray, error)
-	GetByPublisher(context.Context, *GetByPublisherRequest) (*BookInfoArray, error)
-	GetByGenre(context.Context, *GetByGenreRequest) (*BookInfoArray, error)
-	GetByLanguage(context.Context, *GetByLanguageRequest) (*BookInfoArray, error)
 	mustEmbedUnimplementedBookServer()
 }
 */
