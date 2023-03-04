@@ -45,11 +45,6 @@ func main() {
 	}
 	defer DB.Close()
 
-	listener, err := net.Listen("tcp", cfg.Server.Addr)
-	if err != nil {
-		log.Fatalf("error in starting listener: %v", err)
-	}
-
 	repo := postgres.NewUserRepo(DB, lg)
 
 	jwt := jwt.NewJWT(cfg.JWTSign)
@@ -57,6 +52,11 @@ func main() {
 
 	validator := validator.NewValidator(cfg)
 	handler := user.NewUserHandler(service, lg, validator)
+
+	listener, err := net.Listen("tcp", cfg.Server.Addr)
+	if err != nil {
+		log.Fatalf("error in starting listener: %v", err)
+	}
 
 	srv := grpc.NewServer()
 	proto.RegisterUserServer(srv, handler)
@@ -70,6 +70,6 @@ func main() {
 		}
 	}()
 	<-quit
-	srv.Stop()
+	srv.GracefulStop()
 	lg.Info("server is stoped")
 }
