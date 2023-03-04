@@ -2,9 +2,11 @@ package mongo
 
 import (
 	"context"
+	"errors"
 	"fmt"
 
 	"github.com/Levap123/book_service/internal/book"
+	"github.com/Levap123/book_service/internal/domain"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -42,6 +44,9 @@ func (br *BookRepo) GetByID(ctx context.Context, bookID string) (*book.Book, err
 
 	var book book.Book
 	if err := br.coll.FindOne(ctx, filter).Decode(&book); err != nil {
+		if errors.Is(err, mongo.ErrNoDocuments) {
+			return nil, domain.ErrBookNotFound
+		}
 		return nil, fmt.Errorf("book repo - get one - %w", err)
 	}
 

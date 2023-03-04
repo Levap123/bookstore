@@ -3,7 +3,6 @@ module github.com/Levap123/book_service
 go 1.20
 
 require (
-	github.com/golang/protobuf v1.5.2
 	github.com/ilyakaznacheev/cleanenv v1.4.2
 	go.mongodb.org/mongo-driver v1.11.2
 	google.golang.org/grpc v1.53.0
@@ -12,6 +11,7 @@ require (
 
 require (
 	github.com/BurntSushi/toml v1.1.0 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect

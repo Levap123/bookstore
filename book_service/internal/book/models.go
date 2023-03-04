@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/Levap123/book_service/proto"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 type Book struct {
@@ -18,7 +19,7 @@ type Book struct {
 	Binding     bool      `bson:"binding,omitempty"`
 	Series      string    `bson:"series,omitempty"`
 	Language    string    `bson:"language,omitempty"`
-	CreatedAt   time.Time `bson:"created_at,omitempty"`
+	AddedAt     time.Time `bson:"created_at,omitempty"`
 }
 
 func NewBookFromCreateBookRequest(req *proto.CreateBookRequest) *Book {
@@ -33,6 +34,23 @@ func NewBookFromCreateBookRequest(req *proto.CreateBookRequest) *Book {
 		Binding:     req.Binding,
 		Series:      req.Series,
 		Language:    req.Language,
-		CreatedAt:   time.Now(),
+		AddedAt:     time.Now(),
+	}
+}
+
+func NewBookResponseFromBook(book *Book) *proto.BookInfo {
+	return &proto.BookInfo{
+		ID:          book.ID,
+		Title:       book.Title,
+		Description: book.Description,
+		Image:       book.Image,
+		Pages:       book.Pages,
+		Author:      book.Author,
+		Genre:       book.Genre,
+		Publisher:   book.Publisher,
+		Binding:     book.Binding,
+		Series:      book.Series,
+		Language:    book.Language,
+		AddedAt:     timestamppb.New(book.AddedAt),
 	}
 }
