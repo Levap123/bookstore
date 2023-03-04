@@ -43,6 +43,7 @@ func main() {
 	if err := DB.PingContext(ctx); err != nil {
 		lg.Fatalf("ping db error: %v", err)
 	}
+	defer DB.Close()
 
 	listener, err := net.Listen("tcp", cfg.Server.Addr)
 	if err != nil {
@@ -71,5 +72,4 @@ func main() {
 	<-quit
 	srv.Stop()
 	lg.Info("server is stoped")
-
 }

@@ -28,3 +28,7 @@ func (br *BookRepo) Create(ctx context.Context, book *book.Book) (string, error)
 	ID := res.InsertedID.(primitive.ObjectID).Hex()
 	return ID, nil
 }
+
+func (br *BookRepo) Get(ctx context.Context, bookID string) (*book.Book, error){
+	
+}
