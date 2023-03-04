@@ -65,6 +65,11 @@ func (h *BookHandler) GetByID(ctx context.Context, req *proto.GetBookRequset) (*
 func (h *BookHandler) GetAll(ctx context.Context, req *emptypb.Empty) (*proto.BookInfoArray, error) {
 	books, err := h.service.GetAll(ctx)
 	if err != nil {
+		h.log.Errorf("error in getting all books: %v", err)
+
+		if errors.Is(err, domain.ErrBookNotFound) {
+			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+		}
 		return nil, err
 	}
 
@@ -82,6 +87,11 @@ func (h *BookHandler) GetAll(ctx context.Context, req *emptypb.Empty) (*proto.Bo
 func (h *BookHandler) GetByAuthor(ctx context.Context, req *proto.GetByAuthorRequest) (*proto.BookInfoArray, error) {
 	books, err := h.service.GetByAuthor(ctx, req.Author)
 	if err != nil {
+		h.log.Errorf("error in getting all books by author: %v", err)
+
+		if errors.Is(err, domain.ErrBookNotFound) {
+			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+		}
 		return nil, err
 	}
 
@@ -99,6 +109,11 @@ func (h *BookHandler) GetByAuthor(ctx context.Context, req *proto.GetByAuthorReq
 func (h *BookHandler) GetByPublisher(ctx context.Context, req *proto.GetByPublisherRequest) (*proto.BookInfoArray, error) {
 	books, err := h.service.GetByPublisher(ctx, req.Publisher)
 	if err != nil {
+		h.log.Errorf("error in getting all books by publisher: %v", err)
+
+		if errors.Is(err, domain.ErrBookNotFound) {
+			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+		}
 		return nil, err
 	}
 
@@ -116,6 +131,11 @@ func (h *BookHandler) GetByPublisher(ctx context.Context, req *proto.GetByPublis
 func (h *BookHandler) GetByGenre(ctx context.Context, req *proto.GetByGenreRequest) (*proto.BookInfoArray, error) {
 	books, err := h.service.GetByGenre(ctx, req.Genre)
 	if err != nil {
+		h.log.Errorf("error in getting all books by genre: %v", err)
+
+		if errors.Is(err, domain.ErrBookNotFound) {
+			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+		}
 		return nil, err
 	}
 
@@ -133,6 +153,11 @@ func (h *BookHandler) GetByGenre(ctx context.Context, req *proto.GetByGenreReque
 func (h *BookHandler) GetByLanguage(ctx context.Context, req *proto.GetByLanguageRequest) (*proto.BookInfoArray, error) {
 	books, err := h.service.GetByLanguage(ctx, req.Language)
 	if err != nil {
+		h.log.Errorf("error in getting all books by language: %v", err)
+
+		if errors.Is(err, domain.ErrBookNotFound) {
+			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
+		}
 		return nil, err
 	}
 
