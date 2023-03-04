@@ -1,0 +1,20 @@
+[2023-03-04 17:13:49]  INFO server started
+[2023-03-04 17:14:37]  INFO server stopped
+[2023-03-04 17:14:39]  INFO server started
+[2023-03-04 17:15:51] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:16:18]  INFO server started
+[2023-03-04 17:16:23] ERROR error in getting book by ID: book not found
+[2023-03-04 17:16:35] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:18:13]  INFO server started
+[2023-03-04 17:18:14] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:18:55]  INFO server started
+[2023-03-04 17:18:56] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:19:02]  INFO server started
+[2023-03-04 17:19:03] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:19:22]  INFO server started
+[2023-03-04 17:19:24] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:20:01]  INFO server started
+[2023-03-04 17:20:01] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:20:08] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:20:09] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-04 17:20:12]  INFO server stopped

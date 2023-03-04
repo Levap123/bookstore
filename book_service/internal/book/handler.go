@@ -49,6 +49,10 @@ func (bh *BookHandler) GetByID(ctx context.Context, req *proto.GetBookRequset) (
 			return nil, status.Errorf(codes.NotFound, "book with this ID not found")
 		}
 	}
+
+	if book == nil {
+		return nil, status.Errorf(codes.NotFound, "book with this ID not found")
+	}
 	return NewBookResponseFromBook(book), nil
 }
 
