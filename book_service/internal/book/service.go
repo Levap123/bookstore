@@ -1,20 +1,40 @@
 package book
 
-import "context"
+import (
+	"context"
+	"errors"
+
+	"github.com/Levap123/book_service/internal/domain"
+	"go.mongodb.org/mongo-driver/mongo"
+)
 
 type BookService struct {
-	repo BookRepo
+	repo IBookRepo
 }
 
-type BookRepo interface {
+type IBookRepo interface {
 	Create(ctx context.Context, book *Book) (string, error)
-	Get(ctx context.Context, bookID string) (*Book, error)
+	GetByID(ctx context.Context, bookID string) (*Book, error)
 }
 
 func (bs *BookService) Create(ctx context.Context, book *Book) (string, error) {
-	return bs.repo.Create(ctx, book)
+	bookID, err := bs.repo.Create(ctx, book)
+	if err != nil {
+		return "", err
+	}
+	return bookID, nil
 }
 
-func (bs *BookService) Get(ctx context.Context, bookID string) (*Book, error) {
-	return bs.repo.Get(ctx, bookID)
+func (bs *BookService) GetByID(ctx context.Context, bookID string) (*Book, error) {
+	book, err := bs.repo.GetByID(ctx, bookID)
+	if err != nil {
+		if errors.Is(err, mongo.ErrNoDocuments) {
+			return nil, domain.ErrBookNotFound
+		}
+		return nil, err
+	}
+	if book == nil {
+		return nil, domain.ErrBookNotFound
+	}
+	return book, err
 }

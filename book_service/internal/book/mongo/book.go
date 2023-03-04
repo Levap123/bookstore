@@ -30,7 +30,7 @@ func (br *BookRepo) Create(ctx context.Context, book *book.Book) (string, error)
 	return ID, nil
 }
 
-func (br *BookRepo) Get(ctx context.Context, bookID string) (*book.Book, error) {
+func (br *BookRepo) GetByID(ctx context.Context, bookID string) (*book.Book, error) {
 	objectID, err := primitive.ObjectIDFromHex(bookID)
 	if err != nil {
 		return nil, fmt.Errorf("book repo - get object ID from hex - %w", err)
