@@ -8,18 +8,18 @@ import (
 )
 
 type Book struct {
-	ID          string    `bson:"_id,omitempty"`
-	Title       string    `bson:"title,omitempty"`
-	Description string    `bson:"description,omitempty"`
-	Image       string    `bson:"image,omitempty"`
-	Pages       uint64    `bson:"pages,omitempty"`
-	Author      string    `bson:"author,omitempty"`
-	Genre       string    `bson:"genre,omitempty"`
-	Publisher   string    `bson:"publisher,omitempty"`
-	Binding     bool      `bson:"binding,omitempty"`
-	Series      string    `bson:"series,omitempty"`
-	Language    string    `bson:"language,omitempty"`
-	AddedAt     time.Time `bson:"created_at,omitempty"`
+	ID          string    `bson:"_id,omitempty" json:"id,omitempty"`
+	Title       string    `bson:"title,omitempty" json:"title,omitempty"`
+	Description string    `bson:"description,omitempty" json:"description,omitempty"`
+	Image       string    `bson:"image,omitempty" json:"image,omitempty"`
+	Pages       uint64    `bson:"pages,omitempty" json:"pages,omitempty"`
+	Author      string    `bson:"author,omitempty" json:"author,omitempty"`
+	Genre       string    `bson:"genre,omitempty" json:"genre,omitempty"`
+	Publisher   string    `bson:"publisher,omitempty" json:"publisher,omitempty"`
+	Binding     bool      `bson:"binding,omitempty" json:"binding,omitempty"`
+	Series      string    `bson:"series,omitempty" json:"series,omitempty"`
+	Language    string    `bson:"language,omitempty" json:"language,omitempty"`
+	AddedAt     time.Time `bson:"created_at,omitempty" json:"added_at,omitempty"`
 }
 
 func NewBookFromCreateBookRequest(req *proto.CreateBookRequest) *Book {

@@ -200,3 +200,28 @@
 [2023-03-04 19:55:44] DEBUG getting from redis
 [2023-03-04 19:55:45] DEBUG getting from redis
 [2023-03-04 20:04:44]  INFO server stopped
+[2023-03-04 20:07:20]  INFO server started
+[2023-03-04 20:07:24] DEBUG getting from redis
+[2023-03-04 20:07:25] DEBUG getting from redis
+[2023-03-04 20:07:25] DEBUG getting from redis
+[2023-03-04 20:07:26] DEBUG getting from redis
+[2023-03-04 20:07:26] DEBUG getting from redis
+[2023-03-04 20:07:27] DEBUG getting from redis
+[2023-03-04 20:07:28] DEBUG getting from redis
+[2023-03-04 20:07:28] DEBUG getting from redis
+[2023-03-04 20:20:24]  INFO server stopped
+[2023-03-04 20:20:25]  INFO server started
+[2023-03-04 20:20:58] DEBUG getting from redis
+[2023-03-04 20:20:59] DEBUG getting from redis
+[2023-03-04 20:20:59] DEBUG getting from redis
+[2023-03-04 20:21:00] DEBUG getting from redis
+[2023-03-04 20:21:00] DEBUG getting from redis
+[2023-03-04 20:21:06] DEBUG getting from redis
+[2023-03-04 20:21:06] DEBUG getting from redis
+[2023-03-04 20:21:07] DEBUG getting from redis
+[2023-03-04 20:21:07] DEBUG getting from redis
+[2023-03-04 20:21:08] DEBUG getting from redis
+[2023-03-04 20:21:09] DEBUG getting from redis
+[2023-03-04 20:21:09] DEBUG getting from redis
+[2023-03-04 20:21:13]  INFO server stopped
+[2023-03-04 20:21:14]  INFO server started
