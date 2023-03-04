@@ -15,6 +15,12 @@ type IBookRepo interface {
 	GetByID(ctx context.Context, bookID string) (*Book, error)
 }
 
+func NewBookService(repo IBookRepo) *BookService {
+	return &BookService{
+		repo: repo,
+	}
+}
+
 func (bs *BookService) Create(ctx context.Context, book *Book) (string, error) {
 	bookID, err := bs.repo.Create(ctx, book)
 	if err != nil {
