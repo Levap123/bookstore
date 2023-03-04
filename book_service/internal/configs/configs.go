@@ -12,6 +12,10 @@ type Configs struct {
 		Password string `yaml:"password"`
 		Username string `yaml:"username"`
 	} `yaml:"mongo"`
+
+	Redis struct {
+		Addr string `yaml:"addr"`
+	} `yaml:"redis"`
 }
 
 func GetConfigs() (*Configs, error) {

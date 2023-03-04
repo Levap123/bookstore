@@ -7,16 +7,18 @@ import (
 
 	"github.com/Levap123/book_service/internal/book"
 	"github.com/Levap123/book_service/internal/domain"
+	"github.com/go-redis/redis/v8"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type BookRepo struct {
-	coll *mongo.Collection
+	coll  *mongo.Collection
+	cache *redis.Client
 }
 
-func NewBookRepo(DB *mongo.Client) *BookRepo {
+func NewBookRepo(DB *mongo.Client, redisCleint *redis.Client) *BookRepo {
 	return &BookRepo{
 		coll: DB.Database("bookstore").Collection("books"),
 	}

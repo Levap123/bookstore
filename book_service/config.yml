@@ -6,3 +6,5 @@ mongo:
   password: root
   username: root
 
+redis:
+  addr: localhost:6379
