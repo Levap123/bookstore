@@ -18,3 +18,5 @@
 [2023-03-04 17:20:08] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
 [2023-03-04 17:20:09] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
 [2023-03-04 17:20:12]  INFO server stopped
+[2023-03-04 18:09:24]  INFO server started
+[2023-03-04 18:11:00]  INFO server stopped

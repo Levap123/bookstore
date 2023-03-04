@@ -52,3 +52,27 @@ func (br *BookRepo) GetByID(ctx context.Context, bookID string) (*book.Book, err
 
 	return &book, err
 }
+
+func (br *BookRepo) GetAll(ctx context.Context) ([]*book.Book, error) {
+	cur, err := br.coll.Find(ctx, bson.D{})
+	if err != nil {
+		return nil, fmt.Errorf("book repo - get all - %w", err)
+	}
+
+	books := make([]*book.Book, 0, 10)
+	
+	for cur.Next(ctx) {
+		var buffer book.Book
+		if err := cur.Decode(&buffer); err != nil {
+			return nil, fmt.Errorf("book repo - get all - %w", err)
+		}
+
+		books = append(books, &buffer)
+	}
+
+	if err := cur.Err(); err != nil {
+		return nil, fmt.Errorf("book repo - get all - %w", err)
+	}
+
+	return books, nil
+}

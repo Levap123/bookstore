@@ -10,12 +10,12 @@ import "google/protobuf/empty.proto";
 service Book {
     rpc Create(CreateBookRequest) returns (CreateBookResponse);
     rpc Delete(DeleteBookRequestResponse) returns (DeleteBookRequestResponse);
-    rpc GetAll(google.protobuf.Empty) returns (stream BookInfo);
+    rpc GetAll(google.protobuf.Empty) returns (BookInfoArray);
     rpc GetByID(GetBookRequset) returns (BookInfo);
-    rpc GetByAuthor(GetByAuthorRequest) returns (BookInfo);
-    rpc GetByPublisher(GetByPublisherRequest) returns (BookInfo);
-    rpc GetByGenre(GetByGenreRequest) returns (BookInfo);
-    rpc GetByLanguage(GetByLanguageRequest) returns (BookInfo);
+    rpc GetByAuthor(GetByAuthorRequest) returns (BookInfoArray);
+    rpc GetByPublisher(GetByPublisherRequest) returns (BookInfoArray);
+    rpc GetByGenre(GetByGenreRequest) returns (BookInfoArray);
+    rpc GetByLanguage(GetByLanguageRequest) returns (BookInfoArray);
 }
 
 message BookInfo {
@@ -33,6 +33,9 @@ message BookInfo {
     google.protobuf.Timestamp added_at = 12;
 }
 
+message BookInfoArray {
+    repeated BookInfo arr = 1;
+}
 message CreateBookRequest {
     string title = 1;
     string description = 2;

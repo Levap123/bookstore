@@ -25,12 +25,12 @@ const _ = grpc.SupportPackageIsVersion7
 type BookClient interface {
 	Create(ctx context.Context, in *CreateBookRequest, opts ...grpc.CallOption) (*CreateBookResponse, error)
 	Delete(ctx context.Context, in *DeleteBookRequestResponse, opts ...grpc.CallOption) (*DeleteBookRequestResponse, error)
-	GetAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (Book_GetAllClient, error)
+	GetAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*BookInfoArray, error)
 	GetByID(ctx context.Context, in *GetBookRequset, opts ...grpc.CallOption) (*BookInfo, error)
-	GetByAuthor(ctx context.Context, in *GetByAuthorRequest, opts ...grpc.CallOption) (*BookInfo, error)
-	GetByPublisher(ctx context.Context, in *GetByPublisherRequest, opts ...grpc.CallOption) (*BookInfo, error)
-	GetByGenre(ctx context.Context, in *GetByGenreRequest, opts ...grpc.CallOption) (*BookInfo, error)
-	GetByLanguage(ctx context.Context, in *GetByLanguageRequest, opts ...grpc.CallOption) (*BookInfo, error)
+	GetByAuthor(ctx context.Context, in *GetByAuthorRequest, opts ...grpc.CallOption) (*BookInfoArray, error)
+	GetByPublisher(ctx context.Context, in *GetByPublisherRequest, opts ...grpc.CallOption) (*BookInfoArray, error)
+	GetByGenre(ctx context.Context, in *GetByGenreRequest, opts ...grpc.CallOption) (*BookInfoArray, error)
+	GetByLanguage(ctx context.Context, in *GetByLanguageRequest, opts ...grpc.CallOption) (*BookInfoArray, error)
 }
 
 type bookClient struct {
@@ -59,36 +59,13 @@ func (c *bookClient) Delete(ctx context.Context, in *DeleteBookRequestResponse, 
 	return out, nil
 }
 
-func (c *bookClient) GetAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (Book_GetAllClient, error) {
-	stream, err := c.cc.NewStream(ctx, &Book_ServiceDesc.Streams[0], "/proto.Book/GetAll", opts...)
+func (c *bookClient) GetAll(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*BookInfoArray, error) {
+	out := new(BookInfoArray)
+	err := c.cc.Invoke(ctx, "/proto.Book/GetAll", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &bookGetAllClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type Book_GetAllClient interface {
-	Recv() (*BookInfo, error)
-	grpc.ClientStream
-}
-
-type bookGetAllClient struct {
-	grpc.ClientStream
-}
-
-func (x *bookGetAllClient) Recv() (*BookInfo, error) {
-	m := new(BookInfo)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
+	return out, nil
 }
 
 func (c *bookClient) GetByID(ctx context.Context, in *GetBookRequset, opts ...grpc.CallOption) (*BookInfo, error) {
@@ -100,8 +77,8 @@ func (c *bookClient) GetByID(ctx context.Context, in *GetBookRequset, opts ...gr
 	return out, nil
 }
 
-func (c *bookClient) GetByAuthor(ctx context.Context, in *GetByAuthorRequest, opts ...grpc.CallOption) (*BookInfo, error) {
-	out := new(BookInfo)
+func (c *bookClient) GetByAuthor(ctx context.Context, in *GetByAuthorRequest, opts ...grpc.CallOption) (*BookInfoArray, error) {
+	out := new(BookInfoArray)
 	err := c.cc.Invoke(ctx, "/proto.Book/GetByAuthor", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -109,8 +86,8 @@ func (c *bookClient) GetByAuthor(ctx context.Context, in *GetByAuthorRequest, op
 	return out, nil
 }
 
-func (c *bookClient) GetByPublisher(ctx context.Context, in *GetByPublisherRequest, opts ...grpc.CallOption) (*BookInfo, error) {
-	out := new(BookInfo)
+func (c *bookClient) GetByPublisher(ctx context.Context, in *GetByPublisherRequest, opts ...grpc.CallOption) (*BookInfoArray, error) {
+	out := new(BookInfoArray)
 	err := c.cc.Invoke(ctx, "/proto.Book/GetByPublisher", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -118,8 +95,8 @@ func (c *bookClient) GetByPublisher(ctx context.Context, in *GetByPublisherReque
 	return out, nil
 }
 
-func (c *bookClient) GetByGenre(ctx context.Context, in *GetByGenreRequest, opts ...grpc.CallOption) (*BookInfo, error) {
-	out := new(BookInfo)
+func (c *bookClient) GetByGenre(ctx context.Context, in *GetByGenreRequest, opts ...grpc.CallOption) (*BookInfoArray, error) {
+	out := new(BookInfoArray)
 	err := c.cc.Invoke(ctx, "/proto.Book/GetByGenre", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -127,8 +104,8 @@ func (c *bookClient) GetByGenre(ctx context.Context, in *GetByGenreRequest, opts
 	return out, nil
 }
 
-func (c *bookClient) GetByLanguage(ctx context.Context, in *GetByLanguageRequest, opts ...grpc.CallOption) (*BookInfo, error) {
-	out := new(BookInfo)
+func (c *bookClient) GetByLanguage(ctx context.Context, in *GetByLanguageRequest, opts ...grpc.CallOption) (*BookInfoArray, error) {
+	out := new(BookInfoArray)
 	err := c.cc.Invoke(ctx, "/proto.Book/GetByLanguage", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -142,12 +119,12 @@ func (c *bookClient) GetByLanguage(ctx context.Context, in *GetByLanguageRequest
 type BookServer interface {
 	Create(context.Context, *CreateBookRequest) (*CreateBookResponse, error)
 	Delete(context.Context, *DeleteBookRequestResponse) (*DeleteBookRequestResponse, error)
-	GetAll(*emptypb.Empty, Book_GetAllServer) error
+	GetAll(context.Context, *emptypb.Empty) (*BookInfoArray, error)
 	GetByID(context.Context, *GetBookRequset) (*BookInfo, error)
-	GetByAuthor(context.Context, *GetByAuthorRequest) (*BookInfo, error)
-	GetByPublisher(context.Context, *GetByPublisherRequest) (*BookInfo, error)
-	GetByGenre(context.Context, *GetByGenreRequest) (*BookInfo, error)
-	GetByLanguage(context.Context, *GetByLanguageRequest) (*BookInfo, error)
+	GetByAuthor(context.Context, *GetByAuthorRequest) (*BookInfoArray, error)
+	GetByPublisher(context.Context, *GetByPublisherRequest) (*BookInfoArray, error)
+	GetByGenre(context.Context, *GetByGenreRequest) (*BookInfoArray, error)
+	GetByLanguage(context.Context, *GetByLanguageRequest) (*BookInfoArray, error)
 	mustEmbedUnimplementedBookServer()
 }
 
@@ -161,22 +138,22 @@ func (UnimplementedBookServer) Create(context.Context, *CreateBookRequest) (*Cre
 func (UnimplementedBookServer) Delete(context.Context, *DeleteBookRequestResponse) (*DeleteBookRequestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (UnimplementedBookServer) GetAll(*emptypb.Empty, Book_GetAllServer) error {
-	return status.Errorf(codes.Unimplemented, "method GetAll not implemented")
+func (UnimplementedBookServer) GetAll(context.Context, *emptypb.Empty) (*BookInfoArray, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAll not implemented")
 }
 func (UnimplementedBookServer) GetByID(context.Context, *GetBookRequset) (*BookInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByID not implemented")
 }
-func (UnimplementedBookServer) GetByAuthor(context.Context, *GetByAuthorRequest) (*BookInfo, error) {
+func (UnimplementedBookServer) GetByAuthor(context.Context, *GetByAuthorRequest) (*BookInfoArray, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByAuthor not implemented")
 }
-func (UnimplementedBookServer) GetByPublisher(context.Context, *GetByPublisherRequest) (*BookInfo, error) {
+func (UnimplementedBookServer) GetByPublisher(context.Context, *GetByPublisherRequest) (*BookInfoArray, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByPublisher not implemented")
 }
-func (UnimplementedBookServer) GetByGenre(context.Context, *GetByGenreRequest) (*BookInfo, error) {
+func (UnimplementedBookServer) GetByGenre(context.Context, *GetByGenreRequest) (*BookInfoArray, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByGenre not implemented")
 }
-func (UnimplementedBookServer) GetByLanguage(context.Context, *GetByLanguageRequest) (*BookInfo, error) {
+func (UnimplementedBookServer) GetByLanguage(context.Context, *GetByLanguageRequest) (*BookInfoArray, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetByLanguage not implemented")
 }
 func (UnimplementedBookServer) mustEmbedUnimplementedBookServer() {}
@@ -228,25 +205,22 @@ func _Book_Delete_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Book_GetAll_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(emptypb.Empty)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
+func _Book_GetAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(emptypb.Empty)
+	if err := dec(in); err != nil {
+		return nil, err
 	}
-	return srv.(BookServer).GetAll(m, &bookGetAllServer{stream})
-}
-
-type Book_GetAllServer interface {
-	Send(*BookInfo) error
-	grpc.ServerStream
-}
-
-type bookGetAllServer struct {
-	grpc.ServerStream
-}
-
-func (x *bookGetAllServer) Send(m *BookInfo) error {
-	return x.ServerStream.SendMsg(m)
+	if interceptor == nil {
+		return srv.(BookServer).GetAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/proto.Book/GetAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BookServer).GetAll(ctx, req.(*emptypb.Empty))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Book_GetByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -355,6 +329,10 @@ var Book_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Book_Delete_Handler,
 		},
 		{
+			MethodName: "GetAll",
+			Handler:    _Book_GetAll_Handler,
+		},
+		{
 			MethodName: "GetByID",
 			Handler:    _Book_GetByID_Handler,
 		},
@@ -375,12 +353,6 @@ var Book_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Book_GetByLanguage_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "GetAll",
-			Handler:       _Book_GetAll_Handler,
-			ServerStreams: true,
-		},
-	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "proto/books.proto",
 }

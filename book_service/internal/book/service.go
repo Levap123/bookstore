@@ -13,6 +13,7 @@ type BookService struct {
 type IBookRepo interface {
 	Create(ctx context.Context, book *Book) (string, error)
 	GetByID(ctx context.Context, bookID string) (*Book, error)
+	GetAll(ctx context.Context) ([]*Book, error)
 }
 
 func NewBookService(repo IBookRepo) *BookService {
@@ -40,4 +41,8 @@ func (bs *BookService) GetByID(ctx context.Context, bookID string) (*Book, error
 	}
 
 	return book, err
+}
+
+func (bs *BookService) GetAll(ctx context.Context) ([]*Book, error) {
+	return bs.repo.GetAll(ctx)
 }
