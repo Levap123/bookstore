@@ -10,6 +10,7 @@ import (
 
 	"github.com/Levap123/book_service/internal/book"
 	"github.com/Levap123/book_service/internal/book/mongo"
+	"github.com/Levap123/book_service/internal/book/redis"
 	"github.com/Levap123/book_service/internal/configs"
 	"github.com/Levap123/book_service/proto"
 	"github.com/Levap123/utils/lg"
@@ -36,7 +37,22 @@ func main() {
 		log.Fatalf("fatal in initializing DB: %v", err)
 	}
 
-	repo := mongo.NewBookRepo(DB)
+	ctxDB, cancel := context.WithTimeout(context.Background(), time.Second)
+	if err := DB.Ping(ctxDB, nil); err != nil {
+		log.Fatalf("fatal in pinging DB: %v", err)
+	}
+
+	redisClient := redis.InitRedis(cfg)
+
+	ctxRedis, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+
+	status := redisClient.Ping(ctxRedis)
+	if err := status.Err(); err != nil {
+		log.Fatalf("fatal in pinging redis: %v", err)
+	}
+
+	repo := mongo.NewBookRepo(DB, redisClient, log)
 	service := book.NewBookService(repo)
 	handler := book.NewBookHandler(service, log)
 

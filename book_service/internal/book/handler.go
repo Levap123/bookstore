@@ -85,10 +85,6 @@ func (h *BookHandler) GetByAuthor(ctx context.Context, req *proto.GetByAuthorReq
 		return nil, err
 	}
 
-	if len(books) == 0 {
-		return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
-	}
-
 	requestArray := make([]*proto.BookInfo, 0, len(books))
 
 	for _, book := range books {
@@ -104,10 +100,6 @@ func (h *BookHandler) GetByPublisher(ctx context.Context, req *proto.GetByPublis
 	books, err := h.service.GetByPublisher(ctx, req.Publisher)
 	if err != nil {
 		return nil, err
-	}
-
-	if len(books) == 0 {
-		return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
 	}
 
 	requestArray := make([]*proto.BookInfo, 0, len(books))
@@ -127,10 +119,6 @@ func (h *BookHandler) GetByGenre(ctx context.Context, req *proto.GetByGenreReque
 		return nil, err
 	}
 
-	if len(books) == 0 {
-		return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
-	}
-
 	requestArray := make([]*proto.BookInfo, 0, len(books))
 
 	for _, book := range books {
@@ -146,10 +134,6 @@ func (h *BookHandler) GetByLanguage(ctx context.Context, req *proto.GetByLanguag
 	books, err := h.service.GetByLanguage(ctx, req.Language)
 	if err != nil {
 		return nil, err
-	}
-
-	if len(books) == 0 {
-		return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
 	}
 
 	requestArray := make([]*proto.BookInfo, 0, len(books))
