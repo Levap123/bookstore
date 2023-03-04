@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/Levap123/book_service/internal/book"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -29,6 +30,20 @@ func (br *BookRepo) Create(ctx context.Context, book *book.Book) (string, error)
 	return ID, nil
 }
 
-func (br *BookRepo) Get(ctx context.Context, bookID string) (*book.Book, error){
-	
+func (br *BookRepo) Get(ctx context.Context, bookID string) (*book.Book, error) {
+	objectID, err := primitive.ObjectIDFromHex(bookID)
+	if err != nil {
+		return nil, fmt.Errorf("book repo - get object ID from hex - %w", err)
+	}
+
+	filter := bson.D{
+		{"_id", objectID},
+	}
+
+	var book book.Book
+	if err := br.coll.FindOne(ctx, filter).Decode(&book); err != nil {
+		return nil, fmt.Errorf("book repo - get one - %w", err)
+	}
+
+	return &book, err
 }
