@@ -30,7 +30,7 @@ func (h *Handler) getMe(w http.ResponseWriter, r *http.Request) error {
 	defer cancel()
 
 	authToken := authHeaderSplit[1]
-	user, err := h.userClient.GetMe(ctx, authToken)
+	user, err := h.apiClients.UserClient.GetMe(ctx, authToken)
 	if err != nil {
 		return err
 	}
@@ -52,7 +52,7 @@ func (h *Handler) getUserByID(w http.ResponseWriter, r *http.Request) error {
 	ctx, cancel := context.WithTimeout(r.Context(), time.Second*2)
 	defer cancel()
 
-	user, err := h.userClient.GetByID(ctx, uint64(userID))
+	user, err := h.apiClients.UserClient.GetByID(ctx, uint64(userID))
 	if err != nil {
 		return err
 	}
@@ -80,7 +80,7 @@ func (h *Handler) updateUser(w http.ResponseWriter, r *http.Request) error {
 	ctx, cancel := context.WithTimeout(r.Context(), time.Second*2)
 	defer cancel()
 
-	userID, err := h.userClient.Update(ctx, &dto)
+	userID, err := h.apiClients.UserClient.Update(ctx, &dto)
 	if err != nil {
 		return err
 	}

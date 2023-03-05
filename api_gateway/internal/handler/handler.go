@@ -8,13 +8,12 @@ import (
 
 type Handler struct {
 	log        *logrus.Logger
-	userClient *apiclients.UserClient
+	apiClients *apiclients.ApiClients
 }
 
-func NewHandler(log *logrus.Logger, userClient *apiclients.UserClient) *Handler {
+func NewHandler(log *logrus.Logger, apiClients *apiclients.ApiClients) *Handler {
 	return &Handler{
 		log:        log,
-		userClient: userClient,
-
+		apiClients: apiClients,
 	}
 }

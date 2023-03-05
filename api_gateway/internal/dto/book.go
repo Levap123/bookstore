@@ -15,7 +15,7 @@ type CreateBookDTO struct {
 	Language    string `json:"language,omitempty"`
 }
 
-func FromDtoToRequest(dto *CreateBookDTO) *proto.BookInfo {
+func FromDtoToRequest(dto CreateBookDTO) *proto.BookInfo {
 	return &proto.BookInfo{
 		Title:       dto.Title,
 		Description: dto.Description,

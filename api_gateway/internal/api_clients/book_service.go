@@ -16,7 +16,7 @@ type BookClient struct {
 	log *logrus.Logger
 }
 
-func (bc *BookClient) Create(ctx context.Context, createBookDTO *dto.CreateBookDTO) (string, error) {
+func (bc *BookClient) Create(ctx context.Context, createBookDTO dto.CreateBookDTO) (string, error) {
 	bookRequest := dto.FromDtoToRequest(createBookDTO)
 
 	resp, err := bc.cl.Create(ctx, bookRequest)

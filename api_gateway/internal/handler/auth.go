@@ -33,7 +33,7 @@ func (h *Handler) signUp(w http.ResponseWriter, r *http.Request) error {
 	ctx, cancel := context.WithTimeout(r.Context(), time.Second*2)
 	defer cancel()
 
-	userID, err := h.userClient.SignUp(ctx, &dto)
+	userID, err := h.apiClients.UserClient.SignUp(ctx, &dto)
 	if err != nil {
 		h.log.Errorf("error in sending request to user service: %v", err)
 		return err
@@ -63,7 +63,7 @@ func (h *Handler) signIn(w http.ResponseWriter, r *http.Request) error {
 	ctx, cancel := context.WithTimeout(r.Context(), time.Second*2)
 	defer cancel()
 
-	tokens, err := h.userClient.SignIn(ctx, &dto)
+	tokens, err := h.apiClients.UserClient.SignIn(ctx, &dto)
 	if err != nil {
 		h.log.Errorf("error in sending request to user service: %v", err)
 		return err
@@ -103,7 +103,7 @@ func (h *Handler) refresh(w http.ResponseWriter, r *http.Request) error {
 	ctx, cancel := context.WithTimeout(r.Context(), time.Second*2)
 	defer cancel()
 
-	tokens, err := h.userClient.Rerfresh(ctx, dto)
+	tokens, err := h.apiClients.UserClient.Rerfresh(ctx, dto)
 	if err != nil {
 		return err
 	}
