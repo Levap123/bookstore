@@ -225,3 +225,56 @@
 [2023-03-04 20:21:09] DEBUG getting from redis
 [2023-03-04 20:21:13]  INFO server stopped
 [2023-03-04 20:21:14]  INFO server started
+[2023-03-05 14:39:20] FATAL fatal in pinging DB: server selection error: context deadline exceeded, current topology: { Type: Unknown, Servers: [{ Addr: localhost:27017, Type: Unknown, Last error: dial tcp 127.0.0.1:27017: connect: connection refused }, ] }
+[2023-03-05 14:43:26] FATAL fatal in pinging redis: dial tcp 127.0.0.1:6379: connect: connection refused
+[2023-03-05 14:43:29] FATAL fatal in pinging redis: dial tcp 127.0.0.1:6379: connect: connection refused
+[2023-03-05 14:43:58] FATAL fatal in pinging redis: dial tcp 127.0.0.1:6379: connect: connection refused
+[2023-03-05 14:44:00] FATAL fatal in pinging redis: dial tcp 127.0.0.1:6379: connect: connection refused
+[2023-03-05 14:44:02] FATAL fatal in pinging redis: dial tcp 127.0.0.1:6379: connect: connection refused
+[2023-03-05 14:44:03] FATAL fatal in pinging redis: dial tcp 127.0.0.1:6379: connect: connection refused
+[2023-03-05 14:44:04] FATAL fatal in pinging redis: dial tcp 127.0.0.1:6379: connect: connection refused
+[2023-03-05 14:46:05]  INFO server started
+[2023-03-05 14:49:15] DEBUG getting from redis
+[2023-03-05 14:49:16] DEBUG getting from redis
+[2023-03-05 14:49:17] DEBUG getting from redis
+[2023-03-05 14:49:17] DEBUG getting from redis
+[2023-03-05 14:49:18] DEBUG getting from redis
+[2023-03-05 14:49:18] DEBUG getting from redis
+[2023-03-05 14:49:18] DEBUG getting from redis
+[2023-03-05 14:49:19] DEBUG getting from redis
+[2023-03-05 14:49:19] DEBUG getting from redis
+[2023-03-05 14:49:20] DEBUG getting from redis
+[2023-03-05 14:49:20] DEBUG getting from redis
+[2023-03-05 14:49:20] DEBUG getting from redis
+[2023-03-05 14:49:21] DEBUG getting from redis
+[2023-03-05 14:49:21] DEBUG getting from redis
+[2023-03-05 14:49:21] DEBUG getting from redis
+[2023-03-05 14:49:22] DEBUG getting from redis
+[2023-03-05 14:49:22] DEBUG getting from redis
+[2023-03-05 14:49:22] DEBUG getting from redis
+[2023-03-05 14:49:23] DEBUG getting from redis
+[2023-03-05 14:49:23] DEBUG getting from redis
+[2023-03-05 14:49:23] DEBUG getting from redis
+[2023-03-05 14:49:24] DEBUG getting from redis
+[2023-03-05 14:49:24] DEBUG getting from redis
+[2023-03-05 14:49:24] DEBUG getting from redis
+[2023-03-05 14:49:24] DEBUG getting from redis
+[2023-03-05 14:49:25] DEBUG getting from redis
+[2023-03-05 14:49:25] DEBUG getting from redis
+[2023-03-05 14:49:25] DEBUG getting from redis
+[2023-03-05 14:49:26] DEBUG getting from redis
+[2023-03-05 14:49:26] DEBUG getting from redis
+[2023-03-05 14:49:26] DEBUG getting from redis
+[2023-03-05 14:49:31] DEBUG getting from redis
+[2023-03-05 14:49:32] DEBUG getting from redis
+[2023-03-05 14:49:33] DEBUG getting from redis
+[2023-03-05 14:49:49] DEBUG getting from redis
+[2023-03-05 14:50:03] DEBUG getting from redis
+[2023-03-05 14:50:04] DEBUG getting from redis
+[2023-03-05 14:50:05] DEBUG getting from redis
+[2023-03-05 14:50:05] DEBUG getting from redis
+[2023-03-05 14:50:05] DEBUG getting from redis
+[2023-03-05 14:50:06] DEBUG getting from redis
+[2023-03-05 14:50:06] DEBUG getting from redis
+[2023-03-05 14:50:07] DEBUG getting from redis
+[2023-03-05 14:51:15]  INFO server stopped

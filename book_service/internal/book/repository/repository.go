@@ -51,7 +51,7 @@ func (r *Repo) GetAll(ctx context.Context) ([]*book.Book, error) {
 	if len(getAllBytes) != 0 {
 		var books []*book.Book
 		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			r.log.Debug("getting from redis")
+			r.log.Debug("get all books - getting from redis")
 			return books, nil
 		} else {
 			r.log.Error("repo - error in unmarshalling request - %v", err)
@@ -82,7 +82,7 @@ func (r *Repo) GetByAuthor(ctx context.Context, author string) ([]*book.Book, er
 	if len(getAllBytes) != 0 {
 		var books []*book.Book
 		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			r.log.Debug("getting from redis")
+			r.log.Debug("get all books by author - getting from redis")
 			return books, nil
 		} else {
 			r.log.Error("repo - error in unmarshalling request - %v", err)
@@ -115,7 +115,7 @@ func (r *Repo) GetByPublisher(ctx context.Context, publisher string) ([]*book.Bo
 	if len(getAllBytes) != 0 {
 		var books []*book.Book
 		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			r.log.Debug("getting from redis")
+			r.log.Debug("get all books by publisher - getting from redis")
 			return books, nil
 		} else {
 			r.log.Error("repo - error in unmarshalling request - %v", err)
@@ -147,7 +147,7 @@ func (r *Repo) GetByLanguage(ctx context.Context, language string) ([]*book.Book
 	if len(getAllBytes) != 0 {
 		var books []*book.Book
 		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			r.log.Debug("getting from redis")
+			r.log.Debug("get all books by language - getting from redis")
 			return books, nil
 		} else {
 			r.log.Error("repo - error in unmarshalling request - %v", err)
@@ -179,7 +179,7 @@ func (r *Repo) GetByGenre(ctx context.Context, genre string) ([]*book.Book, erro
 	if len(getAllBytes) != 0 {
 		var books []*book.Book
 		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			r.log.Debug("getting from redis")
+			r.log.Debug("get all books by genre - getting from redis")
 			return books, nil
 		} else {
 			r.log.Error("repo - error in unmarshalling request - %v", err)
