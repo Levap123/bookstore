@@ -22,7 +22,7 @@ type Book struct {
 	AddedAt     time.Time `bson:"created_at,omitempty" json:"added_at,omitempty"`
 }
 
-func NewBookFromCreateBookRequest(req *proto.CreateBookRequest) *Book {
+func NewBookFromCreateBookRequest(req *proto.BookInfo) *Book {
 	return &Book{
 		Title:       req.Title,
 		Description: req.Description,

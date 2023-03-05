@@ -36,7 +36,7 @@ func NewBookHandler(service IBookService, log *logrus.Logger) *BookHandler {
 	}
 }
 
-func (h *BookHandler) Create(ctx context.Context, req *proto.CreateBookRequest) (*proto.CreateBookResponse, error) {
+func (h *BookHandler) Create(ctx context.Context, req *proto.BookInfo) (*proto.CreateBookResponse, error) {
 	book := NewBookFromCreateBookRequest(req)
 	bookID, err := h.service.Create(ctx, book)
 	if err != nil {
