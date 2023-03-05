@@ -8,12 +8,21 @@ import (
 	"github.com/Levap123/api_gateway/proto"
 	"github.com/Levap123/utils/apperror"
 	"github.com/sirupsen/logrus"
+	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 )
 
 type BookClient struct {
 	cl  proto.BookClient
 	log *logrus.Logger
+}
+
+func InitBookClient(conn *grpc.ClientConn, log *logrus.Logger) *BookClient {
+	cl := proto.NewBookClient(conn)
+	return &BookClient{
+		cl:  cl,
+		log: log,
+	}
 }
 
 func (bc *BookClient) Create(ctx context.Context, createBookDTO dto.CreateBookDTO) (string, error) {

@@ -10,6 +10,10 @@ type Configs struct {
 	UserService struct {
 		Addr string `yaml:"addr"`
 	} `yaml:"user_service"`
+
+	BookService struct {
+		Addr string `yaml:"addr"`
+	} `yaml:"book_service"`
 }
 
 func GetConfigs() (*Configs, error) {

@@ -4,3 +4,5 @@ server:
 user_service:
   addr: :8000
 
+book_service:
+  addr: :8181

@@ -28,23 +28,38 @@ func main() {
 		log.Fatalf("fatal in itialize configs: %v", err)
 	}
 
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second*2)
-	defer cancel()
-
-	userServiceAddress := cfg.UserService.Addr
 	opts := []grpc.DialOption{
 		grpc.WithInsecure(),
 	}
-	
-	conn, err := grpc.DialContext(ctx, userServiceAddress, opts...)
+
+	ctxUsersrv, cancel := context.WithTimeout(context.Background(), time.Second*2)
+	defer cancel()
+
+	userServiceAddress := cfg.UserService.Addr
+
+	connUsersrv, err := grpc.DialContext(ctxUsersrv, userServiceAddress, opts...)
 	if err != nil {
 		log.Fatalf("fatal in connect to user service: %v", err)
 	}
-	defer conn.Close()
+	defer connUsersrv.Close()
 
-	userServiceClient := apiclients.InitUserClient(conn, log)
+	ctxBooksrv, cancel := context.WithTimeout(context.Background(), time.Second*2)
+	defer cancel()
 
-	handler := handler.NewHandler(log, userServiceClient)
+	bookServiceAddress := cfg.UserService.Addr
+
+	connBooksrv, err := grpc.DialContext(ctxBooksrv, bookServiceAddress, opts...)
+	if err != nil {
+		log.Fatalf("fatal in connect to book service: %v", err)
+	}
+	defer connBooksrv.Close()
+
+	userServiceClient := apiclients.InitUserClient(connUsersrv, log)
+	bookServiceClient := apiclients.InitBookClient(connBooksrv, log)
+
+	apiclients := apiclients.NewApiClients(bookServiceClient, userServiceClient)
+
+	handler := handler.NewHandler(log, apiclients)
 
 	server := new(server.Server)
 
