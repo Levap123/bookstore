@@ -20,13 +20,13 @@ type BookHandler struct {
 
 type IBookService interface {
 	Delete(ctx context.Context, bookID string) (string, error)
-	Create(ctx context.Context, book *Book) (string, error)
-	GetByID(ctx context.Context, bookID string) (*Book, error)
-	GetAll(ctx context.Context) ([]*Book, error)
-	GetByAuthor(ctx context.Context, author string) ([]*Book, error)
-	GetByPublisher(ctx context.Context, author string) ([]*Book, error)
-	GetByLanguage(ctx context.Context, author string) ([]*Book, error)
-	GetByGenre(ctx context.Context, author string) ([]*Book, error)
+	Create(ctx context.Context, book Book) (string, error)
+	GetByID(ctx context.Context, bookID string) (Book, error)
+	GetAll(ctx context.Context) ([]Book, error)
+	GetByAuthor(ctx context.Context, author string) ([]Book, error)
+	GetByPublisher(ctx context.Context, author string) ([]Book, error)
+	GetByLanguage(ctx context.Context, author string) ([]Book, error)
+	GetByGenre(ctx context.Context, author string) ([]Book, error)
 }
 
 func NewBookHandler(service IBookService, log *logrus.Logger) *BookHandler {
@@ -49,7 +49,7 @@ func (h *BookHandler) Create(ctx context.Context, req *proto.BookInfo) (*proto.C
 }
 
 func (h *BookHandler) GetByID(ctx context.Context, req *proto.GetBookRequset) (*proto.BookInfo, error) {
-	book, err := h.service.GetByID(ctx, req.BookID)
+	bookResp, err := h.service.GetByID(ctx, req.BookID)
 	if err != nil {
 		h.log.Errorf("error in getting book by ID: %v", err)
 		if errors.Is(err, domain.ErrBookNotFound) {
@@ -57,10 +57,10 @@ func (h *BookHandler) GetByID(ctx context.Context, req *proto.GetBookRequset) (*
 		}
 	}
 
-	if book == nil {
+	if bookResp == (Book{}) {
 		return nil, status.Errorf(codes.NotFound, "book with this ID not found")
 	}
-	return NewBookResponseFromBook(book), nil
+	return NewBookResponseFromBook(bookResp), nil
 }
 
 func (h *BookHandler) GetAll(ctx context.Context, req *emptypb.Empty) (*proto.BookInfoArray, error) {

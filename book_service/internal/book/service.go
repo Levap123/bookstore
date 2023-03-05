@@ -12,13 +12,13 @@ type BookService struct {
 
 type IBookRepo interface {
 	Delete(ctx context.Context, bookID string) (string, error)
-	Create(ctx context.Context, book *Book) (string, error)
-	GetByID(ctx context.Context, bookID string) (*Book, error)
-	GetAll(ctx context.Context) ([]*Book, error)
-	GetByAuthor(ctx context.Context, author string) ([]*Book, error)
-	GetByPublisher(ctx context.Context, publisher string) ([]*Book, error)
-	GetByLanguage(ctx context.Context, language string) ([]*Book, error)
-	GetByGenre(ctx context.Context, genre string) ([]*Book, error)
+	Create(ctx context.Context, book Book) (string, error)
+	GetByID(ctx context.Context, bookID string) (Book, error)
+	GetAll(ctx context.Context) ([]Book, error)
+	GetByAuthor(ctx context.Context, author string) ([]Book, error)
+	GetByPublisher(ctx context.Context, publisher string) ([]Book, error)
+	GetByLanguage(ctx context.Context, language string) ([]Book, error)
+	GetByGenre(ctx context.Context, genre string) ([]Book, error)
 }
 
 func NewBookService(repo IBookRepo) *BookService {
@@ -27,7 +27,7 @@ func NewBookService(repo IBookRepo) *BookService {
 	}
 }
 
-func (bs *BookService) Create(ctx context.Context, book *Book) (string, error) {
+func (bs *BookService) Create(ctx context.Context, book Book) (string, error) {
 	bookID, err := bs.repo.Create(ctx, book)
 	if err != nil {
 		return "", err
@@ -35,36 +35,36 @@ func (bs *BookService) Create(ctx context.Context, book *Book) (string, error) {
 	return bookID, nil
 }
 
-func (bs *BookService) GetByID(ctx context.Context, bookID string) (*Book, error) {
+func (bs *BookService) GetByID(ctx context.Context, bookID string) (Book, error) {
 	book, err := bs.repo.GetByID(ctx, bookID)
 	if err != nil {
-		return nil, err
+		return Book{}, err
 	}
 
-	if book == nil {
-		return nil, domain.ErrBookNotFound
+	if book.ID == "" {
+		return Book{}, domain.ErrBookNotFound
 	}
 
 	return book, err
 }
 
-func (bs *BookService) GetAll(ctx context.Context) ([]*Book, error) {
+func (bs *BookService) GetAll(ctx context.Context) ([]Book, error) {
 	return bs.repo.GetAll(ctx)
 }
 
-func (bs *BookService) GetByAuthor(ctx context.Context, author string) ([]*Book, error) {
+func (bs *BookService) GetByAuthor(ctx context.Context, author string) ([]Book, error) {
 	return bs.repo.GetByAuthor(ctx, author)
 }
 
-func (bs *BookService) GetByPublisher(ctx context.Context, publisher string) ([]*Book, error) {
+func (bs *BookService) GetByPublisher(ctx context.Context, publisher string) ([]Book, error) {
 	return bs.repo.GetByPublisher(ctx, publisher)
 }
 
-func (bs *BookService) GetByLanguage(ctx context.Context, language string) ([]*Book, error) {
+func (bs *BookService) GetByLanguage(ctx context.Context, language string) ([]Book, error) {
 	return bs.repo.GetByLanguage(ctx, language)
 }
 
-func (bs *BookService) GetByGenre(ctx context.Context, genre string) ([]*Book, error) {
+func (bs *BookService) GetByGenre(ctx context.Context, genre string) ([]Book, error) {
 	return bs.repo.GetByGenre(ctx, genre)
 }
 

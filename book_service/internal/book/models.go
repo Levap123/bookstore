@@ -22,8 +22,8 @@ type Book struct {
 	AddedAt     time.Time `bson:"created_at,omitempty" json:"added_at,omitempty"`
 }
 
-func NewBookFromCreateBookRequest(req *proto.BookInfo) *Book {
-	return &Book{
+func NewBookFromCreateBookRequest(req *proto.BookInfo) Book {
+	return Book{
 		Title:       req.Title,
 		Description: req.Description,
 		Image:       req.Image,
@@ -38,7 +38,7 @@ func NewBookFromCreateBookRequest(req *proto.BookInfo) *Book {
 	}
 }
 
-func NewBookResponseFromBook(book *Book) *proto.BookInfo {
+func NewBookResponseFromBook(book Book) *proto.BookInfo {
 	return &proto.BookInfo{
 		ID:          book.ID,
 		Title:       book.Title,

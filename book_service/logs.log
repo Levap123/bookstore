@@ -284,3 +284,157 @@
 [2023-03-05 14:59:50]  INFO server stopped
 [2023-03-05 17:05:20]  INFO server started
 [2023-03-05 17:05:21]  INFO server stopped
+[2023-03-05 17:30:33]  INFO server started
+[2023-03-05 17:30:40] DEBUG get all books - getting from redis
+[2023-03-05 17:30:41] DEBUG get all books - getting from redis
+[2023-03-05 17:30:41] DEBUG get all books - getting from redis
+[2023-03-05 17:30:41] DEBUG get all books - getting from redis
+[2023-03-05 17:30:42] DEBUG get all books - getting from redis
+[2023-03-05 17:30:42] DEBUG get all books - getting from redis
+[2023-03-05 17:30:42] DEBUG get all books - getting from redis
+[2023-03-05 17:30:43] DEBUG get all books - getting from redis
+[2023-03-05 17:30:43] DEBUG get all books - getting from redis
+[2023-03-05 17:30:43] DEBUG get all books - getting from redis
+[2023-03-05 17:30:44] DEBUG get all books - getting from redis
+[2023-03-05 17:30:44] DEBUG get all books - getting from redis
+[2023-03-05 17:30:44] DEBUG get all books - getting from redis
+[2023-03-05 17:30:44] DEBUG get all books - getting from redis
+[2023-03-05 17:30:45] DEBUG get all books - getting from redis
+[2023-03-05 17:30:45] DEBUG get all books - getting from redis
+[2023-03-05 17:30:45] DEBUG get all books - getting from redis
+[2023-03-05 17:30:45] DEBUG get all books - getting from redis
+[2023-03-05 17:30:45] DEBUG get all books - getting from redis
+[2023-03-05 17:30:46] DEBUG get all books - getting from redis
+[2023-03-05 17:30:46] DEBUG get all books - getting from redis
+[2023-03-05 17:30:46] DEBUG get all books - getting from redis
+[2023-03-05 17:30:46] DEBUG get all books - getting from redis
+[2023-03-05 17:30:46] DEBUG get all books - getting from redis
+[2023-03-05 17:30:47] DEBUG get all books - getting from redis
+[2023-03-05 17:30:47] DEBUG get all books - getting from redis
+[2023-03-05 17:30:47] DEBUG get all books - getting from redis
+[2023-03-05 17:30:47] DEBUG get all books - getting from redis
+[2023-03-05 17:30:47] DEBUG get all books - getting from redis
+[2023-03-05 17:30:48] DEBUG get all books - getting from redis
+[2023-03-05 17:30:48] DEBUG get all books - getting from redis
+[2023-03-05 17:30:48] DEBUG get all books - getting from redis
+[2023-03-05 17:30:48] DEBUG get all books - getting from redis
+[2023-03-05 17:30:48] DEBUG get all books - getting from redis
+[2023-03-05 17:30:49] DEBUG get all books - getting from redis
+[2023-03-05 17:30:49] DEBUG get all books - getting from redis
+[2023-03-05 17:30:49] DEBUG get all books - getting from redis
+[2023-03-05 17:30:49] DEBUG get all books - getting from redis
+[2023-03-05 17:30:49] DEBUG get all books - getting from redis
+[2023-03-05 17:30:50] DEBUG get all books - getting from redis
+[2023-03-05 17:30:50] DEBUG get all books - getting from redis
+[2023-03-05 17:30:50] DEBUG get all books - getting from redis
+[2023-03-05 17:30:50] DEBUG get all books - getting from redis
+[2023-03-05 17:30:50] DEBUG get all books - getting from redis
+[2023-03-05 17:30:51] DEBUG get all books - getting from redis
+[2023-03-05 17:30:51] DEBUG get all books - getting from redis
+[2023-03-05 17:30:51] DEBUG get all books - getting from redis
+[2023-03-05 17:30:52] DEBUG get all books - getting from redis
+[2023-03-05 17:30:52] DEBUG get all books - getting from redis
+[2023-03-05 17:30:52] DEBUG get all books - getting from redis
+[2023-03-05 17:30:52] DEBUG get all books - getting from redis
+[2023-03-05 17:30:54]  INFO server stopped
+[2023-03-05 17:43:40]  INFO server started
+[2023-03-05 17:43:42] DEBUG get all books - getting from redis
+[2023-03-05 17:43:43] DEBUG get all books - getting from redis
+[2023-03-05 17:43:43] DEBUG get all books - getting from redis
+[2023-03-05 17:43:43] DEBUG get all books - getting from redis
+[2023-03-05 17:43:43] DEBUG get all books - getting from redis
+[2023-03-05 17:43:44] DEBUG get all books - getting from redis
+[2023-03-05 17:43:44] DEBUG get all books - getting from redis
+[2023-03-05 17:43:58] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-05 17:44:09] ERROR error in getting all books by author: book not found
+[2023-03-05 17:44:14] ERROR error in getting all books by author: book not found
+[2023-03-05 17:44:19] ERROR error in getting all books by publisher: book not found
+[2023-03-05 17:44:19] ERROR error in getting all books by publisher: book not found
+[2023-03-05 17:44:20] ERROR error in getting all books by publisher: book not found
+[2023-03-05 17:44:20] ERROR error in getting all books by publisher: book not found
+[2023-03-05 17:45:03]  INFO server stopped
+[2023-03-05 17:45:07]  INFO server started
+[2023-03-05 17:45:15] ERROR error in getting all books by author: book not found
+[2023-03-05 17:45:24] DEBUG get all books - getting from redis
+[2023-03-05 17:46:04] DEBUG get all books - getting from redis
+[2023-03-05 17:46:08] ERROR repo - error in unmarshalling request - %vjson: Unmarshal(non-pointer []book.Book)
+[2023-03-05 17:46:51] ERROR repo - error in unmarshalling request - %vjson: Unmarshal(non-pointer []book.Book)
+[2023-03-05 17:46:52] ERROR repo - error in unmarshalling request - %vjson: Unmarshal(non-pointer []book.Book)
+[2023-03-05 17:47:48] DEBUG get all books - getting from redis
+[2023-03-05 17:47:49] DEBUG get all books - getting from redis
+[2023-03-05 17:47:49] DEBUG get all books - getting from redis
+[2023-03-05 17:47:50] DEBUG get all books - getting from redis
+[2023-03-05 17:47:50] DEBUG get all books - getting from redis
+[2023-03-05 17:47:50] DEBUG get all books - getting from redis
+[2023-03-05 17:47:50] DEBUG get all books - getting from redis
+[2023-03-05 17:47:53] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:08] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:18]  INFO server stopped
+[2023-03-05 17:48:20]  INFO server started
+[2023-03-05 17:48:26] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:28] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:29] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:29] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:29] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:29] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:38] ERROR error in getting all books by author: book not found
+[2023-03-05 17:48:42] ERROR error in getting all books by publisher: book not found
+[2023-03-05 17:48:42] ERROR error in getting all books by publisher: book not found
+[2023-03-05 17:48:43] ERROR error in getting all books by publisher: book not found
+[2023-03-05 17:48:45] ERROR error in getting all books by publisher: book not found
+[2023-03-05 17:48:47] ERROR error in getting all books by genre: book not found
+[2023-03-05 17:48:47] ERROR error in getting all books by genre: book not found
+[2023-03-05 17:48:50] ERROR error in getting all books by language: book not found
+[2023-03-05 17:49:19] ERROR error in getting all books by author: book not found
+[2023-03-05 17:50:43]  INFO server stopped
+[2023-03-05 17:50:46]  INFO server started
+[2023-03-05 17:51:22]  INFO server stopped
+[2023-03-05 17:51:25]  INFO server started
+[2023-03-05 17:51:25] DEBUG { laboris esse cupidatat  0 sit qui incididunt id  false cupidatat  2023-03-05 17:51:25.789452563 +0600 +06 m=+0.199689333}
+[2023-03-05 17:51:34]  INFO server stopped
+[2023-03-05 17:51:35]  INFO server started
+[2023-03-05 17:51:36] DEBUG { laboris esse cupidatat  0 sit qui incididunt id  false cupidatat  2023-03-05 17:51:36.402043815 +0600 +06 m=+1.041736663}
+[2023-03-05 17:52:02] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:52:02.802896866 +0600 +06 m=+27.442589154}
+[2023-03-05 17:52:15] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:52:15.005248542 +0600 +06 m=+39.644940831}
+[2023-03-05 17:52:15] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:52:15.490413968 +0600 +06 m=+40.130106326}
+[2023-03-05 17:52:15] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:52:15.904188104 +0600 +06 m=+40.543879904}
+[2023-03-05 17:52:18] DEBUG get all books by author - getting from redis
+[2023-03-05 17:53:05] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:53:05.171286804 +0600 +06 m=+89.810979581}
+[2023-03-05 17:53:05] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:53:05.495148868 +0600 +06 m=+90.134841646}
+[2023-03-05 17:53:05] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:53:05.745896444 +0600 +06 m=+90.385588733}
+[2023-03-05 17:53:05] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:53:05.919649389 +0600 +06 m=+90.559341678}
+[2023-03-05 17:53:06] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:53:06.08352189 +0600 +06 m=+90.723215157}
+[2023-03-05 17:53:06] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:53:06.32763236 +0600 +06 m=+90.967325207}
+[2023-03-05 17:53:06] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:53:06.487318675 +0600 +06 m=+91.127011034}
+[2023-03-05 17:53:06] DEBUG { voluptate occaecat laboris esse cupidatat 9714150 ea cillum sit qui incididunt id false in magna cupidatat 2023-03-05 17:53:06.653224451 +0600 +06 m=+91.292916740}
+[2023-03-05 17:53:08] DEBUG get all books by author - getting from redis
+[2023-03-05 17:53:19] DEBUG get all books by author - getting from redis
+[2023-03-05 17:53:20] DEBUG get all books by author - getting from redis
+[2023-03-05 17:53:35] DEBUG get all books by publisher - getting from redis
+[2023-03-05 17:53:50] DEBUG get all books by genre - getting from redis
+[2023-03-05 17:53:58] DEBUG get all books by language - getting from redis
+[2023-03-05 17:53:58] DEBUG get all books by language - getting from redis
+[2023-03-05 17:53:59] DEBUG get all books by language - getting from redis
+[2023-03-05 17:53:59] DEBUG get all books by language - getting from redis
+[2023-03-05 17:53:59] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:00] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:00] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:00] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:00] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:01] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:01] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:01] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:01] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:01] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:02] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:02] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:02] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:02] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:02] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:02] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:03] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:03] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:03] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:03] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:03] DEBUG get all books by language - getting from redis
+[2023-03-05 17:54:08]  INFO server stopped

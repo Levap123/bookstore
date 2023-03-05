@@ -25,7 +25,7 @@ func NewBookRepo(DB *mongo.Client, log *logrus.Logger) *BookRepo {
 	}
 }
 
-func (br *BookRepo) Create(ctx context.Context, book *book.Book) (string, error) {
+func (br *BookRepo) Create(ctx context.Context, book book.Book) (string, error) {
 	res, err := br.coll.InsertOne(ctx, book)
 	if err != nil {
 		return "", fmt.Errorf("book repo - create - %w", err)
@@ -35,35 +35,35 @@ func (br *BookRepo) Create(ctx context.Context, book *book.Book) (string, error)
 	return ID, nil
 }
 
-func (br *BookRepo) GetByID(ctx context.Context, bookID string) (*book.Book, error) {
+func (br *BookRepo) GetByID(ctx context.Context, bookID string) (book.Book, error) {
 	objectID, err := primitive.ObjectIDFromHex(bookID)
 	if err != nil {
-		return nil, fmt.Errorf("book repo - get object ID from hex - %w", err)
+		return book.Book{}, fmt.Errorf("book repo - get object ID from hex - %w", err)
 	}
 
 	filter := bson.D{
 		{"_id", objectID},
 	}
 
-	var book book.Book
-	if err := br.coll.FindOne(ctx, filter).Decode(&book); err != nil {
+	var bookBody book.Book
+	if err := br.coll.FindOne(ctx, filter).Decode(&bookBody); err != nil {
 		if errors.Is(err, mongo.ErrNoDocuments) {
-			return nil, domain.ErrBookNotFound
+			return book.Book{}, domain.ErrBookNotFound
 		}
-		return nil, fmt.Errorf("book repo - get one - %w", err)
+		return book.Book{}, fmt.Errorf("book repo - get one - %w", err)
 	}
 
-	return &book, err
+	return bookBody, err
 }
 
-func (br *BookRepo) GetAll(ctx context.Context) ([]*book.Book, error) {
+func (br *BookRepo) GetAll(ctx context.Context) ([]book.Book, error) {
 
 	cur, err := br.coll.Find(ctx, bson.D{})
 	if err != nil {
 		return nil, fmt.Errorf("book repo - get all - %w", err)
 	}
 
-	books := make([]*book.Book, 0, 10)
+	books := make([]book.Book, 0, 10)
 
 	for cur.Next(ctx) {
 		var buffer book.Book
@@ -71,7 +71,7 @@ func (br *BookRepo) GetAll(ctx context.Context) ([]*book.Book, error) {
 			return nil, fmt.Errorf("book repo - get all - %w", err)
 		}
 
-		books = append(books, &buffer)
+		books = append(books, buffer)
 	}
 
 	if err := cur.Err(); err != nil {
@@ -85,7 +85,7 @@ func (br *BookRepo) GetAll(ctx context.Context) ([]*book.Book, error) {
 	return books, nil
 }
 
-func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]*book.Book, error) {
+func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]book.Book, error) {
 
 	filter := bson.D{
 		{"author", author},
@@ -95,7 +95,7 @@ func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]*book.Boo
 		return nil, fmt.Errorf("book repo - get all - %w", err)
 	}
 
-	books := make([]*book.Book, 0, 10)
+	books := make([]book.Book, 0, 10)
 
 	for cur.Next(ctx) {
 		var buffer book.Book
@@ -103,7 +103,7 @@ func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]*book.Boo
 			return nil, fmt.Errorf("book repo - get all - %w", err)
 		}
 
-		books = append(books, &buffer)
+		books = append(books, buffer)
 	}
 
 	if err := cur.Err(); err != nil {
@@ -117,7 +117,7 @@ func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]*book.Boo
 	return books, nil
 }
 
-func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]*book.Book, error) {
+func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]book.Book, error) {
 
 	filter := bson.D{
 		{"publisher", publisher},
@@ -127,7 +127,7 @@ func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]*bo
 		return nil, fmt.Errorf("book repo - get all - %w", err)
 	}
 
-	books := make([]*book.Book, 0, 10)
+	books := make([]book.Book, 0, 10)
 
 	for cur.Next(ctx) {
 		var buffer book.Book
@@ -135,7 +135,7 @@ func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]*bo
 			return nil, fmt.Errorf("book repo - get all - %w", err)
 		}
 
-		books = append(books, &buffer)
+		books = append(books, buffer)
 	}
 
 	if err := cur.Err(); err != nil {
@@ -149,7 +149,7 @@ func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]*bo
 	return books, nil
 }
 
-func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]*book.Book, error) {
+func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]book.Book, error) {
 
 	filter := bson.D{
 		{"genre", genre},
@@ -159,7 +159,7 @@ func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]*book.Book,
 		return nil, fmt.Errorf("book repo - get all - %w", err)
 	}
 
-	books := make([]*book.Book, 0, 10)
+	books := make([]book.Book, 0, 10)
 
 	for cur.Next(ctx) {
 		var buffer book.Book
@@ -167,7 +167,7 @@ func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]*book.Book,
 			return nil, fmt.Errorf("book repo - get all - %w", err)
 		}
 
-		books = append(books, &buffer)
+		books = append(books, buffer)
 	}
 
 	if err := cur.Err(); err != nil {
@@ -181,7 +181,7 @@ func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]*book.Book,
 	return books, nil
 }
 
-func (br *BookRepo) GetByLanguage(ctx context.Context, language string) ([]*book.Book, error) {
+func (br *BookRepo) GetByLanguage(ctx context.Context, language string) ([]book.Book, error) {
 
 	filter := bson.D{
 		{"language", language},
@@ -191,7 +191,7 @@ func (br *BookRepo) GetByLanguage(ctx context.Context, language string) ([]*book
 		return nil, fmt.Errorf("book repo - get all - %w", err)
 	}
 
-	books := make([]*book.Book, 0, 10)
+	books := make([]book.Book, 0, 10)
 
 	for cur.Next(ctx) {
 		var buffer book.Book
@@ -199,7 +199,7 @@ func (br *BookRepo) GetByLanguage(ctx context.Context, language string) ([]*book
 			return nil, fmt.Errorf("book repo - get all - %w", err)
 		}
 
-		books = append(books, &buffer)
+		books = append(books, buffer)
 	}
 
 	if err := cur.Err(); err != nil {
