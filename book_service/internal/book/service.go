@@ -15,9 +15,9 @@ type IBookRepo interface {
 	GetByID(ctx context.Context, bookID string) (*Book, error)
 	GetAll(ctx context.Context) ([]*Book, error)
 	GetByAuthor(ctx context.Context, author string) ([]*Book, error)
-	GetByPublisher(ctx context.Context, author string) ([]*Book, error)
-	GetByLanguage(ctx context.Context, author string) ([]*Book, error)
-	GetByGenre(ctx context.Context, author string) ([]*Book, error)
+	GetByPublisher(ctx context.Context, publisher string) ([]*Book, error)
+	GetByLanguage(ctx context.Context, language string) ([]*Book, error)
+	GetByGenre(ctx context.Context, genre string) ([]*Book, error)
 }
 
 func NewBookService(repo IBookRepo) *BookService {

@@ -2,14 +2,11 @@ package mongo
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
-	"time"
 
 	"github.com/Levap123/book_service/internal/book"
 	"github.com/Levap123/book_service/internal/domain"
-	"github.com/go-redis/redis/v8"
 	"github.com/sirupsen/logrus"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -17,16 +14,14 @@ import (
 )
 
 type BookRepo struct {
-	coll  *mongo.Collection
-	cache *redis.Client
-	log   *logrus.Logger
+	coll *mongo.Collection
+	log  *logrus.Logger
 }
 
-func NewBookRepo(DB *mongo.Client, redisCleint *redis.Client, log *logrus.Logger) *BookRepo {
+func NewBookRepo(DB *mongo.Client, log *logrus.Logger) *BookRepo {
 	return &BookRepo{
-		coll:  DB.Database("bookstore").Collection("books"),
-		cache: redisCleint,
-		log:   log,
+		coll: DB.Database("bookstore").Collection("books"),
+		log:  log,
 	}
 }
 
@@ -62,15 +57,6 @@ func (br *BookRepo) GetByID(ctx context.Context, bookID string) (*book.Book, err
 }
 
 func (br *BookRepo) GetAll(ctx context.Context) ([]*book.Book, error) {
-	getAllBytes := br.getFromRedis(ctx, "all")
-
-	if len(getAllBytes) != 0 {
-		var books []*book.Book
-		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			br.log.Debug("getting from redis")
-			return books, nil
-		}
-	}
 
 	cur, err := br.coll.Find(ctx, bson.D{})
 	if err != nil {
@@ -96,26 +82,10 @@ func (br *BookRepo) GetAll(ctx context.Context) ([]*book.Book, error) {
 		return nil, domain.ErrBookNotFound
 	}
 
-	booksBytes, err := json.Marshal(books)
-	if err != nil {
-		br.log.Errorf("repo - error in marshalling request - %w", err)
-	} else {
-		br.cache.Set(ctx, "all", booksBytes, time.Minute*5)
-	}
-
 	return books, nil
 }
 
 func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]*book.Book, error) {
-	getAllBytes := br.getFromRedis(ctx, "author")
-
-	if len(getAllBytes) != 0 {
-		var books []*book.Book
-		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			br.log.Debug("getting from redis")
-			return books, nil
-		}
-	}
 
 	filter := bson.D{
 		{"author", author},
@@ -144,26 +114,10 @@ func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]*book.Boo
 		return nil, domain.ErrBookNotFound
 	}
 
-	booksBytes, err := json.Marshal(books)
-	if err != nil {
-		br.log.Errorf("repo - error in marshalling request - %w", err)
-	} else {
-		br.cache.Set(ctx, "author", booksBytes, time.Minute*5)
-	}
-
 	return books, nil
 }
 
 func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]*book.Book, error) {
-	getAllBytes := br.getFromRedis(ctx, "publisher")
-
-	if len(getAllBytes) != 0 {
-		var books []*book.Book
-		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			br.log.Debug("getting from redis")
-			return books, nil
-		}
-	}
 
 	filter := bson.D{
 		{"publisher", publisher},
@@ -192,26 +146,10 @@ func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]*bo
 		return nil, domain.ErrBookNotFound
 	}
 
-	booksBytes, err := json.Marshal(books)
-	if err != nil {
-		br.log.Errorf("repo - error in marshalling request - %w", err)
-	} else {
-		br.cache.Set(ctx, "publisher", booksBytes, time.Minute*5)
-	}
-
 	return books, nil
 }
 
 func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]*book.Book, error) {
-	getAllBytes := br.getFromRedis(ctx, "genre")
-
-	if len(getAllBytes) != 0 {
-		var books []*book.Book
-		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			br.log.Debug("getting from redis")
-			return books, nil
-		}
-	}
 
 	filter := bson.D{
 		{"genre", genre},
@@ -240,26 +178,10 @@ func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]*book.Book,
 		return nil, domain.ErrBookNotFound
 	}
 
-	booksBytes, err := json.Marshal(books)
-	if err != nil {
-		br.log.Errorf("repo - error in marshalling request - %w", err)
-	} else {
-		br.cache.Set(ctx, "genre", booksBytes, time.Minute*5)
-	}
-
 	return books, nil
 }
 
 func (br *BookRepo) GetByLanguage(ctx context.Context, language string) ([]*book.Book, error) {
-	getAllBytes := br.getFromRedis(ctx, "language")
-
-	if len(getAllBytes) != 0 {
-		var books []*book.Book
-		if err := json.Unmarshal(getAllBytes, &books); err == nil {
-			br.log.Debug("getting from redis")
-			return books, nil
-		}
-	}
 
 	filter := bson.D{
 		{"language", language},
@@ -288,20 +210,5 @@ func (br *BookRepo) GetByLanguage(ctx context.Context, language string) ([]*book
 		return nil, domain.ErrBookNotFound
 	}
 
-	booksBytes, err := json.Marshal(books)
-	if err != nil {
-		br.log.Errorf("repo - error in marshalling request - %w", err)
-	} else {
-		br.cache.Set(ctx, "language", booksBytes, time.Minute*5)
-	}
-
 	return books, nil
-}
-
-func (br *BookRepo) getFromRedis(ctx context.Context, key string) []byte {
-	cache, err := br.cache.Get(ctx, key).Bytes()
-	if err != nil {
-		return []byte{}
-	}
-	return cache
 }

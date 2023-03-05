@@ -9,8 +9,9 @@ import (
 	"time"
 
 	"github.com/Levap123/book_service/internal/book"
-	"github.com/Levap123/book_service/internal/book/mongo"
-	"github.com/Levap123/book_service/internal/book/redis"
+	"github.com/Levap123/book_service/internal/book/repository"
+	"github.com/Levap123/book_service/internal/book/repository/mongo"
+	"github.com/Levap123/book_service/internal/book/repository/redis"
 	"github.com/Levap123/book_service/internal/configs"
 	"github.com/Levap123/book_service/proto"
 	"github.com/Levap123/utils/lg"
@@ -52,8 +53,11 @@ func main() {
 		log.Fatalf("fatal in pinging redis: %v", err)
 	}
 
-	repo := mongo.NewBookRepo(DB, redisClient, log)
-	service := book.NewBookService(repo)
+	repo := mongo.NewBookRepo(DB, log)
+	repoWrapper := repository.NewRepo(repo, redisClient, log)
+
+	service := book.NewBookService(repoWrapper)
+
 	handler := book.NewBookHandler(service, log)
 
 	listener, err := net.Listen("tcp", cfg.Server.Addr)

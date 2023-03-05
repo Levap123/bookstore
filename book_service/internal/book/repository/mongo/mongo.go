@@ -21,3 +21,4 @@ func InitDB(ctx context.Context, cfg *configs.Configs) (*mongo.Client, error) {
 func ShutDownDB(ctx context.Context, cl *mongo.Client) error {
 	return cl.Disconnect(ctx)
 }
+
