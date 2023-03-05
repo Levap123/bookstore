@@ -19,6 +19,7 @@ type BookHandler struct {
 }
 
 type IBookService interface {
+	Delete(ctx context.Context, bookID string) (string, error)
 	Create(ctx context.Context, book *Book) (string, error)
 	GetByID(ctx context.Context, bookID string) (*Book, error)
 	GetAll(ctx context.Context) ([]*Book, error)
@@ -172,9 +173,22 @@ func (h *BookHandler) GetByLanguage(ctx context.Context, req *proto.GetByLanguag
 	}, nil
 }
 
+func (h *BookHandler) Delete(ctx context.Context, req *proto.DeleteBookRequestResponse) (*proto.DeleteBookRequestResponse, error) {
+	bookID, err := h.service.Delete(ctx, req.BookID)
+	if err != nil {
+		h.log.Errorf("error in deleting book: %v", err)
+		if errors.Is(err, domain.ErrBookNotFound) {
+			return nil, status.Errorf(codes.NotFound, "book did not deleted because book with this id not found")
+		}
+		return nil, err
+	}
+	return &proto.DeleteBookRequestResponse{
+		BookID: bookID,
+	}, nil
+}
+
 /* TODO: implement
 type BookServer interface {
-	Delete(context.Context, *DeleteBookRequestResponse) (*DeleteBookRequestResponse, error)
 	mustEmbedUnimplementedBookServer()
 }
 */

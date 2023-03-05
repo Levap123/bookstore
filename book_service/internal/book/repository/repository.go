@@ -26,6 +26,7 @@ func NewRepo(repo IBookRepo, cache *redis.Client, log *logrus.Logger) *Repo {
 }
 
 type IBookRepo interface {
+	Delete(ctx context.Context, bookID string) (string, error)
 	Create(ctx context.Context, book *book.Book) (string, error)
 	GetByID(ctx context.Context, bookID string) (*book.Book, error)
 	GetAll(ctx context.Context) ([]*book.Book, error)
@@ -37,6 +38,9 @@ type IBookRepo interface {
 
 const allBooksKey = "books:all"
 
+func (r *Repo) Delete(ctx context.Context, bookID string) (string, error) {
+	return r.repo.Delete(ctx, bookID)
+}
 func (r *Repo) Create(ctx context.Context, book *book.Book) (string, error) {
 	return r.repo.Create(ctx, book)
 }

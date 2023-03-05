@@ -212,3 +212,24 @@ func (br *BookRepo) GetByLanguage(ctx context.Context, language string) ([]*book
 
 	return books, nil
 }
+
+func (br *BookRepo) Delete(ctx context.Context, bookID string) (string, error) {
+	objectID, err := primitive.ObjectIDFromHex(bookID)
+	if err != nil {
+		return "", fmt.Errorf("book repo - get object ID from hex - %w", domain.ErrBookNotFound)
+	}
+
+	filter := bson.D{
+		{"_id", objectID},
+	}
+
+	res, err := br.coll.DeleteOne(ctx, filter)
+	if err != nil {
+		return "", fmt.Errorf("book repo - delete by id - %w", err)
+	}
+	if res.DeletedCount != 1 {
+		return "", domain.ErrBookNotFound
+	}
+
+	return bookID, nil
+}

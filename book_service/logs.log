@@ -278,3 +278,7 @@
 [2023-03-05 14:50:06] DEBUG getting from redis
 [2023-03-05 14:50:07] DEBUG getting from redis
 [2023-03-05 14:51:15]  INFO server stopped
+[2023-03-05 14:58:52]  INFO server started
+[2023-03-05 14:59:19] ERROR error in getting book by ID: book repo - get object ID from hex - the provided hex string is not a valid ObjectID
+[2023-03-05 14:59:20] ERROR error in getting book by ID: book not found
+[2023-03-05 14:59:50]  INFO server stopped

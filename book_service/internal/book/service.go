@@ -11,6 +11,7 @@ type BookService struct {
 }
 
 type IBookRepo interface {
+	Delete(ctx context.Context, bookID string) (string, error)
 	Create(ctx context.Context, book *Book) (string, error)
 	GetByID(ctx context.Context, bookID string) (*Book, error)
 	GetAll(ctx context.Context) ([]*Book, error)
@@ -65,4 +66,8 @@ func (bs *BookService) GetByLanguage(ctx context.Context, language string) ([]*B
 
 func (bs *BookService) GetByGenre(ctx context.Context, genre string) ([]*Book, error) {
 	return bs.repo.GetByGenre(ctx, genre)
+}
+
+func (bs *BookService) Delete(ctx context.Context, bookID string) (string, error) {
+	return bs.repo.Delete(ctx, bookID)
 }
