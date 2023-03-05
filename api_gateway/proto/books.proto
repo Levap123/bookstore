@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 service Book {
-    rpc Create(CreateBookRequest) returns (CreateBookResponse);
+    rpc Create(BookInfo) returns (CreateBookResponse);
     rpc Delete(DeleteBookRequestResponse) returns (DeleteBookRequestResponse);
     rpc GetAll(google.protobuf.Empty) returns (BookInfoArray);
     rpc GetByID(GetBookRequset) returns (BookInfo);
@@ -35,18 +35,6 @@ message BookInfo {
 
 message BookInfoArray {
     repeated BookInfo arr = 1;
-}
-message CreateBookRequest {
-    string title = 1;
-    string description = 2;
-    string image = 3;
-    uint64 pages = 4;
-    string author = 5;
-    string genre = 6;
-    string publisher = 7;
-    bool binding = 8;
-    string series = 9;
-    string language = 10;
 }
 
 message CreateBookResponse {

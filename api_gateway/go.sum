@@ -1,9 +1,5 @@
 github.com/BurntSushi/toml v1.1.0 h1:ksErzDEI1khOiGPgpwuI7x2ebx/uXQNw7xJpn9Eq1+I=
 github.com/BurntSushi/toml v1.1.0/go.mod h1:CxXYINrC8qIiEnFrOxCa7Jy5BFHlXnUU2pbicEuybxQ=
-github.com/Levap123/utils v0.0.0-20230228052123-e0fbb9596fef h1:6ZVl40CnaUw6M6SIaXPnrJNNNP+sclEF53Pk1dhCv/I=
-github.com/Levap123/utils v0.0.0-20230228052123-e0fbb9596fef/go.mod h1:/8+zb9M/SuE8bViAviMaiLqZ1Pqn1Z5DZBwECX9Jeag=
-github.com/Levap123/utils v0.0.0-20230302065835-070b32a44e5e h1:SkVJ3TXJwE40I6cE7LoB55DBrwUxWp7FPfLX7+YUKHE=
-github.com/Levap123/utils v0.0.0-20230302065835-070b32a44e5e/go.mod h1:/8+zb9M/SuE8bViAviMaiLqZ1Pqn1Z5DZBwECX9Jeag=
 github.com/Levap123/utils v0.0.0-20230302072501-1f49340507d2 h1:K/dN96Ql7Lf43RkPbifrBspKxDbmYaFW4lgaFSW7EIg=
 github.com/Levap123/utils v0.0.0-20230302072501-1f49340507d2/go.mod h1:/8+zb9M/SuE8bViAviMaiLqZ1Pqn1Z5DZBwECX9Jeag=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

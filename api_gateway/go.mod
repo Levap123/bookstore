@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/Levap123/utils v0.0.0-20230302072501-1f49340507d2
+	github.com/golang/protobuf v1.5.2
 	github.com/ilyakaznacheev/cleanenv v1.4.2
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/sirupsen/logrus v1.9.0
@@ -14,7 +15,6 @@ require (
 
 require (
 	github.com/BurntSushi/toml v1.1.0 // indirect
-	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
