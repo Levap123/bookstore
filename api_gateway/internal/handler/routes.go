@@ -20,5 +20,6 @@ func (h *Handler) InitRoutes() http.Handler {
 	r.Handler(http.MethodGet, "/api/user/:user_id", middlwares.CheckErrorMiddlware(h.getUserByID))
 
 	r.Handler(http.MethodPost, "/api/books", h.AdminMiddleware(middlwares.CheckErrorMiddlware(h.createBook)))
+	r.Handler(http.MethodGet, "apy/books", h.AdminMiddleware(middlwares.CheckErrorMiddlware(h.getAllBoks)))
 	return r
 }

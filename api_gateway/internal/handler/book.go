@@ -42,3 +42,21 @@ func (h *Handler) createBook(w http.ResponseWriter, r *http.Request) error {
 
 	return nil
 }
+
+func (h *Handler) getAllBoks(w http.ResponseWriter, r *http.Request) error {
+	h.log.Debug("get all books")
+
+	ctx, cancel := context.WithTimeout(r.Context(), time.Second*2)
+	defer cancel()
+
+	books, err := h.apiClients.BookClient.GetAll(ctx)
+	if err != nil {
+		h.log.Errorf("error in getting all books: %v", err)
+	}
+
+	reqBytes := jsend.Marshal(books)
+
+	jsend.SendJSON(w, reqBytes, http.StatusOK)
+
+	return nil
+}

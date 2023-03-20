@@ -43,6 +43,7 @@ func (h *BookHandler) Create(ctx context.Context, req *proto.BookInfo) (*proto.C
 		h.log.Errorf("error in creating book: %v", err)
 		return nil, err
 	}
+	
 	return &proto.CreateBookResponse{
 		BookID: bookID,
 	}, nil
