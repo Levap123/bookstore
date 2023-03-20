@@ -57,7 +57,6 @@ func (br *BookRepo) GetByID(ctx context.Context, bookID string) (book.Book, erro
 }
 
 func (br *BookRepo) GetAll(ctx context.Context) ([]book.Book, error) {
-
 	cur, err := br.coll.Find(ctx, bson.D{})
 	if err != nil {
 		return nil, fmt.Errorf("book repo - get all - %w", err)
@@ -86,7 +85,6 @@ func (br *BookRepo) GetAll(ctx context.Context) ([]book.Book, error) {
 }
 
 func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]book.Book, error) {
-
 	filter := bson.D{
 		{"author", author},
 	}
@@ -118,7 +116,6 @@ func (br *BookRepo) GetByAuthor(ctx context.Context, author string) ([]book.Book
 }
 
 func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]book.Book, error) {
-
 	filter := bson.D{
 		{"publisher", publisher},
 	}
@@ -150,7 +147,6 @@ func (br *BookRepo) GetByPublisher(ctx context.Context, publisher string) ([]boo
 }
 
 func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]book.Book, error) {
-
 	filter := bson.D{
 		{"genre", genre},
 	}
@@ -182,7 +178,6 @@ func (br *BookRepo) GetByGenre(ctx context.Context, genre string) ([]book.Book, 
 }
 
 func (br *BookRepo) GetByLanguage(ctx context.Context, language string) ([]book.Book, error) {
-
 	filter := bson.D{
 		{"language", language},
 	}
@@ -232,4 +227,45 @@ func (br *BookRepo) Delete(ctx context.Context, bookID string) (string, error) {
 	}
 
 	return bookID, nil
+}
+
+func (br *BookRepo) BooksFilter(ctx context.Context, genre, author, language, publisher string) ([]book.Book, error) {
+	filter := bson.M{}
+
+	if genre != "" {
+		filter["genre"] = genre
+	}
+
+	if author != "" {
+		filter["author"] = author
+	}
+
+	if language != "" {
+		filter["language"] = language
+	}
+
+	if publisher != "" {
+		filter["publisher"] = publisher
+	}
+
+	return br.getByFilter(ctx, filter)
+}
+
+func (br *BookRepo) getByFilter(ctx context.Context, filter bson.M) ([]book.Book, error) {
+	cur, err := br.coll.Find(ctx, filter)
+	if err != nil {
+		return nil, fmt.Errorf("book repo - get by filter - %w", err)
+	}
+
+	books := make([]book.Book, 0, 10)
+
+	for cur.Next(ctx) {
+		var buffer book.Book
+		if err := cur.Decode(&buffer); err != nil {
+			return nil, fmt.Errorf("book repo - decode - %w", err)
+		}
+		books = append(books, buffer)
+	}
+
+	return books, nil
 }

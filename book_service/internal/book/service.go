@@ -19,6 +19,7 @@ type IBookRepo interface {
 	GetByPublisher(ctx context.Context, publisher string) ([]Book, error)
 	GetByLanguage(ctx context.Context, language string) ([]Book, error)
 	GetByGenre(ctx context.Context, genre string) ([]Book, error)
+	BooksFilter(ctx context.Context, genre, author, language, publisher string) ([]Book, error)
 }
 
 func NewBookService(repo IBookRepo) *BookService {
@@ -70,4 +71,8 @@ func (bs *BookService) GetByGenre(ctx context.Context, genre string) ([]Book, er
 
 func (bs *BookService) Delete(ctx context.Context, bookID string) (string, error) {
 	return bs.repo.Delete(ctx, bookID)
+}
+
+func (bs *BookService) BooksFilter(ctx context.Context, genre, author, language, publisher string) ([]Book, error) {
+	return bs.repo.BooksFilter(ctx, genre, author, language, publisher)
 }

@@ -27,6 +27,7 @@ type IBookService interface {
 	GetByPublisher(ctx context.Context, author string) ([]Book, error)
 	GetByLanguage(ctx context.Context, author string) ([]Book, error)
 	GetByGenre(ctx context.Context, author string) ([]Book, error)
+	BooksFilter(ctx context.Context, genre, author, language, publisher string) ([]Book, error)
 }
 
 func NewBookHandler(service IBookService, log *logrus.Logger) *BookHandler {
@@ -174,6 +175,25 @@ func (h *BookHandler) GetByLanguage(ctx context.Context, req *proto.GetByLanguag
 	}, nil
 }
 
+func (h *BookHandler) GetWithFilter(ctx context.Context, req *proto.Filter) (*proto.BookInfoArray, error) {
+	books, err := h.service.BooksFilter(ctx, req.Genre, req.Author, req.Language, req.Publsiher)
+	if err != nil {
+		h.log.Errorf("error in gettin books by filtering: %v", err)
+
+		return nil, err
+	}
+
+	requestArray := make([]*proto.BookInfo, 0, len(books))
+
+	for _, book := range books {
+		requestArray = append(requestArray, NewBookResponseFromBook(book))
+	}
+
+	return &proto.BookInfoArray{
+		Arr: requestArray,
+	}, nil
+}
+
 func (h *BookHandler) Delete(ctx context.Context, req *proto.DeleteBookRequestResponse) (*proto.DeleteBookRequestResponse, error) {
 	bookID, err := h.service.Delete(ctx, req.BookID)
 	if err != nil {
@@ -187,9 +207,3 @@ func (h *BookHandler) Delete(ctx context.Context, req *proto.DeleteBookRequestRe
 		BookID: bookID,
 	}, nil
 }
-
-/* TODO: implement
-type BookServer interface {
-	mustEmbedUnimplementedBookServer()
-}
-*/
