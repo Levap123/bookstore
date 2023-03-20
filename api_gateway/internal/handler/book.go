@@ -10,6 +10,7 @@ import (
 	"github.com/Levap123/api_gateway/internal/dto"
 	jsend "github.com/Levap123/api_gateway/pkg/json"
 	"github.com/Levap123/utils/apperror"
+	"github.com/julienschmidt/httprouter"
 )
 
 func (h *Handler) createBook(w http.ResponseWriter, r *http.Request) error {
@@ -56,6 +57,29 @@ func (h *Handler) getAllBoks(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	reqBytes := jsend.Marshal(books)
+
+	jsend.SendJSON(w, reqBytes, http.StatusOK)
+
+	return nil
+}
+
+func (h *Handler) getBookByID(w http.ResponseWriter, r *http.Request) error {
+	h.log.Debug(("get book by ID"))
+
+	ctx, cancel := context.WithTimeout(r.Context(), time.Second)
+	defer cancel()
+
+	params := httprouter.ParamsFromContext(r.Context())
+
+	bookID := params.ByName("book_id")
+
+	book, err := h.apiClients.BookClient.GetByID(ctx, bookID)
+	if err != nil {
+		h.log.Errorf("error in getting book by ID: %v", err)
+		return err
+	}
+
+	reqBytes := jsend.Marshal(book)
 
 	jsend.SendJSON(w, reqBytes, http.StatusOK)
 

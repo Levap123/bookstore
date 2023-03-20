@@ -571,3 +571,6 @@
 [2023-03-20 15:40:18] DEBUG get all books
 [2023-03-20 15:40:19] DEBUG get all books
 [2023-03-20 15:40:19] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:44:44]  INFO server started
+[2023-03-20 15:44:53] DEBUG get book by ID
+[2023-03-20 15:44:56] FATAL fatal in running server: http: Server closed
