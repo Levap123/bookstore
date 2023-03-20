@@ -438,3 +438,39 @@
 [2023-03-05 17:54:03] DEBUG get all books by language - getting from redis
 [2023-03-05 17:54:03] DEBUG get all books by language - getting from redis
 [2023-03-05 17:54:08]  INFO server stopped
+[2023-03-20 15:03:53]  INFO server started
+[2023-03-20 15:18:19]  INFO server stopped
+[2023-03-20 15:18:19]  INFO server started
+[2023-03-20 15:21:46] DEBUG get all books - getting from redis
+[2023-03-20 15:21:47] DEBUG get all books - getting from redis
+[2023-03-20 15:21:47] DEBUG get all books - getting from redis
+[2023-03-20 15:21:48] DEBUG get all books - getting from redis
+[2023-03-20 15:21:54] DEBUG get all books - getting from redis
+[2023-03-20 15:21:55] DEBUG get all books - getting from redis
+[2023-03-20 15:21:55] DEBUG get all books - getting from redis
+[2023-03-20 15:21:56] DEBUG get all books - getting from redis
+[2023-03-20 15:21:56] DEBUG get all books - getting from redis
+[2023-03-20 15:21:56] DEBUG get all books - getting from redis
+[2023-03-20 15:21:57] DEBUG get all books - getting from redis
+[2023-03-20 15:37:42]  INFO server stopped
+[2023-03-20 15:37:45]  INFO server started
+[2023-03-20 15:38:52] DEBUG get all books - getting from redis
+[2023-03-20 15:39:13] DEBUG get all books - getting from redis
+[2023-03-20 15:39:14] DEBUG get all books - getting from redis
+[2023-03-20 15:39:58] DEBUG get all books - getting from redis
+[2023-03-20 15:40:11] DEBUG get all books - getting from redis
+[2023-03-20 15:40:12] DEBUG get all books - getting from redis
+[2023-03-20 15:40:12] DEBUG get all books - getting from redis
+[2023-03-20 15:40:13] DEBUG get all books - getting from redis
+[2023-03-20 15:40:13] DEBUG get all books - getting from redis
+[2023-03-20 15:40:14] DEBUG get all books - getting from redis
+[2023-03-20 15:40:14] DEBUG get all books - getting from redis
+[2023-03-20 15:40:15] DEBUG get all books - getting from redis
+[2023-03-20 15:40:16] DEBUG get all books - getting from redis
+[2023-03-20 15:40:16] DEBUG get all books - getting from redis
+[2023-03-20 15:40:16] DEBUG get all books - getting from redis
+[2023-03-20 15:40:17] DEBUG get all books - getting from redis
+[2023-03-20 15:40:18] DEBUG get all books - getting from redis
+[2023-03-20 15:40:18] DEBUG get all books - getting from redis
+[2023-03-20 15:40:18] DEBUG get all books - getting from redis
+[2023-03-20 15:40:19] DEBUG get all books - getting from redis

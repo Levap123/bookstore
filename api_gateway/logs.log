@@ -448,3 +448,126 @@
 [2023-03-02 17:34:29] DEBUG refresh
 [2023-03-02 17:34:29] DEBUG refresh
 [2023-03-02 17:35:07] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:04:16]  INFO server started
+[2023-03-20 15:04:29]  INFO server started
+[2023-03-20 15:04:44] DEBUG refresh
+[2023-03-20 15:05:40] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:05:41]  INFO server started
+[2023-03-20 15:05:43] DEBUG get all books
+[2023-03-20 15:05:43] ERROR error from book service: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:05:43] ERROR error in getting all books: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:06:07] DEBUG get all books
+[2023-03-20 15:06:07] ERROR error from book service: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:06:07] ERROR error in getting all books: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:06:08] DEBUG get all books
+[2023-03-20 15:06:08] ERROR error from book service: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:06:08] ERROR error in getting all books: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:06:09] DEBUG get all books
+[2023-03-20 15:06:09] ERROR error from book service: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:06:09] ERROR error in getting all books: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:06:52] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:06:52]  INFO server started
+[2023-03-20 15:06:57] DEBUG get all books
+[2023-03-20 15:06:57] ERROR error from book service: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:06:57] ERROR error in getting all books: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:11:45] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:12:13]  INFO server started
+[2023-03-20 15:12:17] DEBUG get all books
+[2023-03-20 15:12:17] ERROR error from book service: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:12:17] ERROR error in getting all books: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:13:19] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:13:20]  INFO server started
+[2023-03-20 15:13:23] DEBUG get all books
+[2023-03-20 15:13:23] ERROR error from book service: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:13:23] ERROR error in getting all books: rpc error: code = Internal desc = grpc: error while marshaling: proto: Marshal called with nil
+[2023-03-20 15:14:06] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:14:07]  INFO server started
+[2023-03-20 15:14:08] DEBUG get all books
+[2023-03-20 15:14:08] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:14:08] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:14:27] DEBUG admin middleware
+[2023-03-20 15:14:34] DEBUG get all books
+[2023-03-20 15:14:34] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:14:34] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:22] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:18:23]  INFO server started
+[2023-03-20 15:18:24] DEBUG get all books
+[2023-03-20 15:18:24] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:24] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:26] DEBUG get all books
+[2023-03-20 15:18:26] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:26] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:27] DEBUG get all books
+[2023-03-20 15:18:27] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:27] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:27] DEBUG get all books
+[2023-03-20 15:18:27] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:27] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:28] DEBUG get all books
+[2023-03-20 15:18:28] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:28] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:29] DEBUG get all books
+[2023-03-20 15:18:29] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:18:29] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:20] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:19:21]  INFO server started
+[2023-03-20 15:19:22] DEBUG get all books
+[2023-03-20 15:19:22] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:22] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:24] DEBUG get all books
+[2023-03-20 15:19:24] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:24] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:24] DEBUG get all books
+[2023-03-20 15:19:24] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:24] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:25] DEBUG get all books
+[2023-03-20 15:19:25] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:25] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:25] DEBUG get all books
+[2023-03-20 15:19:25] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:19:25] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:21:10] DEBUG user signup handler
+[2023-03-20 15:21:10] ERROR error in unmarshaling: unexpected end of JSON input
+[2023-03-20 15:24:14] DEBUG user signup handler
+[2023-03-20 15:24:14] ERROR error in unmarshaling: unexpected end of JSON input
+[2023-03-20 15:24:22] DEBUG admin middleware
+[2023-03-20 15:24:25] DEBUG get all books
+[2023-03-20 15:24:25] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:24:25] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:37:50] DEBUG get all books
+[2023-03-20 15:37:50] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:37:50] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:37:51] DEBUG get all books
+[2023-03-20 15:37:51] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:37:51] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:37:51] DEBUG get all books
+[2023-03-20 15:37:51] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:37:51] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:39:18] DEBUG get all books
+[2023-03-20 15:39:18] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:39:18] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:39:19] DEBUG get all books
+[2023-03-20 15:39:19] ERROR error from book service: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:39:19] ERROR error in getting all books: rpc error: code = Unimplemented desc = unknown service proto.Book
+[2023-03-20 15:39:55] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:39:56]  INFO server started
+[2023-03-20 15:39:58] DEBUG get all books
+[2023-03-20 15:40:07] FATAL fatal in running server: http: Server closed
+[2023-03-20 15:40:09]  INFO server started
+[2023-03-20 15:40:11] DEBUG get all books
+[2023-03-20 15:40:12] DEBUG get all books
+[2023-03-20 15:40:12] DEBUG get all books
+[2023-03-20 15:40:13] DEBUG get all books
+[2023-03-20 15:40:13] DEBUG get all books
+[2023-03-20 15:40:14] DEBUG get all books
+[2023-03-20 15:40:14] DEBUG get all books
+[2023-03-20 15:40:15] DEBUG get all books
+[2023-03-20 15:40:16] DEBUG get all books
+[2023-03-20 15:40:16] DEBUG get all books
+[2023-03-20 15:40:16] DEBUG get all books
+[2023-03-20 15:40:17] DEBUG get all books
+[2023-03-20 15:40:18] DEBUG get all books
+[2023-03-20 15:40:18] DEBUG get all books
+[2023-03-20 15:40:18] DEBUG get all books
+[2023-03-20 15:40:19] DEBUG get all books
+[2023-03-20 15:40:19] FATAL fatal in running server: http: Server closed

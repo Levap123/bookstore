@@ -46,7 +46,7 @@ func main() {
 	ctxBooksrv, cancel := context.WithTimeout(context.Background(), time.Second*2)
 	defer cancel()
 
-	bookServiceAddress := cfg.UserService.Addr
+	bookServiceAddress := cfg.BookService.Addr
 
 	connBooksrv, err := grpc.DialContext(ctxBooksrv, bookServiceAddress, opts...)
 	if err != nil {

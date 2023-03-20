@@ -45,7 +45,7 @@ func (h *Handler) UserIdentity(next http.Handler) http.Handler {
 
 func (h *Handler) AdminMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		h.log.Debug("refresh")
+		h.log.Debug("admin middleware")
 
 		authHeader := r.Header.Get("Authorization")
 		authHeaderSplit := strings.Split(authHeader, "Bearer ")
@@ -75,7 +75,7 @@ func (h *Handler) AdminMiddleware(next http.Handler) http.Handler {
 			json.SendJSON(w, bytes, http.StatusUnauthorized)
 			return
 		}
-		
+
 		ctxWithValue := context.WithValue(r.Context(), "user_id", userID)
 
 		next.ServeHTTP(w, r.WithContext(ctxWithValue))

@@ -6,10 +6,10 @@ import (
 
 	"github.com/Levap123/book_service/internal/domain"
 	"github.com/Levap123/book_service/proto"
+	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
-	"google.golang.org/protobuf/types/known/emptypb"
 )
 
 type BookHandler struct {
@@ -43,7 +43,7 @@ func (h *BookHandler) Create(ctx context.Context, req *proto.BookInfo) (*proto.C
 		h.log.Errorf("error in creating book: %v", err)
 		return nil, err
 	}
-	
+
 	return &proto.CreateBookResponse{
 		BookID: bookID,
 	}, nil
@@ -64,7 +64,7 @@ func (h *BookHandler) GetByID(ctx context.Context, req *proto.GetBookRequset) (*
 	return NewBookResponseFromBook(bookResp), nil
 }
 
-func (h *BookHandler) GetAll(ctx context.Context, req *emptypb.Empty) (*proto.BookInfoArray, error) {
+func (h *BookHandler) GetAll(ctx context.Context, req *empty.Empty) (*proto.BookInfoArray, error) {
 	books, err := h.service.GetAll(ctx)
 	if err != nil {
 		h.log.Errorf("error in getting all books: %v", err)

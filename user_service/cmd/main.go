@@ -61,9 +61,11 @@ func main() {
 	srv := grpc.NewServer()
 	proto.RegisterUserServer(srv, handler)
 	reflection.Register(srv)
+
 	lg.Info("server is started")
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
+	
 	go func() {
 		if err := srv.Serve(listener); err != nil {
 			log.Fatalln(err)

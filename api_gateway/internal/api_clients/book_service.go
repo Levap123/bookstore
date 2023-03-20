@@ -7,6 +7,7 @@ import (
 	"github.com/Levap123/api_gateway/internal/entity"
 	"github.com/Levap123/api_gateway/proto"
 	"github.com/Levap123/utils/apperror"
+	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
@@ -98,7 +99,7 @@ func (bc *BookClient) Delete(ctx context.Context, bookID string) (string, error)
 }
 
 func (bc *BookClient) GetAll(ctx context.Context) ([]entity.Book, error) {
-	resp, err := bc.cl.GetAll(ctx, nil)
+	resp, err := bc.cl.GetAll(ctx, &empty.Empty{})
 	if err != nil {
 		bc.log.Errorf("error from book service: %v", err)
 
@@ -114,7 +115,6 @@ func (bc *BookClient) GetAll(ctx context.Context) ([]entity.Book, error) {
 
 		return nil, apperror.NewError(status.Err(), status.Message(), statusCode)
 	}
-
 	bookArr := make([]entity.Book, 0, len(resp.Arr))
 
 	for _, bookReq := range resp.Arr {

@@ -52,6 +52,7 @@ func (h *Handler) getAllBoks(w http.ResponseWriter, r *http.Request) error {
 	books, err := h.apiClients.BookClient.GetAll(ctx)
 	if err != nil {
 		h.log.Errorf("error in getting all books: %v", err)
+		return err
 	}
 
 	reqBytes := jsend.Marshal(books)
