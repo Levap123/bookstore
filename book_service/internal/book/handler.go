@@ -23,10 +23,6 @@ type IBookService interface {
 	Create(ctx context.Context, book Book) (string, error)
 	GetByID(ctx context.Context, bookID string) (Book, error)
 	GetAll(ctx context.Context) ([]Book, error)
-	GetByAuthor(ctx context.Context, author string) ([]Book, error)
-	GetByPublisher(ctx context.Context, author string) ([]Book, error)
-	GetByLanguage(ctx context.Context, author string) ([]Book, error)
-	GetByGenre(ctx context.Context, author string) ([]Book, error)
 	BooksFilter(ctx context.Context, genre, author, language, publisher []string) ([]Book, error)
 }
 
@@ -69,94 +65,6 @@ func (h *BookHandler) GetAll(ctx context.Context, req *empty.Empty) (*proto.Book
 	books, err := h.service.GetAll(ctx)
 	if err != nil {
 		h.log.Errorf("error in getting all books: %v", err)
-
-		if errors.Is(err, domain.ErrBookNotFound) {
-			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
-		}
-		return nil, err
-	}
-
-	requestArray := make([]*proto.BookInfo, 0, len(books))
-
-	for _, book := range books {
-		requestArray = append(requestArray, NewBookResponseFromBook(book))
-	}
-
-	return &proto.BookInfoArray{
-		Arr: requestArray,
-	}, nil
-}
-
-func (h *BookHandler) GetByAuthor(ctx context.Context, req *proto.GetByAuthorRequest) (*proto.BookInfoArray, error) {
-	books, err := h.service.GetByAuthor(ctx, req.Author)
-	if err != nil {
-		h.log.Errorf("error in getting all books by author: %v", err)
-
-		if errors.Is(err, domain.ErrBookNotFound) {
-			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
-		}
-		return nil, err
-	}
-
-	requestArray := make([]*proto.BookInfo, 0, len(books))
-
-	for _, book := range books {
-		requestArray = append(requestArray, NewBookResponseFromBook(book))
-	}
-
-	return &proto.BookInfoArray{
-		Arr: requestArray,
-	}, nil
-}
-
-func (h *BookHandler) GetByPublisher(ctx context.Context, req *proto.GetByPublisherRequest) (*proto.BookInfoArray, error) {
-	books, err := h.service.GetByPublisher(ctx, req.Publisher)
-	if err != nil {
-		h.log.Errorf("error in getting all books by publisher: %v", err)
-
-		if errors.Is(err, domain.ErrBookNotFound) {
-			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
-		}
-		return nil, err
-	}
-
-	requestArray := make([]*proto.BookInfo, 0, len(books))
-
-	for _, book := range books {
-		requestArray = append(requestArray, NewBookResponseFromBook(book))
-	}
-
-	return &proto.BookInfoArray{
-		Arr: requestArray,
-	}, nil
-}
-
-func (h *BookHandler) GetByGenre(ctx context.Context, req *proto.GetByGenreRequest) (*proto.BookInfoArray, error) {
-	books, err := h.service.GetByGenre(ctx, req.Genre)
-	if err != nil {
-		h.log.Errorf("error in getting all books by genre: %v", err)
-
-		if errors.Is(err, domain.ErrBookNotFound) {
-			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())
-		}
-		return nil, err
-	}
-
-	requestArray := make([]*proto.BookInfo, 0, len(books))
-
-	for _, book := range books {
-		requestArray = append(requestArray, NewBookResponseFromBook(book))
-	}
-
-	return &proto.BookInfoArray{
-		Arr: requestArray,
-	}, nil
-}
-
-func (h *BookHandler) GetByLanguage(ctx context.Context, req *proto.GetByLanguageRequest) (*proto.BookInfoArray, error) {
-	books, err := h.service.GetByLanguage(ctx, req.Language)
-	if err != nil {
-		h.log.Errorf("error in getting all books by language: %v", err)
 
 		if errors.Is(err, domain.ErrBookNotFound) {
 			return nil, status.Errorf(codes.NotFound, domain.ErrBookNotFound.Error())

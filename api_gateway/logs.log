@@ -574,3 +574,44 @@
 [2023-03-20 15:44:44]  INFO server started
 [2023-03-20 15:44:53] DEBUG get book by ID
 [2023-03-20 15:44:56] FATAL fatal in running server: http: Server closed
+[2023-03-20 18:17:44]  INFO server started
+[2023-03-20 18:17:50] DEBUG get all books
+[2023-03-20 18:18:19] DEBUG get all books
+[2023-03-20 18:18:52] FATAL fatal in running server: http: Server closed
+[2023-03-20 18:18:53]  INFO server started
+[2023-03-20 18:18:54] DEBUG get all books
+[2023-03-20 18:18:54] DEBUG go to filtering
+[2023-03-20 18:19:08] DEBUG get all books
+[2023-03-20 18:19:13] DEBUG get all books
+[2023-03-20 18:19:14] DEBUG get all books
+[2023-03-20 18:19:15] DEBUG get all books
+[2023-03-20 18:19:21] DEBUG get all books
+[2023-03-20 18:19:21] DEBUG go to filtering
+[2023-03-20 18:19:27] DEBUG get all books
+[2023-03-20 18:19:27] DEBUG go to filtering
+[2023-03-20 18:19:48] DEBUG get all books
+[2023-03-20 18:19:52] DEBUG get all books
+[2023-03-20 18:19:53] DEBUG get all books
+[2023-03-20 18:29:23] DEBUG get all books
+[2023-03-20 18:29:27] DEBUG get all books
+[2023-03-20 18:29:27] DEBUG go to filtering
+[2023-03-20 18:29:35] DEBUG get all books
+[2023-03-20 18:29:47] DEBUG get all books
+[2023-03-20 18:29:47] DEBUG go to filtering
+[2023-03-20 18:29:51] DEBUG get all books
+[2023-03-20 18:29:51] DEBUG go to filtering
+[2023-03-20 18:29:54] DEBUG get all books
+[2023-03-20 18:29:54] DEBUG go to filtering
+[2023-03-20 18:31:15] DEBUG get all books
+[2023-03-20 18:31:15] DEBUG go to filtering
+[2023-03-20 19:05:45] FATAL fatal in running server: http: Server closed
+[2023-03-20 19:08:33]  INFO server started
+[2023-03-20 19:08:34] DEBUG get all books
+[2023-03-20 19:08:34] DEBUG go to filtering
+[2023-03-20 19:09:59] DEBUG get all books
+[2023-03-20 19:09:59] DEBUG go to filtering
+[2023-03-20 19:09:59] DEBUG get all books
+[2023-03-20 19:09:59] DEBUG go to filtering
+[2023-03-20 19:10:00] DEBUG get all books
+[2023-03-20 19:10:00] DEBUG go to filtering
+[2023-03-20 19:28:41] FATAL fatal in running server: http: Server closed

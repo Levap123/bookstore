@@ -7,18 +7,18 @@ import (
 )
 
 type Book struct {
-	ID          string
-	Title       string
-	Description string
-	Image       string
-	Pages       uint64
-	Author      string
-	Genre       string
-	Publisher   string
-	Binding     bool
-	Series      string
-	Language    string
-	AddedAt     time.Time
+	ID          string    `json:"id,omitempty"`
+	Title       string    `json:"title,omitempty"`
+	Description string    `json:"description,omitempty"`
+	Image       string    `json:"image,omitempty"`
+	Pages       uint64    `json:"pages,omitempty"`
+	Author      string    `json:"author,omitempty"`
+	Genre       string    `json:"genre,omitempty"`
+	Publisher   string    `json:"publisher,omitempty"`
+	Binding     bool      `json:"binding,omitempty"`
+	Series      string    `json:"series,omitempty"`
+	Language    string    `json:"language,omitempty"`
+	AddedAt     time.Time `json:"added_at,omitempty"`
 }
 
 func FromBookRequestToBook(req *proto.BookInfo) Book {

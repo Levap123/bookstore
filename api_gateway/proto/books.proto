@@ -12,10 +12,6 @@ service Book {
     rpc Delete(DeleteBookRequestResponse) returns (DeleteBookRequestResponse);
     rpc GetAll(google.protobuf.Empty) returns (BookInfoArray);
     rpc GetByID(GetBookRequset) returns (BookInfo);
-    rpc GetByAuthor(GetByAuthorRequest) returns (BookInfoArray);
-    rpc GetByPublisher(GetByPublisherRequest) returns (BookInfoArray);
-    rpc GetByGenre(GetByGenreRequest) returns (BookInfoArray);
-    rpc GetByLanguage(GetByLanguageRequest) returns (BookInfoArray);
     rpc GetWithFilter(Filter) returns (BookInfoArray);
 }
 
@@ -57,18 +53,3 @@ message GetBookRequset {
     string bookID = 1;
 }
 
-message GetByAuthorRequest {
-    string author = 1;
-}
-
-message GetByPublisherRequest {
-    string publisher = 1;
-}
-
-message GetByGenreRequest {
-    string genre = 1;
-}
-
-message GetByLanguageRequest {
-    string language = 1;
-}

@@ -52,8 +52,12 @@ func (h *Handler) getAllBoks(w http.ResponseWriter, r *http.Request) error {
 
 	ctx, cancel := context.WithTimeout(r.Context(), time.Second*2)
 	defer cancel()
+
 	var books []entity.Book
+
 	if len(params) != 0 {
+		h.log.Debug("go to filtering")
+
 		var err error
 		books, err = h.apiClients.BookClient.GetByFiltering(ctx, params)
 		if err != nil {

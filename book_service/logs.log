@@ -504,3 +504,7 @@
 [2023-03-20 18:29:23] DEBUG get all books - getting from redis
 [2023-03-20 18:29:35] DEBUG get all books - getting from redis
 [2023-03-20 18:31:38]  INFO server stopped
+[2023-03-20 19:05:40]  INFO server started
+[2023-03-20 19:08:56] DEBUG get all books by author - getting from redis
+[2023-03-20 19:10:13] DEBUG get all books by author - getting from redis
+[2023-03-20 19:10:26]  INFO server stopped
