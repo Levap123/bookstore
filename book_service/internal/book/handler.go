@@ -27,7 +27,7 @@ type IBookService interface {
 	GetByPublisher(ctx context.Context, author string) ([]Book, error)
 	GetByLanguage(ctx context.Context, author string) ([]Book, error)
 	GetByGenre(ctx context.Context, author string) ([]Book, error)
-	BooksFilter(ctx context.Context, genre, author, language, publisher string) ([]Book, error)
+	BooksFilter(ctx context.Context, genre, author, language, publisher []string) ([]Book, error)
 }
 
 func NewBookHandler(service IBookService, log *logrus.Logger) *BookHandler {

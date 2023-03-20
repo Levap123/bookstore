@@ -16,6 +16,7 @@ service Book {
     rpc GetByPublisher(GetByPublisherRequest) returns (BookInfoArray);
     rpc GetByGenre(GetByGenreRequest) returns (BookInfoArray);
     rpc GetByLanguage(GetByLanguageRequest) returns (BookInfoArray);
+    rpc GetWithFilter(Filter) returns (BookInfoArray);
 }
 
 message BookInfo {
@@ -31,6 +32,13 @@ message BookInfo {
     string series = 10;
     string language = 11;
     google.protobuf.Timestamp added_at = 12;
+}
+
+message Filter {
+   repeated string author = 1;
+   repeated string genre = 2; 
+   repeated string language = 3;
+   repeated string publsiher = 4;
 }
 
 message BookInfoArray {

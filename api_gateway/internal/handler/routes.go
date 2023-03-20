@@ -22,5 +22,6 @@ func (h *Handler) InitRoutes() http.Handler {
 	r.Handler(http.MethodPost, "/api/books", h.AdminMiddleware(middlwares.CheckErrorMiddlware(h.createBook)))
 	r.Handler(http.MethodGet, "/api/books", middlwares.CheckErrorMiddlware(h.getAllBoks))
 	r.Handler(http.MethodGet, "/api/books/:book_id", middlwares.CheckErrorMiddlware(h.getBookByID))
+
 	return r
 }

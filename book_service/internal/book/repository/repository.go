@@ -34,7 +34,7 @@ type IBookRepo interface {
 	GetByPublisher(ctx context.Context, publisher string) ([]book.Book, error)
 	GetByLanguage(ctx context.Context, language string) ([]book.Book, error)
 	GetByGenre(ctx context.Context, genre string) ([]book.Book, error)
-	BooksFilter(ctx context.Context, genre, author, language, publisher string) ([]book.Book, error)
+	BooksFilter(ctx context.Context, genre, author, language, publisher []string) ([]book.Book, error)
 }
 
 const allBooksKey = "books:all"
@@ -51,7 +51,7 @@ func (r *Repo) GetByID(ctx context.Context, bookID string) (book.Book, error) {
 	return r.repo.GetByID(ctx, bookID)
 }
 
-func (r *Repo) BooksFilter(ctx context.Context, genre, author, language, publisher string) ([]book.Book, error) {
+func (r *Repo) BooksFilter(ctx context.Context, genre, author, language, publisher []string) ([]book.Book, error) {
 	return r.repo.BooksFilter(ctx, genre, author, language, publisher)
 }
 

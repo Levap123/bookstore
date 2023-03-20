@@ -229,23 +229,23 @@ func (br *BookRepo) Delete(ctx context.Context, bookID string) (string, error) {
 	return bookID, nil
 }
 
-func (br *BookRepo) BooksFilter(ctx context.Context, genre, author, language, publisher string) ([]book.Book, error) {
+func (br *BookRepo) BooksFilter(ctx context.Context, genre, author, language, publisher []string) ([]book.Book, error) {
 	filter := bson.M{}
 
-	if genre != "" {
-		filter["genre"] = genre
+	if len(genre) != 0 {
+		filter["genre"] = bson.M{"$in": genre}
 	}
 
-	if author != "" {
-		filter["author"] = author
+	if len(author) != 0 {
+		filter["author"] = bson.M{"$in": author}
 	}
 
-	if language != "" {
-		filter["language"] = language
+	if len(language) != 0 {
+		filter["language"] = bson.M{"$in": language}
 	}
 
-	if publisher != "" {
-		filter["publisher"] = publisher
+	if len(publisher) != 0 {
+		filter["publisher"] = bson.M{"$in": publisher}
 	}
 
 	return br.getByFilter(ctx, filter)

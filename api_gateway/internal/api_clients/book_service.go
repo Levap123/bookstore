@@ -124,6 +124,28 @@ func (bc *BookClient) GetAll(ctx context.Context) ([]entity.Book, error) {
 	return bookArr, nil
 }
 
+func (bc *BookClient) GetByFiltering(ctx context.Context, params map[string][]string) ([]entity.Book, error) {
+	filter := &proto.Filter{
+		Author:    params["author"],
+		Genre:     params["genre"],
+		Language:  params["language"],
+		Publsiher: params["publisher"],
+	}
+
+	resp, err := bc.cl.GetWithFilter(ctx, filter)
+	if err != nil {
+		return nil, err
+	}
+
+	bookArr := make([]entity.Book, 0, len(resp.Arr))
+
+	for _, bookReq := range resp.Arr {
+		bookArr = append(bookArr, entity.FromBookRequestToBook(bookReq))
+	}
+
+	return bookArr, nil
+}
+
 func (bc *BookClient) GetAllByAuthor(ctx context.Context, author string) ([]entity.Book, error) {
 	req := &proto.GetByAuthorRequest{
 		Author: author,

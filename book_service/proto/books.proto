@@ -35,10 +35,10 @@ message BookInfo {
 }
 
 message Filter {
-    string author = 1;
-    string genre = 2; 
-    string language = 3;
-    string publsiher = 4;
+   repeated string author = 1;
+   repeated string genre = 2; 
+   repeated string language = 3;
+   repeated string publsiher = 4;
 }
 
 message BookInfoArray {

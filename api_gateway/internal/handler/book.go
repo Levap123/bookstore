@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/Levap123/api_gateway/internal/dto"
+	"github.com/Levap123/api_gateway/internal/entity"
 	jsend "github.com/Levap123/api_gateway/pkg/json"
 	"github.com/Levap123/utils/apperror"
 	"github.com/julienschmidt/httprouter"
@@ -47,13 +48,26 @@ func (h *Handler) createBook(w http.ResponseWriter, r *http.Request) error {
 func (h *Handler) getAllBoks(w http.ResponseWriter, r *http.Request) error {
 	h.log.Debug("get all books")
 
+	params := r.URL.Query()
+
 	ctx, cancel := context.WithTimeout(r.Context(), time.Second*2)
 	defer cancel()
+	var books []entity.Book
+	if len(params) != 0 {
+		var err error
+		books, err = h.apiClients.BookClient.GetByFiltering(ctx, params)
+		if err != nil {
+			h.log.Errorf("error in getting books by filter: %v", err)
+			return err
+		}
 
-	books, err := h.apiClients.BookClient.GetAll(ctx)
-	if err != nil {
-		h.log.Errorf("error in getting all books: %v", err)
-		return err
+	} else {
+		var err error
+		books, err = h.apiClients.BookClient.GetAll(ctx)
+		if err != nil {
+			h.log.Errorf("error in getting all books: %v", err)
+			return err
+		}
 	}
 
 	reqBytes := jsend.Marshal(books)
