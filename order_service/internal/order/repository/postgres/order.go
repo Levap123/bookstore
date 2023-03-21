@@ -12,8 +12,8 @@ type OrderRepo struct {
 	DB *sqlx.DB
 }
 
-func NewOrderRepoPostgres(db *sqlx.DB) OrderRepo {
-	return OrderRepo{
+func NewOrderRepoPostgres(db *sqlx.DB) *OrderRepo {
+	return &OrderRepo{
 		DB: db,
 	}
 }
@@ -27,19 +27,14 @@ func (or *OrderRepo) Create(ctx context.Context, order order.Order) (uint64, err
 	}
 	defer tx.Rollback()
 
-	query := fmt.Sprintf("INSERT INTO %s (user_id, book_id, added_at) VALUES (:user_id, :book_id, :added_at, :status) RETURNING id", orderTable)
+	query := fmt.Sprintf("INSERT INTO %s (user_id, book_id, added_at, status) VALUES (:user_id, :book_id, :added_at, :status) RETURNING id", orderTable)
 
-	res, err := tx.NamedExecContext(ctx, query, order)
-	if err != nil {
+	
+	if _, err := tx.NamedExecContext(ctx, query, order); err != nil {
 		return 0, fmt.Errorf("order repo - create - %w", err)
 	}
 
-	ID, err := res.LastInsertId()
-	if err != nil {
-		return 0, fmt.Errorf("order repo - create - %w", err)
-	}
-
-	return uint64(ID), tx.Commit()
+	return 0, tx.Commit()
 }
 
 func (or *OrderRepo) GetByID(ctx context.Context, ID uint64) (order.Order, error) {
