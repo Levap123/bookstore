@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/Levap123/order_service/proto"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 type CreateOrderDTO struct {
@@ -32,5 +33,15 @@ func fromReqToCreateDTO(req *proto.CreateOrderRequest) CreateOrderDTO {
 	return CreateOrderDTO{
 		BookID: req.BookId,
 		UserID: req.UserId,
+	}
+}
+
+func fromOrderToResp(order Order) *proto.Order {
+	return &proto.Order{
+		Id:      order.ID,
+		UserId:  order.UserID,
+		BookId:  order.BookID,
+		Status:  order.Status,
+		AddedAt: timestamppb.New(order.AddedAt),
 	}
 }

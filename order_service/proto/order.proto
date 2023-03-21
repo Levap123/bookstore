@@ -8,7 +8,7 @@ import "google/protobuf/timestamp.proto";
 
 service Orders {
     rpc Create(CreateOrderRequest) returns  (CreateOrderResponse);
-    rpc GetByUserID(GetOrderByIDRequest) returns (OrderArray);
+    rpc GetByUserID(GetOrderByUserIDRequest) returns (OrderArray);
     rpc GetByID(GetOrderByIDRequest) returns (Order);
     rpc ChangeStatus(ChangeStatusRequest) returns (CreateOrderResponse);
     rpc GetByUserIDAndStatus(GetOrderByUserIDAndStatusRequest) returns (OrderArray);
