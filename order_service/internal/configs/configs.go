@@ -6,6 +6,14 @@ type Configs struct {
 	Server struct {
 		Addr string `yaml:"addr"`
 	} `yaml:"server"`
+
+	Postgres struct {
+		Port     string `yaml:"port"`
+		Host     string `yaml:"host"`
+		Password string `yaml:"password"`
+		Username string `yaml:"username"`
+		DBName   string `yaml:"db_name"`
+	} `yaml:"postgres"`
 }
 
 func GetConfigs() (*Configs, error) {

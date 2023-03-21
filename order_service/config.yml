@@ -1,2 +1,9 @@
 server:
   addr: :8484
+
+postgres:
+  port: 5433
+  host: localhost
+  password: root
+  username: root
+  db_name: orders
