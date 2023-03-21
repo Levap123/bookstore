@@ -21,6 +21,13 @@ type IOrderService interface {
 	ChangeOrderStatus(ctx context.Context, ID uint64, status string) (uint64, error)
 }
 
+func NewOrderHandler(service IOrderService, logger *logrus.Logger) *OrderHandler {
+	return &OrderHandler{
+		service: service,
+		logger:  logger,
+	}
+}
+
 func (h *OrderHandler) Create(ctx context.Context, req *proto.CreateOrderRequest) (*proto.CreateOrderResponse, error) {
 	dto := fromReqToCreateDTO(req)
 
@@ -39,6 +46,7 @@ func (h *OrderHandler) Create(ctx context.Context, req *proto.CreateOrderRequest
 func (h *OrderHandler) GetByUserID(ctx context.Context, req *proto.GetOrderByUserIDRequest) (*proto.OrderArray, error) {
 	resp, err := h.service.GetByUserID(ctx, req.UserId)
 	if err != nil {
+		h.logger.Error("error in getting order by user id: %v", err)
 		return nil, err
 	}
 
@@ -56,6 +64,7 @@ func (h *OrderHandler) GetByUserID(ctx context.Context, req *proto.GetOrderByUse
 func (h *OrderHandler) GetByID(ctx context.Context, req *proto.GetOrderByIDRequest) (*proto.Order, error) {
 	order, err := h.service.GetByID(ctx, req.Id)
 	if err != nil {
+		h.logger.Error("error in getting order by id: %v", err)
 		return nil, err
 	}
 
@@ -65,6 +74,7 @@ func (h *OrderHandler) GetByID(ctx context.Context, req *proto.GetOrderByIDReque
 func (h *OrderHandler) ChangeStatus(ctx context.Context, req *proto.ChangeStatusRequest) (*proto.CreateOrderResponse, error) {
 	resp, err := h.service.ChangeOrderStatus(ctx, req.Id, req.Status)
 	if err != nil {
+		h.logger.Error("error in changing order status: %v", err)
 		return nil, err
 	}
 
@@ -76,6 +86,7 @@ func (h *OrderHandler) ChangeStatus(ctx context.Context, req *proto.ChangeStatus
 func (h *OrderHandler) GetByUserIDAndStatus(ctx context.Context, req *proto.GetOrderByUserIDAndStatusRequest) (*proto.OrderArray, error) {
 	resp, err := h.service.GetByUserIDAndStatus(ctx, req.UserId, req.Status)
 	if err != nil {
+		h.logger.Error("error in getting orders by user id and status: %v", err)
 		return nil, err
 	}
 

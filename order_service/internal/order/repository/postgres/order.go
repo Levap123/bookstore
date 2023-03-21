@@ -12,6 +12,12 @@ type OrderRepo struct {
 	DB *sqlx.DB
 }
 
+func NewOrderRepoPostgres(db *sqlx.DB) OrderRepo {
+	return OrderRepo{
+		DB: db,
+	}
+}
+
 const orderTable = "orders"
 
 func (or *OrderRepo) Create(ctx context.Context, order order.Order) (uint64, error) {

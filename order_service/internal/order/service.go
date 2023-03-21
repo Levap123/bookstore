@@ -6,6 +6,12 @@ type OrderService struct {
 	repo IOrderRepo
 }
 
+func NewService(repo IOrderRepo) *OrderService {
+	return &OrderService{
+		repo: repo,
+	}
+}
+
 type IOrderRepo interface {
 	Create(ctx context.Context, order Order) (uint64, error)
 	GetByID(ctx context.Context, ID uint64) (Order, error)
