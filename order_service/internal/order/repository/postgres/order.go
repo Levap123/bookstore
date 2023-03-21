@@ -14,7 +14,7 @@ type OrderRepo struct {
 
 const orderTable = "orders"
 
-func (or *OrderRepo) Create(ctx context.Context, order order.Order) (int64, error) {
+func (or *OrderRepo) Create(ctx context.Context, order order.Order) (uint64, error) {
 	tx, err := or.DB.BeginTxx(ctx, nil)
 	if err != nil {
 		return 0, fmt.Errorf("order repo - create - %w", err)
@@ -33,10 +33,10 @@ func (or *OrderRepo) Create(ctx context.Context, order order.Order) (int64, erro
 		return 0, fmt.Errorf("order repo - create - %w", err)
 	}
 
-	return ID, tx.Commit()
+	return uint64(ID), tx.Commit()
 }
 
-func (or *OrderRepo) GetByID(ctx context.Context, ID int) (order.Order, error) {
+func (or *OrderRepo) GetByID(ctx context.Context, ID uint64) (order.Order, error) {
 	tx, err := or.DB.BeginTxx(ctx, nil)
 	if err != nil {
 		return order.Order{}, fmt.Errorf("order repo - get by id - %w", err)
@@ -53,7 +53,7 @@ func (or *OrderRepo) GetByID(ctx context.Context, ID int) (order.Order, error) {
 	return entity, tx.Commit()
 }
 
-func (or *OrderRepo) GetByUserID(ctx context.Context, userID int) ([]order.Order, error) {
+func (or *OrderRepo) GetByUserID(ctx context.Context, userID uint64) ([]order.Order, error) {
 	tx, err := or.DB.BeginTxx(ctx, nil)
 	if err != nil {
 		return nil, fmt.Errorf("order repo - get by user id - %w", err)
@@ -70,7 +70,7 @@ func (or *OrderRepo) GetByUserID(ctx context.Context, userID int) ([]order.Order
 	return orders, tx.Commit()
 }
 
-func (or *OrderRepo) GetByUserIDAndStatus(ctx context.Context, userID int, status string) ([]order.Order, error) {
+func (or *OrderRepo) GetByUserIDAndStatus(ctx context.Context, userID uint64, status string) ([]order.Order, error) {
 	tx, err := or.DB.BeginTxx(ctx, nil)
 	if err != nil {
 		return nil, fmt.Errorf("order repo - get by user id - %w", err)
@@ -87,7 +87,7 @@ func (or *OrderRepo) GetByUserIDAndStatus(ctx context.Context, userID int, statu
 	return orders, tx.Commit()
 }
 
-func (or *OrderRepo) ChangeOrderStatus(ctx context.Context, ID int, status string) (int, error) {
+func (or *OrderRepo) ChangeOrderStatus(ctx context.Context, ID uint64, status string) (uint64, error) {
 	tx, err := or.DB.BeginTxx(ctx, nil)
 	if err != nil {
 		return 0, fmt.Errorf("order repo - change order status - %w", err)
@@ -99,6 +99,6 @@ func (or *OrderRepo) ChangeOrderStatus(ctx context.Context, ID int, status strin
 	if _, err := tx.ExecContext(ctx, query, status, ID); err != nil {
 		return 0, fmt.Errorf("order repo - change order status - %w", err)
 	}
-	
+
 	return ID, tx.Commit()
 }

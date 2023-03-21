@@ -1,17 +1,22 @@
 package order
 
-import "context"
+import (
+	"context"
+
+	"github.com/Levap123/order_service/proto"
+	"github.com/sirupsen/logrus"
+)
 
 type OrderHandler struct {
 	repo IOrderRepo
+	proto.UnimplementedOrdersServer
+	logger *logrus.Logger
 }
 
-type IOrderRepo interface {
-	Create(ctx context.Context, order Order) (int64, error)
-	GetByID(ctx context.Context, ID int) (Order, error)
-	GetByUserID(ctx context.Context, userID int) ([]Order, error)
-	GetByUserIDAndStatus(ctx context.Context, userID int, status string) ([]Order, error)
-	ChangeOrderStatus(ctx context.Context, ID int, status string) (int, error)
+
+func (h *OrderHandler) Create(ctx context.Context, req *proto.CreateOrderRequest) (*proto.CreateOrderResponse, error) {
+	dto := fromReqToCreateDTO(req)
+
 }
 
 /*

@@ -1,6 +1,10 @@
 package order
 
-import "time"
+import (
+	"time"
+
+	"github.com/Levap123/order_service/proto"
+)
 
 type CreateOrderDTO struct {
 	BookID string
@@ -15,11 +19,18 @@ type Order struct {
 	Status  string    `db:"status"`
 }
 
-func CreateOrderDTOToOrder(dto CreateOrderDTO) Order {
+func createOrderDTOToOrder(dto CreateOrderDTO) Order {
 	return Order{
 		BookID:  dto.BookID,
 		UserID:  dto.UserID,
-		Status:  "в отправке",
+		Status:  "создан",
 		AddedAt: time.Now(),
+	}
+}
+
+func fromReqToCreateDTO(req *proto.CreateOrderRequest) CreateOrderDTO {
+	return CreateOrderDTO{
+		BookID: req.BookId,
+		UserID: req.UserId,
 	}
 }
