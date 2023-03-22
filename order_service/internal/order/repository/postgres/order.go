@@ -27,14 +27,14 @@ func (or *OrderRepo) Create(ctx context.Context, order order.Order) (uint64, err
 	}
 	defer tx.Rollback()
 
-	query := fmt.Sprintf("INSERT INTO %s (user_id, book_id, added_at, status) VALUES (:user_id, :book_id, :added_at, :status) RETURNING id", orderTable)
+	query := fmt.Sprintf("INSERT INTO %s (user_id, book_id, added_at, status) VALUES ($1, $2, $3, $4) RETURNING id", orderTable)
 
-	
-	if _, err := tx.NamedExecContext(ctx, query, order); err != nil {
+	var ID uint64
+	if err := tx.GetContext(ctx, &ID, query, order.UserID, order.BookID, order.AddedAt, order.Status); err != nil {
 		return 0, fmt.Errorf("order repo - create - %w", err)
 	}
 
-	return 0, tx.Commit()
+	return ID, tx.Commit()
 }
 
 func (or *OrderRepo) GetByID(ctx context.Context, ID uint64) (order.Order, error) {

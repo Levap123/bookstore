@@ -2,7 +2,7 @@ server:
   addr: :8484
 
 postgres:
-  port: 5433
+  port: 5432
   host: localhost
   password: root
   username: root

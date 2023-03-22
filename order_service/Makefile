@@ -3,7 +3,7 @@ proto_compile:
 
 
 migrate_up:
-	migrate -path migrations/ -database "postgresql://root:root@localhost:5433/orders?sslmode=disable" -verbose up
+	migrate -path migrations/ -database "postgresql://root:root@localhost:5432/orders?sslmode=disable" -verbose up
 
 migrate_down:
-	migrate -path migrations/ -database "postgresql://root:root@localhost:5433/orders?sslmode=disable" -verbose down
+	migrate -path migrations/ -database "postgresql://root:root@localhost:5432/orders?sslmode=disable" -verbose down
